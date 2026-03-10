@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ContactSection = () => {
   const ref = useRef(null);
@@ -36,18 +37,21 @@ const ContactSection = () => {
           Tell us about your project and let's explore how we can bring your vision to life.
         </motion.p>
 
-        <motion.a
-          href="mailto:hello@threadandpixel.com"
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
-          className="inline-flex items-center gap-3 font-mono text-sm tracking-wider uppercase px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 rounded-sm"
         >
-          Start a conversation
-          <ArrowUpRight size={16} />
-        </motion.a>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-3 font-mono text-sm tracking-wider uppercase px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 rounded-sm"
+          >
+            Start a conversation
+            <ArrowUpRight size={16} />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
