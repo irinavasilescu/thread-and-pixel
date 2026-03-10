@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import FloatingPixels from "./FloatingPixels";
 
 const HeroSection = () => {
   return (
