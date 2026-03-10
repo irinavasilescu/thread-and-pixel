@@ -7,6 +7,7 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden snap-section bg-hero text-hero-foreground">
       {/* Grid background */}
       <div className="absolute inset-0 grid-bg-dark" />
+      <FloatingPixels />
 
       {/* Glow orb */}
       <motion.div

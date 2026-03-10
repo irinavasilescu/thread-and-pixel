@@ -114,6 +114,11 @@ const ProjectDetail = () => {
         </div>
       </section>
 
+      {/* Screenshots */}
+      {project.screenshots.length > 0 && (
+        <ProjectScreenshots screenshots={project.screenshots} title={project.title} />
+      )}
+
       <div className="glow-line" />
 
       {/* Brandbook */}
