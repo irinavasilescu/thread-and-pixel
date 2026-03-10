@@ -1,11 +1,19 @@
 import auroraWellness1 from "@/assets/aurora-wellness-1.jpg";
 import auroraWellness2 from "@/assets/aurora-wellness-2.jpg";
+import auroraWellness3 from "@/assets/aurora-wellness-3.jpg";
+import auroraWellness4 from "@/assets/aurora-wellness-4.jpg";
 import neonStreetwear1 from "@/assets/neon-streetwear-1.jpg";
 import neonStreetwear2 from "@/assets/neon-streetwear-2.jpg";
+import neonStreetwear3 from "@/assets/neon-streetwear-3.jpg";
+import neonStreetwear4 from "@/assets/neon-streetwear-4.jpg";
 import terraArchitecture1 from "@/assets/terra-architecture-1.jpg";
 import terraArchitecture2 from "@/assets/terra-architecture-2.jpg";
+import terraArchitecture3 from "@/assets/terra-architecture-3.jpg";
+import terraArchitecture4 from "@/assets/terra-architecture-4.jpg";
 import pulseFintech1 from "@/assets/pulse-fintech-1.jpg";
 import pulseFintech2 from "@/assets/pulse-fintech-2.jpg";
+import pulseFintech3 from "@/assets/pulse-fintech-3.jpg";
+import pulseFintech4 from "@/assets/pulse-fintech-4.jpg";
 
 export interface Project {
   slug: string;
@@ -48,7 +56,7 @@ export const projects: Project[] = [
     ],
     fonts: ["Cormorant Garamond", "DM Sans"],
     keyElements: ["Organic shapes", "Soft gradients", "Generous whitespace", "Natural textures"],
-    screenshots: [auroraWellness1, auroraWellness2],
+    screenshots: [auroraWellness1, auroraWellness2, auroraWellness3, auroraWellness4],
     technologies: ["React", "Tailwind CSS", "Framer Motion", "Supabase"],
     previewImage: auroraWellness1,
   },
@@ -76,7 +84,7 @@ export const projects: Project[] = [
     ],
     fonts: ["Clash Display", "Space Mono"],
     keyElements: ["High-contrast typography", "Grid-breaking layouts", "Motion-heavy transitions", "Dark mode default"],
-    screenshots: [neonStreetwear1, neonStreetwear2],
+    screenshots: [neonStreetwear1, neonStreetwear2, neonStreetwear3, neonStreetwear4],
     technologies: ["Next.js", "Stripe", "Sanity CMS", "Vercel"],
     previewImage: neonStreetwear1,
   },
@@ -104,7 +112,7 @@ export const projects: Project[] = [
     ],
     fonts: ["Archivo", "Inter"],
     keyElements: ["Full-bleed photography", "Horizontal scroll galleries", "Subtle parallax", "Clean grid system"],
-    screenshots: [terraArchitecture1, terraArchitecture2],
+    screenshots: [terraArchitecture1, terraArchitecture2, terraArchitecture3, terraArchitecture4],
     technologies: ["Astro", "Tailwind CSS", "Contentful", "Cloudflare"],
     previewImage: terraArchitecture1,
   },
@@ -132,7 +140,7 @@ export const projects: Project[] = [
     ],
     fonts: ["Plus Jakarta Sans", "IBM Plex Mono"],
     keyElements: ["Data-rich dashboards", "Trust-building UI patterns", "Micro-animations on interactions", "Accessibility-first design"],
-    screenshots: [pulseFintech1, pulseFintech2],
+    screenshots: [pulseFintech1, pulseFintech2, pulseFintech3, pulseFintech4],
     technologies: ["React", "D3.js", "Node.js", "PostgreSQL"],
     previewImage: pulseFintech1,
   },

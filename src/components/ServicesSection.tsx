@@ -1,7 +1,8 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Globe, Search, ShoppingCart, MessageSquare, Palette, Wrench } from "lucide-react";
 import { Link } from "react-router-dom";
+import ServiceCardPixels from "./ServiceCardPixels";
 
 const services = [
   { icon: Globe, title: "Website Creation", desc: "Bespoke websites engineered for performance, built with cutting-edge technology.", slug: "website-creation" },
@@ -15,6 +16,7 @@ const services = [
 const ServiceCard = ({ service, index }: { service: typeof services[0]; index: number }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
@@ -25,16 +27,27 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
     >
       <Link
         to={`/services/${service.slug}`}
-        className="group block bg-background p-10 h-full hover:bg-surface transition-colors duration-500 cursor-pointer border border-transparent hover:border-primary/10"
+        className="group relative block p-10 h-full cursor-pointer border border-transparent hover:border-primary/20 transition-colors duration-500 overflow-hidden rounded-sm"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        style={{
+          background: isHovered
+            ? "hsl(var(--primary) / 0.04)"
+            : "hsl(var(--background))",
+          transition: "background 0.5s ease",
+        }}
       >
-        <service.icon
-          size={24}
-          strokeWidth={1.5}
-          className="text-primary mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
-        />
-        <h3 className="text-lg font-medium mb-3 tracking-tight">{service.title}</h3>
-        <p className="text-muted-foreground text-sm leading-relaxed font-light">{service.desc}</p>
-        <div className="mt-6 h-px w-0 group-hover:w-full bg-primary/30 transition-all duration-700" />
+        {isHovered && <ServiceCardPixels />}
+        <div className="relative z-10">
+          <service.icon
+            size={24}
+            strokeWidth={1.5}
+            className="text-primary mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+          />
+          <h3 className="text-lg font-medium mb-3 tracking-tight">{service.title}</h3>
+          <p className="text-muted-foreground text-sm leading-relaxed font-light">{service.desc}</p>
+          <div className="mt-6 h-px w-0 group-hover:w-full bg-primary/30 transition-all duration-700" />
+        </div>
       </Link>
     </motion.div>
   );
