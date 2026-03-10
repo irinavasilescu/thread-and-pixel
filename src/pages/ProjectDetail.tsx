@@ -5,6 +5,7 @@ import { projects } from "@/data/projects";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import ProjectScreenshots from "@/components/ProjectScreenshots";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -112,6 +113,11 @@ const ProjectDetail = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Screenshots */}
+      {project.screenshots.length > 0 && (
+        <ProjectScreenshots screenshots={project.screenshots} title={project.title} />
+      )}
 
       <div className="glow-line" />
 

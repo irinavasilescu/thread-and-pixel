@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import FloatingPixels from "./FloatingPixels";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden snap-section bg-hero text-hero-foreground">
       {/* Grid background */}
       <div className="absolute inset-0 grid-bg-dark" />
+      <FloatingPixels />
 
       {/* Glow orb */}
       <motion.div
