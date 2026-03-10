@@ -12,14 +12,13 @@ const Navbar = () => {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/60 border-b border-border/50"
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/50"
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="font-mono text-sm tracking-widest uppercase text-foreground">
           Thread<span className="text-primary">&</span>Pixel
         </a>
 
-        {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item, i) => (
             <motion.a
@@ -44,18 +43,15 @@ const Navbar = () => {
           </motion.a>
         </div>
 
-        {/* Mobile toggle */}
         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-foreground">
           {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
           className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-xl"
         >
           <div className="px-6 py-6 flex flex-col gap-4">

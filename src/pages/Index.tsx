@@ -5,18 +5,19 @@ import AboutSection from "@/components/AboutSection";
 import ProcessSection from "@/components/ProcessSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import CustomCursor from "@/components/CustomCursor";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <CustomCursor />
       <Navbar />
       <HeroSection />
-      <div className="h-px glow-line" />
       <ServicesSection />
-      <div className="h-px glow-line" />
+      <div className="glow-line" />
       <AboutSection />
       <ProcessSection />
-      <div className="h-px glow-line" />
+      <div className="glow-line" />
       <ContactSection />
       <Footer />
     </div>
