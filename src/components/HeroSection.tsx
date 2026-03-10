@@ -3,15 +3,16 @@ import { ArrowDown } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden noise-bg">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden snap-section bg-hero text-hero-foreground">
       {/* Grid background */}
-      <div className="absolute inset-0 grid-bg opacity-40" />
+      <div className="absolute inset-0 grid-bg-dark" />
 
       {/* Glow orb */}
       <motion.div
-        animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
+        animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/20 blur-[120px]"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[120px]"
+        style={{ background: "hsl(175 80% 55% / 0.15)" }}
       />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
@@ -32,7 +33,7 @@ const HeroSection = () => {
         >
           We weave
           <br />
-          <span className="text-gradient font-medium">digital experiences</span>
+          <span className="text-gradient-hero font-medium">digital experiences</span>
           <br />
           pixel by pixel
         </motion.h1>
@@ -41,7 +42,8 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light"
+          className="text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light"
+          style={{ color: "hsl(220 10% 65%)" }}
         >
           Crafting premium websites, e-commerce platforms, and digital strategies
           that elevate brands into the future.
@@ -51,7 +53,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="flex items-center justify-center gap-6"
+          className="flex items-center justify-center gap-6 flex-wrap"
         >
           <a
             href="#services"
@@ -61,7 +63,7 @@ const HeroSection = () => {
           </a>
           <a
             href="#about"
-            className="font-mono text-xs tracking-wider uppercase px-8 py-3 border border-border text-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 rounded-sm"
+            className="font-mono text-xs tracking-wider uppercase px-8 py-3 border border-hero-foreground/20 text-hero-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 rounded-sm"
           >
             Learn More
           </a>
@@ -79,9 +81,12 @@ const HeroSection = () => {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ArrowDown size={16} className="text-muted-foreground" />
+          <ArrowDown size={16} style={{ color: "hsl(220 10% 55%)" }} />
         </motion.div>
       </motion.div>
+
+      {/* Bottom gradient fade into light */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background" />
     </section>
   );
 };

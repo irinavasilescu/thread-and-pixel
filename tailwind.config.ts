@@ -57,6 +57,10 @@ export default {
         },
         glow: "hsl(var(--glow))",
         "text-dim": "hsl(var(--text-dim))",
+        hero: {
+          DEFAULT: "hsl(var(--hero-bg))",
+          foreground: "hsl(var(--hero-fg))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
