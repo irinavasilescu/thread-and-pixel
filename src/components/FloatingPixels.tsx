@@ -3,7 +3,7 @@ import { useMemo } from "react";
 
 const FloatingPixels = () => {
   const pixels = useMemo(() => {
-    return Array.from({ length: 40 }, (_, i) => ({
+    return Array.from({ length: 80 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,

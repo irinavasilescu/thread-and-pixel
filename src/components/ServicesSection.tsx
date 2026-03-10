@@ -25,7 +25,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
     >
       <Link
         to={`/services/${service.slug}`}
-        className="group block bg-background p-10 hover:bg-surface transition-colors duration-500 cursor-pointer border border-transparent hover:border-primary/10"
+        className="group block bg-background p-10 h-full hover:bg-surface transition-colors duration-500 cursor-pointer border border-transparent hover:border-primary/10"
       >
         <service.icon
           size={24}
@@ -68,7 +68,7 @@ const ServicesSection = () => {
           </motion.h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border/30">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-background">
           {services.map((service, i) => (
             <ServiceCard key={service.title} service={service} index={i} />
           ))}
