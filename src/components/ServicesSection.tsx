@@ -1,14 +1,15 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Globe, Search, ShoppingCart, MessageSquare, Palette, Wrench } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const services = [
-  { icon: Globe, title: "Website Creation", desc: "Bespoke websites engineered for performance, built with cutting-edge technology." },
-  { icon: Search, title: "SEO", desc: "Data-driven optimization strategies that put you at the top of search results." },
-  { icon: ShoppingCart, title: "E-Commerce", desc: "Conversion-focused storefronts that turn visitors into loyal customers." },
-  { icon: MessageSquare, title: "Consulting", desc: "Strategic digital guidance to align your online presence with business goals." },
-  { icon: Palette, title: "Web Design", desc: "Striking visual identities and interfaces that captivate and convert." },
-  { icon: Wrench, title: "Support & Maintenance", desc: "Continuous care ensuring your digital assets perform flawlessly." },
+  { icon: Globe, title: "Website Creation", desc: "Bespoke websites engineered for performance, built with cutting-edge technology.", slug: "website-creation" },
+  { icon: Search, title: "SEO", desc: "Data-driven optimization strategies that put you at the top of search results.", slug: "seo" },
+  { icon: ShoppingCart, title: "E-Commerce", desc: "Conversion-focused storefronts that turn visitors into loyal customers.", slug: "e-commerce" },
+  { icon: MessageSquare, title: "Consulting", desc: "Strategic digital guidance to align your online presence with business goals.", slug: "consulting" },
+  { icon: Palette, title: "Web Design", desc: "Striking visual identities and interfaces that captivate and convert.", slug: "web-design" },
+  { icon: Wrench, title: "Support & Maintenance", desc: "Continuous care ensuring your digital assets perform flawlessly.", slug: "support-maintenance" },
 ];
 
 const ServiceCard = ({ service, index }: { service: typeof services[0]; index: number }) => {
@@ -21,16 +22,20 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
       initial={{ opacity: 0, y: 50, scale: 0.95 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="group bg-background p-10 hover:bg-surface transition-colors duration-500 cursor-default border border-transparent hover:border-primary/10"
     >
-      <service.icon
-        size={24}
-        strokeWidth={1.5}
-        className="text-primary mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
-      />
-      <h3 className="text-lg font-medium mb-3 tracking-tight">{service.title}</h3>
-      <p className="text-muted-foreground text-sm leading-relaxed font-light">{service.desc}</p>
-      <div className="mt-6 h-px w-0 group-hover:w-full bg-primary/30 transition-all duration-700" />
+      <Link
+        to={`/services/${service.slug}`}
+        className="group block bg-background p-10 hover:bg-surface transition-colors duration-500 cursor-pointer border border-transparent hover:border-primary/10"
+      >
+        <service.icon
+          size={24}
+          strokeWidth={1.5}
+          className="text-primary mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+        />
+        <h3 className="text-lg font-medium mb-3 tracking-tight">{service.title}</h3>
+        <p className="text-muted-foreground text-sm leading-relaxed font-light">{service.desc}</p>
+        <div className="mt-6 h-px w-0 group-hover:w-full bg-primary/30 transition-all duration-700" />
+      </Link>
     </motion.div>
   );
 };
