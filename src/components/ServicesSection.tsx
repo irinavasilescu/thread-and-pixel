@@ -68,7 +68,7 @@ const ServicesSection = () => {
           </motion.h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border/30">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-background">
           {services.map((service, i) => (
             <ServiceCard key={service.title} service={service} index={i} />
           ))}
