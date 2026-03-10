@@ -1,3 +1,12 @@
+import auroraWellness1 from "@/assets/aurora-wellness-1.jpg";
+import auroraWellness2 from "@/assets/aurora-wellness-2.jpg";
+import neonStreetwear1 from "@/assets/neon-streetwear-1.jpg";
+import neonStreetwear2 from "@/assets/neon-streetwear-2.jpg";
+import terraArchitecture1 from "@/assets/terra-architecture-1.jpg";
+import terraArchitecture2 from "@/assets/terra-architecture-2.jpg";
+import pulseFintech1 from "@/assets/pulse-fintech-1.jpg";
+import pulseFintech2 from "@/assets/pulse-fintech-2.jpg";
+
 export interface Project {
   slug: string;
   title: string;
@@ -11,6 +20,7 @@ export interface Project {
   keyElements: string[];
   screenshots: string[];
   technologies: string[];
+  previewImage: string;
 }
 
 export const projects: Project[] = [
@@ -38,8 +48,9 @@ export const projects: Project[] = [
     ],
     fonts: ["Cormorant Garamond", "DM Sans"],
     keyElements: ["Organic shapes", "Soft gradients", "Generous whitespace", "Natural textures"],
-    screenshots: [],
+    screenshots: [auroraWellness1, auroraWellness2],
     technologies: ["React", "Tailwind CSS", "Framer Motion", "Supabase"],
+    previewImage: auroraWellness1,
   },
   {
     slug: "neon-streetwear",
@@ -65,8 +76,9 @@ export const projects: Project[] = [
     ],
     fonts: ["Clash Display", "Space Mono"],
     keyElements: ["High-contrast typography", "Grid-breaking layouts", "Motion-heavy transitions", "Dark mode default"],
-    screenshots: [],
+    screenshots: [neonStreetwear1, neonStreetwear2],
     technologies: ["Next.js", "Stripe", "Sanity CMS", "Vercel"],
+    previewImage: neonStreetwear1,
   },
   {
     slug: "terra-architecture",
@@ -92,8 +104,9 @@ export const projects: Project[] = [
     ],
     fonts: ["Archivo", "Inter"],
     keyElements: ["Full-bleed photography", "Horizontal scroll galleries", "Subtle parallax", "Clean grid system"],
-    screenshots: [],
+    screenshots: [terraArchitecture1, terraArchitecture2],
     technologies: ["Astro", "Tailwind CSS", "Contentful", "Cloudflare"],
+    previewImage: terraArchitecture1,
   },
   {
     slug: "pulse-fintech",
@@ -119,7 +132,8 @@ export const projects: Project[] = [
     ],
     fonts: ["Plus Jakarta Sans", "IBM Plex Mono"],
     keyElements: ["Data-rich dashboards", "Trust-building UI patterns", "Micro-animations on interactions", "Accessibility-first design"],
-    screenshots: [],
+    screenshots: [pulseFintech1, pulseFintech2],
     technologies: ["React", "D3.js", "Node.js", "PostgreSQL"],
+    previewImage: pulseFintech1,
   },
 ];
