@@ -25,7 +25,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
     >
       <Link
         to={`/services/${service.slug}`}
-        className="group block bg-background p-10 hover:bg-surface transition-colors duration-500 cursor-pointer border border-transparent hover:border-primary/10"
+        className="group block bg-background p-10 h-full hover:bg-surface transition-colors duration-500 cursor-pointer border border-transparent hover:border-primary/10"
       >
         <service.icon
           size={24}
