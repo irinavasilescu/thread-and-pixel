@@ -125,19 +125,29 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="block"
           >
-            We weave
+            {"We weave".split("").map((char, i) => (
+              <motion.span
+                key={i}
+                className="inline-block"
+                whileHover={{ y: -6, rotate: Math.random() > 0.5 ? 5 : -5, scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 12 }}
+                style={{ cursor: "default" }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
           </motion.span>
           <motion.span
             initial={{ opacity: 0, scale: 0.8, filter: "blur(20px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 1.2, delay: 0.8 }}
+            transition={{ duration: 0.4, delay: 0.8 }}
             className="text-gradient-hero font-medium inline-block my-2"
           >
             {"digital experiences".split("").map((char, i) => (
               <motion.span
                 key={i}
                 className="inline-block"
-                whileHover={{ y: -8, rotate: Math.random() > 0.5 ? 6 : -6, scale: 1.15 }}
+                whileHover={{ y: -6, rotate: Math.random() > 0.5 ? 5 : -5, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 12 }}
                 style={{ cursor: "default" }}
               >
