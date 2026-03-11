@@ -115,10 +115,6 @@ const ProjectDetail = () => {
 
       {/* Description */}
       <section className="py-24 px-6 relative overflow-hidden">
-        <WaveDecoration
-          color="hsl(var(--primary) / 0.04)"
-          className="bottom-0 left-0 right-0 h-[60px]"
-        />
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
