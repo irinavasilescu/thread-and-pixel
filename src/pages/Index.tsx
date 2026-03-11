@@ -9,6 +9,7 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import WaveDivider from "@/components/WaveDivider";
+import MarqueeBanner from "@/components/MarqueeBanner";
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
       <CustomCursor />
       <Navbar />
       <HeroSection />
+      <MarqueeBanner className="border-y border-border/50" />
       <ServicesSection />
       {/* Services (light) → Projects (dark) */}
       <WaveDivider fillColor="hsl(210 20% 13%)" speed={9} />
