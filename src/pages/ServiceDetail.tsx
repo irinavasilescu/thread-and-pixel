@@ -172,6 +172,7 @@ const ServiceDetail = () => {
 
       {/* Process & Deliverables */}
       <section className="py-24 px-6 relative overflow-hidden">
+        <FloatingPixels variant="dark" />
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
