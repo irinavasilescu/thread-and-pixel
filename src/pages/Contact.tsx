@@ -24,13 +24,13 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background relative">
-      <FloatingPixels variant="dark" />
+    <div className="min-h-screen bg-background">
       <CustomCursor />
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 px-6">
+      <section className="pt-32 pb-16 px-6 relative overflow-hidden">
+        <FloatingPixels variant="dark" />
         <div className="max-w-5xl mx-auto">
           <motion.p
             initial={{ opacity: 0, y: 20 }}

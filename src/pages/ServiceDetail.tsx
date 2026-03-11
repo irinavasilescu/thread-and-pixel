@@ -32,13 +32,13 @@ const ServiceDetail = () => {
   const accent = service.accent;
 
   return (
-    <div className="min-h-screen bg-background relative">
-      <FloatingPixels variant="dark" />
+    <div className="min-h-screen bg-background">
       <CustomCursor />
       <Navbar />
 
       {/* Hero — clean, accent-driven */}
       <section className="relative min-h-[70vh] flex items-end pb-20 px-6 overflow-hidden bg-background">
+        <FloatingPixels variant="dark" />
         {/* Accent glow orbs */}
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
@@ -108,6 +108,7 @@ const ServiceDetail = () => {
 
       {/* Description */}
       <section className="py-24 px-6 relative overflow-hidden">
+        <FloatingPixels variant="dark" />
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -171,6 +172,7 @@ const ServiceDetail = () => {
 
       {/* Process & Deliverables */}
       <section className="py-24 px-6 relative overflow-hidden">
+        <FloatingPixels variant="dark" />
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -227,6 +229,7 @@ const ServiceDetail = () => {
       <section className="relative py-24 px-6 text-center overflow-hidden" style={{
         background: "linear-gradient(180deg, hsl(210 22% 12%), hsl(175 20% 13%))",
       }}>
+        <FloatingPixels />
         <div className="absolute inset-0 grid-bg-dark opacity-20" />
         <motion.div
           initial={{ opacity: 0, y: 30 }}

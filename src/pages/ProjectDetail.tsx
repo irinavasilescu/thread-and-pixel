@@ -32,13 +32,13 @@ const ProjectDetail = () => {
   const mainColor = project.brandColors[0]?.hex || "hsl(var(--primary))";
 
   return (
-    <div className="min-h-screen bg-background relative">
-      <FloatingPixels variant="dark" />
+    <div className="min-h-screen bg-background">
       <CustomCursor />
       <Navbar />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+        <FloatingPixels variant="dark" />
         {/* Glow orb based on brand color */}
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
@@ -115,6 +115,7 @@ const ProjectDetail = () => {
 
       {/* Description */}
       <section className="py-24 px-6 relative overflow-hidden">
+        <FloatingPixels variant="dark" />
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -224,6 +225,7 @@ const ProjectDetail = () => {
 
       {/* Work Done */}
       <section className="py-24 px-6 relative overflow-hidden">
+        <FloatingPixels variant="dark" />
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -275,6 +277,7 @@ const ProjectDetail = () => {
       <section className="relative py-24 px-6 text-center overflow-hidden" style={{
         background: "linear-gradient(180deg, hsl(210 22% 12%), hsl(175 20% 13%))",
       }}>
+        <FloatingPixels />
         <div className="absolute inset-0 grid-bg-dark opacity-20" />
         <motion.div
           initial={{ opacity: 0, y: 30 }}
