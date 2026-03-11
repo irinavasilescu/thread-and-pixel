@@ -4,6 +4,7 @@ import { Globe, Search, ShoppingCart, MessageSquare, Palette, Wrench } from "luc
 import { Link } from "react-router-dom";
 import ServiceCardPixels from "./ServiceCardPixels";
 import WaveDecoration from "./WaveDecoration";
+import FloatingPixels from "./FloatingPixels";
 
 const services = [
   { icon: Globe, title: "Website Creation", desc: "Bespoke websites engineered for performance, built with cutting-edge technology.", slug: "website-creation", accent: "175 70% 40%" },
