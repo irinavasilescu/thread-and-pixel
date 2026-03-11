@@ -129,9 +129,9 @@ const ServiceDetail = () => {
 
       {/* Features */}
       <section className="relative overflow-hidden">
-        <WaveDivider fillColor="hsl(175 15% 96%)" speed={10} />
+        <WaveDivider fillColor="hsl(175 12% 90%)" speed={10} />
         <div className="relative py-24 px-6" style={{
-          background: "linear-gradient(180deg, hsl(175 15% 96%), hsl(var(--background)))",
+          background: "linear-gradient(180deg, hsl(175 12% 90%), hsl(var(--background)))",
         }}>
           <div className="absolute inset-0 grid-bg opacity-20" />
           <WaveDecoration
