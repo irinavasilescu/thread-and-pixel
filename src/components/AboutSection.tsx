@@ -1,5 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import FloatingPixels from "./FloatingPixels";
 
 const stats = [
   { value: "150+", label: "Projects Delivered", accent: "175 70% 40%" },
