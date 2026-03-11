@@ -14,11 +14,11 @@ const ProcessSection = () => {
 
   return (
     <section id="process" className="relative py-32 px-6 snap-section overflow-hidden" ref={ref}>
-      {/* Dark themed background continuing from About */}
+      {/* Light background matching services */}
       <div className="absolute inset-0" style={{
-        background: "linear-gradient(180deg, hsl(200 20% 13%), hsl(210 22% 12%), hsl(200 20% 13%))",
+        background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",
       }} />
-      <div className="absolute inset-0 grid-bg-dark opacity-20" />
+      <div className="absolute inset-0 grid-bg opacity-40" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div className="mb-20">
@@ -26,8 +26,7 @@ const ProcessSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="font-mono text-xs tracking-[0.3em] uppercase mb-4"
-            style={{ color: "hsl(175 70% 50%)" }}
+            className="font-mono text-xs tracking-[0.3em] uppercase text-primary mb-4"
           >
             How we work
           </motion.p>
@@ -35,7 +34,7 @@ const ProcessSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-light tracking-tight text-white/90"
+            className="text-4xl md:text-5xl font-light tracking-tight"
           >
             Process
           </motion.h2>
@@ -50,13 +49,13 @@ const ProcessSection = () => {
               transition={{ duration: 0.6, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="relative group rounded-xl p-8 transition-all duration-500 hover:scale-[1.02] overflow-hidden"
               style={{
-                background: "hsl(0 0% 100% / 0.04)",
+                background: "hsl(0 0% 100% / 0.6)",
                 border: `1px solid hsl(${step.accent} / 0.15)`,
                 backdropFilter: "blur(8px)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = `hsl(${step.accent} / 0.4)`;
-                e.currentTarget.style.boxShadow = `0 8px 32px hsl(${step.accent} / 0.15)`;
+                e.currentTarget.style.boxShadow = `0 8px 32px hsl(${step.accent} / 0.12)`;
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = `hsl(${step.accent} / 0.15)`;
@@ -68,11 +67,11 @@ const ProcessSection = () => {
                 className="w-3 h-3 rounded-full mb-6"
                 style={{ background: `hsl(${step.accent})` }}
               />
-              <span className="font-mono text-xs tracking-wider text-white/30 mb-4 block">
+              <span className="font-mono text-xs tracking-wider text-muted-foreground mb-4 block">
                 {step.num}
               </span>
-              <h3 className="text-xl font-medium mb-3 tracking-tight text-white/85">{step.title}</h3>
-              <p className="text-white/45 text-sm leading-relaxed font-light">{step.desc}</p>
+              <h3 className="text-xl font-medium mb-3 tracking-tight">{step.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed font-light">{step.desc}</p>
             </motion.div>
           ))}
         </div>

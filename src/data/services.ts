@@ -6,6 +6,7 @@ export interface ServiceDetail {
   title: string;
   tagline: string;
   description: string;
+  accent: string;
   features: { title: string; description: string }[];
   process: string[];
   deliverables: string[];
@@ -17,6 +18,7 @@ export const servicesData: ServiceDetail[] = [
     icon: Globe,
     title: "Website Creation",
     tagline: "Bespoke websites engineered for performance and built to last.",
+    accent: "175 70% 40%",
     description:
       "We don't build templates — we architect digital experiences. Every website we create is a custom-crafted solution designed around your brand, your audience, and your goals. From single-page portfolios to complex multi-language platforms, we deliver pixel-perfect results with clean, scalable code.",
     features: [
@@ -33,6 +35,7 @@ export const servicesData: ServiceDetail[] = [
     icon: Search,
     title: "SEO",
     tagline: "Data-driven optimization that puts you at the top of search results.",
+    accent: "45 90% 55%",
     description:
       "Visibility is everything. Our SEO strategies combine technical excellence with content intelligence to ensure your brand appears exactly where your audience is searching. We don't chase algorithms — we build sustainable organic growth.",
     features: [
@@ -49,6 +52,7 @@ export const servicesData: ServiceDetail[] = [
     icon: ShoppingCart,
     title: "E-Commerce",
     tagline: "Conversion-focused storefronts that turn visitors into loyal customers.",
+    accent: "280 60% 55%",
     description:
       "An online store should do more than display products — it should sell them. We build e-commerce experiences that reduce friction, build trust, and guide users from discovery to checkout with precision and delight.",
     features: [
@@ -65,6 +69,7 @@ export const servicesData: ServiceDetail[] = [
     icon: MessageSquare,
     title: "Consulting",
     tagline: "Strategic digital guidance to align your online presence with business goals.",
+    accent: "210 80% 55%",
     description:
       "Not every engagement starts with code. Sometimes you need a partner who can see the full picture — someone to audit what exists, identify opportunities, and chart the most efficient path forward. That's where our consulting practice shines.",
     features: [
@@ -81,6 +86,7 @@ export const servicesData: ServiceDetail[] = [
     icon: Palette,
     title: "Web Design",
     tagline: "Striking visual identities and interfaces that captivate and convert.",
+    accent: "350 75% 55%",
     description:
       "Design isn't decoration — it's communication. We create visual systems that tell your brand story, guide user behavior, and differentiate you from the noise. Every color, typeface, and interaction is intentional.",
     features: [
@@ -97,6 +103,7 @@ export const servicesData: ServiceDetail[] = [
     icon: Wrench,
     title: "Support & Maintenance",
     tagline: "Continuous care ensuring your digital assets perform flawlessly.",
+    accent: "150 60% 40%",
     description:
       "A website launch is just the beginning. Technology evolves, content changes, and security threats emerge daily. Our support plans keep your digital presence running at peak performance so you can focus on your business.",
     features: [
