@@ -188,6 +188,29 @@ const HeroSection = () => {
         </motion.div>
       </motion.div>
 
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute bottom-28 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-3"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.5, duration: 0.8 }}
+      >
+        <motion.span
+          className="font-mono text-[10px] tracking-[0.35em] uppercase"
+          style={{ color: "hsl(220 10% 50%)" }}
+        >
+          Scroll
+        </motion.span>
+        <motion.div className="relative w-[1px] h-8 overflow-hidden" style={{ background: "hsl(0 0% 100% / 0.1)" }}>
+          <motion.div
+            className="absolute top-0 left-0 w-full bg-primary"
+            animate={{ height: ["0%", "100%"], top: ["0%", "0%", "100%"] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+            style={{ height: "50%" }}
+          />
+        </motion.div>
+      </motion.div>
+
       {/* Animated wave transition to next section */}
       <div className="absolute bottom-0 left-0 right-0 z-20">
         <WaveDivider fillColor="hsl(var(--background))" speed={8} />
