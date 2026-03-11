@@ -87,6 +87,7 @@ const FAQSection = () => {
 
   return (
     <section ref={ref} className="relative py-32 px-6 overflow-hidden">
+      <FloatingPixels />
       {/* Light background matching services */}
       <div className="absolute inset-0" style={{
         background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",
