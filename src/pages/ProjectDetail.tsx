@@ -50,10 +50,6 @@ const ProjectDetail = () => {
         <div className="absolute inset-0 grid-bg opacity-30" />
 
         {/* Decorative wave */}
-        <WaveDecoration
-          color="hsl(var(--primary) / 0.06)"
-          className="top-[40%] left-0 right-0 h-[100px]"
-        />
 
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
