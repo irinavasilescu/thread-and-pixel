@@ -8,6 +8,7 @@ import CustomCursor from "@/components/CustomCursor";
 import ProjectScreenshots from "@/components/ProjectScreenshots";
 import WaveDivider from "@/components/WaveDivider";
 import WaveDecoration from "@/components/WaveDecoration";
+import FloatingPixels from "@/components/FloatingPixels";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -31,7 +32,8 @@ const ProjectDetail = () => {
   const mainColor = project.brandColors[0]?.hex || "hsl(var(--primary))";
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <FloatingPixels variant="dark" />
       <CustomCursor />
       <Navbar />
 
@@ -48,10 +50,6 @@ const ProjectDetail = () => {
         <div className="absolute inset-0 grid-bg opacity-30" />
 
         {/* Decorative wave */}
-        <WaveDecoration
-          color="hsl(var(--primary) / 0.06)"
-          className="top-[40%] left-0 right-0 h-[100px]"
-        />
 
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
@@ -117,10 +115,6 @@ const ProjectDetail = () => {
 
       {/* Description */}
       <section className="py-24 px-6 relative overflow-hidden">
-        <WaveDecoration
-          color="hsl(var(--primary) / 0.04)"
-          className="bottom-0 left-0 right-0 h-[60px]"
-        />
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -154,10 +148,6 @@ const ProjectDetail = () => {
         background: "linear-gradient(180deg, hsl(175 12% 90%), hsl(var(--background)))",
       }}>
         <div className="absolute inset-0 grid-bg opacity-20" />
-        <WaveDecoration
-          color="hsl(var(--primary) / 0.05)"
-          className="top-10 left-0 right-0 h-[80px]"
-        />
         <div className="relative z-10 max-w-5xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -234,10 +224,6 @@ const ProjectDetail = () => {
 
       {/* Work Done */}
       <section className="py-24 px-6 relative overflow-hidden">
-        <WaveDecoration
-          color="hsl(var(--primary) / 0.04)"
-          className="top-8 left-0 right-0 h-[60px]"
-        />
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -290,10 +276,6 @@ const ProjectDetail = () => {
         background: "linear-gradient(180deg, hsl(210 22% 12%), hsl(175 20% 13%))",
       }}>
         <div className="absolute inset-0 grid-bg-dark opacity-20" />
-        <WaveDecoration
-          color="hsl(175 70% 50% / 0.08)"
-          className="top-8 left-0 right-0 h-[80px]"
-        />
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
