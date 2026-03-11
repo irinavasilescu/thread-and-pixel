@@ -38,6 +38,7 @@ const ServiceDetail = () => {
 
       {/* Hero — clean, accent-driven */}
       <section className="relative min-h-[70vh] flex items-end pb-20 px-6 overflow-hidden bg-background">
+        <FloatingPixels variant="dark" />
         {/* Accent glow orbs */}
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
