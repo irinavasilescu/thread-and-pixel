@@ -57,10 +57,6 @@ const ServiceDetail = () => {
         <div className="absolute inset-0 grid-bg opacity-30" />
 
         {/* Decorative wave lines */}
-        <WaveDecoration
-          color={`hsl(${accent} / 0.1)`}
-          className="top-[30%] left-0 right-0 h-[120px]"
-        />
 
         <div className="relative z-10 max-w-5xl mx-auto w-full">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
