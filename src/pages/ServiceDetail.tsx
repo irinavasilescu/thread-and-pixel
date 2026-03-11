@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import WaveDivider from "@/components/WaveDivider";
 import WaveDecoration from "@/components/WaveDecoration";
+import FloatingPixels from "@/components/FloatingPixels";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
