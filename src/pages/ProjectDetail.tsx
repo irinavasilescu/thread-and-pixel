@@ -32,7 +32,8 @@ const ProjectDetail = () => {
   const mainColor = project.brandColors[0]?.hex || "hsl(var(--primary))";
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <FloatingPixels variant="dark" />
       <CustomCursor />
       <Navbar />
 
