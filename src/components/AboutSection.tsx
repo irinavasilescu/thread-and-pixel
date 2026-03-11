@@ -15,8 +15,14 @@ const AboutSection = () => {
   const statsY = useTransform(scrollYProgress, [0, 1], [100, -20]);
 
   return (
-    <section id="about" className="relative py-32 px-6 snap-section" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="relative py-32 px-6 snap-section overflow-hidden" ref={ref}>
+      {/* Warm gradient background */}
+      <div className="absolute inset-0" style={{
+        background: "linear-gradient(160deg, hsl(30 30% 97%), hsl(175 15% 95%), hsl(45 25% 97%))",
+      }} />
+      <div className="absolute inset-0 grid-bg opacity-10" />
+
+      <div className="relative z-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <motion.div style={{ y: textY }}>
             <motion.p
@@ -66,6 +72,7 @@ const AboutSection = () => {
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.3 + i * 0.15, ease: [0.22, 1, 0.36, 1], duration: 0.7 }}
                 className="border border-border/50 p-8 rounded-sm hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-500"
+                style={{ background: "hsl(0 0% 100% / 0.5)" }}
               >
                 <span className="text-4xl md:text-5xl font-light text-gradient">{stat.value}</span>
                 <p className="font-mono text-xs tracking-wider uppercase text-muted-foreground mt-2">{stat.label}</p>

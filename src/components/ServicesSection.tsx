@@ -27,13 +27,13 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
     >
       <Link
         to={`/services/${service.slug}`}
-        className="group relative block p-10 h-full cursor-pointer border border-transparent hover:border-primary/20 transition-colors duration-500 overflow-hidden rounded-sm"
+        className="group relative block p-10 h-full cursor-pointer border border-border/30 hover:border-primary/20 transition-colors duration-500 overflow-hidden rounded-sm"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         style={{
           background: isHovered
-            ? "hsl(var(--primary) / 0.04)"
-            : "hsl(var(--background))",
+            ? "hsl(175 40% 97%)"
+            : "hsl(0 0% 100% / 0.6)",
           transition: "background 0.5s ease",
         }}
       >
@@ -61,7 +61,11 @@ const ServicesSection = () => {
 
   return (
     <section id="services" className="relative py-32 px-6 snap-section" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+      {/* Subtle warm tint */}
+      <div className="absolute inset-0" style={{
+        background: "linear-gradient(180deg, hsl(var(--background)), hsl(45 20% 97%), hsl(var(--background)))",
+      }} />
+      <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div style={{ y: headerY }} className="mb-20">
           <motion.p
             initial={{ opacity: 0, x: -20 }}
@@ -81,7 +85,7 @@ const ServicesSection = () => {
           </motion.h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-background">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((service, i) => (
             <ServiceCard key={service.title} service={service} index={i} />
           ))}
