@@ -28,10 +28,11 @@ interface Pill {
 }
 
 const PILL_H = 44;
-const GRAVITY = 0.4;
-const DAMPING = 0.985;
-const BOUNCE = 0.55;
-const FRICTION = 0.98;
+const GRAVITY = 0.35;
+const BOUNCE = 0.5;
+const FRICTION = 0.99;
+const FLOOR_FRICTION = 0.92;
+const DRAG_HISTORY_SIZE = 5;
 
 const TechnologiesSection = () => {
   const ref = useRef(null);
@@ -41,18 +42,18 @@ const TechnologiesSection = () => {
   const pillsRef = useRef<Pill[]>([]);
   const [pills, setPills] = useState<Pill[]>([]);
   const draggingRef = useRef<number | null>(null);
-  const lastDragPos = useRef<{ x: number; y: number; time: number } | null>(null);
+  const dragHistory = useRef<{ x: number; y: number; time: number }[]>([]);
+  const dragOffset = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const [hasDropped, setHasDropped] = useState(false);
   const sectionInView = useInView(ref, { once: true, margin: "-200px" });
 
-  // Measure pill widths
   const measureRef = useRef<HTMLDivElement>(null);
   const [pillWidths, setPillWidths] = useState<number[]>([]);
 
   useEffect(() => {
     if (measureRef.current) {
       const spans = measureRef.current.querySelectorAll("span");
-      const widths = Array.from(spans).map((s) => s.offsetWidth + 48); // padding
+      const widths = Array.from(spans).map((s) => s.offsetWidth + 48);
       setPillWidths(widths);
     }
   }, []);
@@ -64,16 +65,15 @@ const TechnologiesSection = () => {
     if (!container) return;
     const W = container.offsetWidth;
 
-    // Start pills above the container spread out
     const initial: Pill[] = technologies.map((tech, i) => ({
       ...tech,
       width: pillWidths[i] || 120,
       x: 30 + ((W - 160) / (technologies.length - 1)) * i,
-      y: -60 - Math.random() * 200, // above container
+      y: -60 - Math.random() * 200,
       vx: (Math.random() - 0.5) * 2,
       vy: Math.random() * 2 + 1,
-      rotation: (Math.random() - 0.5) * 30,
-      vr: (Math.random() - 0.5) * 3,
+      rotation: (Math.random() - 0.5) * 20,
+      vr: (Math.random() - 0.5) * 2,
     }));
     pillsRef.current = initial;
     setPills([...initial]);
@@ -98,35 +98,35 @@ const TechnologiesSection = () => {
 
         let { x, y, vx, vy, rotation, vr, width } = pill;
 
-        // Apply gravity
         vy += GRAVITY;
-
         x += vx;
         y += vy;
-        vx *= DAMPING;
-        vy *= DAMPING;
+        vx *= FRICTION;
         rotation += vr;
-        vr *= FRICTION;
+        vr *= 0.96;
 
         // Floor
         if (y > H - PILL_H) {
           y = H - PILL_H;
           vy = -Math.abs(vy) * BOUNCE;
-          vx *= FRICTION;
-          vr *= 0.8;
-          if (Math.abs(vy) < 1) vy = 0;
+          vx *= FLOOR_FRICTION;
+          vr *= 0.7;
+          if (Math.abs(vy) < 0.8) vy = 0;
+          // Slow rotation to stop on floor
+          if (Math.abs(vx) < 0.5) vr *= 0.5;
         }
 
         // Walls
-        if (x < 0) { x = 0; vx = Math.abs(vx) * BOUNCE; vr += 1; }
-        if (x > W - width) { x = W - width; vx = -Math.abs(vx) * BOUNCE; vr -= 1; }
+        if (x < 0) { x = 0; vx = Math.abs(vx) * BOUNCE; vr += vx * 0.1; }
+        if (x > W - width) { x = W - width; vx = -Math.abs(vx) * BOUNCE; vr -= Math.abs(vx) * 0.1; }
 
         // Ceiling
         if (y < 0) { y = 0; vy = Math.abs(vy) * BOUNCE; }
 
-        // Pill-pill collisions
-        pillsRef.current.forEach((other, j) => {
-          if (j === i) return;
+        // Pill-pill collisions (simple push-apart)
+        for (let j = 0; j < pillsRef.current.length; j++) {
+          if (j === i) continue;
+          const other = pillsRef.current[j];
           const cx1 = x + width / 2;
           const cy1 = y + PILL_H / 2;
           const cx2 = other.x + other.width / 2;
@@ -134,18 +134,24 @@ const TechnologiesSection = () => {
           const dx = cx1 - cx2;
           const dy = cy1 - cy2;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          const minDist = (width + other.width) / 2 * 0.7;
+          const minDist = (width + other.width) / 2 * 0.65;
           if (dist < minDist && dist > 0) {
             const nx = dx / dist;
             const ny = dy / dist;
             const overlap = minDist - dist;
-            x += nx * overlap * 0.5;
-            y += ny * overlap * 0.5;
-            vx += nx * 0.8;
-            vy += ny * 0.8;
-            vr += (Math.random() - 0.5) * 2;
+            x += nx * overlap * 0.4;
+            y += ny * overlap * 0.4;
+            // Transfer some velocity
+            const relVx = vx - other.vx;
+            const relVy = vy - other.vy;
+            const dotProduct = relVx * nx + relVy * ny;
+            if (dotProduct > 0) {
+              vx -= dotProduct * nx * 0.5;
+              vy -= dotProduct * ny * 0.5;
+            }
+            vr += (Math.random() - 0.5) * 1.5;
           }
-        });
+        }
 
         return { ...pill, x, y, vx, vy, rotation, vr };
       });
@@ -165,52 +171,66 @@ const TechnologiesSection = () => {
     draggingRef.current = index;
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
-    lastDragPos.current = { x: e.clientX - rect.left, y: e.clientY - rect.top, time: Date.now() };
+    const pill = pillsRef.current[index];
+    const pointerX = e.clientX - rect.left;
+    const pointerY = e.clientY - rect.top;
+    // Store offset from pill origin to pointer
+    dragOffset.current = { x: pointerX - pill.x, y: pointerY - pill.y };
+    dragHistory.current = [{ x: pointerX, y: pointerY, time: Date.now() }];
+    // Zero velocity while grabbing
+    pillsRef.current[index] = { ...pill, vx: 0, vy: 0, vr: 0 };
   }, []);
 
   const handlePointerMove = useCallback((e: React.PointerEvent) => {
     if (draggingRef.current === null) return;
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
+    const pointerX = e.clientX - rect.left;
+    const pointerY = e.clientY - rect.top;
     const pill = pillsRef.current[draggingRef.current];
-    const x = e.clientX - rect.left - pill.width / 2;
-    const y = e.clientY - rect.top - PILL_H / 2;
+    const x = pointerX - dragOffset.current.x;
+    const y = pointerY - dragOffset.current.y;
 
     pillsRef.current[draggingRef.current] = {
       ...pill,
       x: Math.max(0, Math.min(x, rect.width - pill.width)),
       y: Math.max(0, Math.min(y, rect.height - PILL_H)),
-      vx: 0,
-      vy: 0,
-      vr: 0,
+      vx: 0, vy: 0, vr: 0,
     };
-    lastDragPos.current = { x: e.clientX - rect.left, y: e.clientY - rect.top, time: Date.now() };
+
+    // Track history for velocity calculation
+    dragHistory.current.push({ x: pointerX, y: pointerY, time: Date.now() });
+    if (dragHistory.current.length > DRAG_HISTORY_SIZE) {
+      dragHistory.current.shift();
+    }
   }, []);
 
-  const handlePointerUp = useCallback((e: React.PointerEvent) => {
+  const handlePointerUp = useCallback(() => {
     if (draggingRef.current === null) return;
-    const rect = containerRef.current?.getBoundingClientRect();
-    if (rect && lastDragPos.current) {
-      const dt = Math.max(1, Date.now() - lastDragPos.current.time) / 16;
-      const currentX = e.clientX - rect.left;
-      const currentY = e.clientY - rect.top;
-      const vx = (currentX - lastDragPos.current.x) / dt * 2.5;
-      const vy = (currentY - lastDragPos.current.y) / dt * 2.5;
+    const history = dragHistory.current;
+
+    if (history.length >= 2) {
+      // Use the oldest and newest positions in history for velocity
+      const oldest = history[0];
+      const newest = history[history.length - 1];
+      const dt = Math.max(1, newest.time - oldest.time);
+      const vx = ((newest.x - oldest.x) / dt) * 16; // convert to per-frame
+      const vy = ((newest.y - oldest.y) / dt) * 16;
 
       pillsRef.current[draggingRef.current] = {
         ...pillsRef.current[draggingRef.current],
-        vx: Math.max(-20, Math.min(20, vx)),
-        vy: Math.max(-20, Math.min(20, vy)),
-        vr: vx * 0.3,
+        vx: Math.max(-25, Math.min(25, vx)),
+        vy: Math.max(-25, Math.min(25, vy)),
+        vr: vx * 0.15,
       };
     }
+
     draggingRef.current = null;
-    lastDragPos.current = null;
+    dragHistory.current = [];
   }, []);
 
   return (
     <section ref={ref} className="relative py-32 px-6 snap-section overflow-hidden">
-      {/* Subtle warm gradient background */}
       <div className="absolute inset-0" style={{
         background: "linear-gradient(180deg, hsl(var(--background)), hsl(45 30% 96%), hsl(var(--background)))",
       }} />

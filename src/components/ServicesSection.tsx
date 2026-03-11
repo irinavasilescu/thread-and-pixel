@@ -1,16 +1,16 @@
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Globe, Search, ShoppingCart, MessageSquare, Palette, Wrench } from "lucide-react";
 import { Link } from "react-router-dom";
 import ServiceCardPixels from "./ServiceCardPixels";
 
 const services = [
-  { icon: Globe, title: "Website Creation", desc: "Bespoke websites engineered for performance, built with cutting-edge technology.", slug: "website-creation" },
-  { icon: Search, title: "SEO", desc: "Data-driven optimization strategies that put you at the top of search results.", slug: "seo" },
-  { icon: ShoppingCart, title: "E-Commerce", desc: "Conversion-focused storefronts that turn visitors into loyal customers.", slug: "e-commerce" },
-  { icon: MessageSquare, title: "Consulting", desc: "Strategic digital guidance to align your online presence with business goals.", slug: "consulting" },
-  { icon: Palette, title: "Web Design", desc: "Striking visual identities and interfaces that captivate and convert.", slug: "web-design" },
-  { icon: Wrench, title: "Support & Maintenance", desc: "Continuous care ensuring your digital assets perform flawlessly.", slug: "support-maintenance" },
+  { icon: Globe, title: "Website Creation", desc: "Bespoke websites engineered for performance, built with cutting-edge technology.", slug: "website-creation", accent: "175 70% 40%" },
+  { icon: Search, title: "SEO", desc: "Data-driven optimization strategies that put you at the top of search results.", slug: "seo", accent: "45 90% 55%" },
+  { icon: ShoppingCart, title: "E-Commerce", desc: "Conversion-focused storefronts that turn visitors into loyal customers.", slug: "e-commerce", accent: "280 60% 55%" },
+  { icon: MessageSquare, title: "Consulting", desc: "Strategic digital guidance to align your online presence with business goals.", slug: "consulting", accent: "210 80% 55%" },
+  { icon: Palette, title: "Web Design", desc: "Striking visual identities and interfaces that captivate and convert.", slug: "web-design", accent: "350 75% 55%" },
+  { icon: Wrench, title: "Support & Maintenance", desc: "Continuous care ensuring your digital assets perform flawlessly.", slug: "support-maintenance", accent: "150 60% 40%" },
 ];
 
 const ServiceCard = ({ service, index }: { service: typeof services[0]; index: number }) => {
@@ -27,26 +27,37 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
     >
       <Link
         to={`/services/${service.slug}`}
-        className="group relative block p-10 h-full cursor-pointer border border-border/30 hover:border-primary/20 transition-colors duration-500 overflow-hidden rounded-sm"
+        className="group relative block p-10 h-full cursor-pointer overflow-hidden rounded-lg"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         style={{
           background: isHovered
-            ? "hsl(175 40% 97%)"
-            : "hsl(0 0% 100% / 0.6)",
-          transition: "background 0.5s ease",
+            ? `linear-gradient(135deg, hsl(${service.accent} / 0.12), hsl(${service.accent} / 0.04))`
+            : "hsl(var(--hero-bg))",
+          border: `1px solid ${isHovered ? `hsl(${service.accent} / 0.3)` : "hsl(0 0% 100% / 0.08)"}`,
+          transition: "all 0.5s ease",
         }}
       >
         {isHovered && <ServiceCardPixels />}
         <div className="relative z-10">
-          <service.icon
-            size={24}
-            strokeWidth={1.5}
-            className="text-primary mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+          <div
+            className="w-12 h-12 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500"
+            style={{
+              background: `hsl(${service.accent} / 0.15)`,
+            }}
+          >
+            <service.icon
+              size={22}
+              strokeWidth={1.5}
+              style={{ color: `hsl(${service.accent})` }}
+            />
+          </div>
+          <h3 className="text-lg font-medium mb-3 tracking-tight text-white/90 group-hover:text-white transition-colors">{service.title}</h3>
+          <p className="text-white/50 text-sm leading-relaxed font-light group-hover:text-white/65 transition-colors">{service.desc}</p>
+          <div
+            className="mt-6 h-px w-0 group-hover:w-full transition-all duration-700"
+            style={{ background: `hsl(${service.accent} / 0.4)` }}
           />
-          <h3 className="text-lg font-medium mb-3 tracking-tight">{service.title}</h3>
-          <p className="text-muted-foreground text-sm leading-relaxed font-light">{service.desc}</p>
-          <div className="mt-6 h-px w-0 group-hover:w-full bg-primary/30 transition-all duration-700" />
         </div>
       </Link>
     </motion.div>
@@ -56,17 +67,17 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
 const ServicesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const headerY = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
   return (
     <section id="services" className="relative py-32 px-6 snap-section" ref={ref}>
-      {/* Subtle warm tint */}
+      {/* Dark background */}
       <div className="absolute inset-0" style={{
-        background: "linear-gradient(180deg, hsl(var(--background)), hsl(45 20% 97%), hsl(var(--background)))",
+        background: "linear-gradient(180deg, hsl(var(--hero-bg)), hsl(210 25% 10%), hsl(var(--hero-bg)))",
       }} />
+      <div className="absolute inset-0 grid-bg-dark" />
+
       <div className="relative z-10 max-w-7xl mx-auto">
-        <motion.div style={{ y: headerY }} className="mb-20">
+        <div className="mb-20">
           <motion.p
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -79,11 +90,11 @@ const ServicesSection = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-light tracking-tight"
+            className="text-4xl md:text-5xl font-light tracking-tight text-white/90"
           >
             Services
           </motion.h2>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((service, i) => (
