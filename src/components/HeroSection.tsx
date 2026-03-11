@@ -76,7 +76,7 @@ const HeroSection = () => {
     <section
       id="hero"
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden snap-section bg-hero text-hero-foreground"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero text-hero-foreground"
     >
       {/* Grid */}
       <div className="absolute inset-0 grid-bg-dark" />

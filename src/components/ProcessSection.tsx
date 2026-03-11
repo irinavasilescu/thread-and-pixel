@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import WaveDecoration from "./WaveDecoration";
+import FloatingPixels from "./FloatingPixels";
 
 const steps = [
   { num: "01", title: "Discovery", desc: "Deep dive into your brand, goals, and audience to define the project blueprint.", accent: "175 70% 40%" },
@@ -14,7 +15,8 @@ const ProcessSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="process" className="relative py-32 px-6 snap-section overflow-hidden" ref={ref}>
+    <section id="process" className="relative py-32 px-6 overflow-hidden" ref={ref}>
+      <FloatingPixels />
       {/* Light background matching services */}
       <div className="absolute inset-0" style={{
         background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",

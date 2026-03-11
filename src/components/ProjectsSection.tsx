@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
+import FloatingPixels from "./FloatingPixels";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -38,7 +39,8 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="relative py-32 px-6 snap-section overflow-hidden" ref={ref}>
+    <section id="projects" className="relative py-32 px-6 overflow-hidden" ref={ref}>
+      <FloatingPixels />
       {/* Colored background */}
       <div className="absolute inset-0" style={{
         background: "linear-gradient(180deg, hsl(210 20% 13%), hsl(200 25% 15%), hsl(175 30% 14%))",

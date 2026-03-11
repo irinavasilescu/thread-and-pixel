@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import WaveDecoration from "./WaveDecoration";
+import FloatingPixels from "./FloatingPixels";
 
 const faqs = [
   {
@@ -85,7 +86,8 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section ref={ref} className="relative py-32 px-6 snap-section overflow-hidden">
+    <section ref={ref} className="relative py-32 px-6 overflow-hidden">
+      <FloatingPixels />
       {/* Light background matching services */}
       <div className="absolute inset-0" style={{
         background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",

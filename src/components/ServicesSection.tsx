@@ -4,6 +4,7 @@ import { Globe, Search, ShoppingCart, MessageSquare, Palette, Wrench } from "luc
 import { Link } from "react-router-dom";
 import ServiceCardPixels from "./ServiceCardPixels";
 import WaveDecoration from "./WaveDecoration";
+import FloatingPixels from "./FloatingPixels";
 
 const services = [
   { icon: Globe, title: "Website Creation", desc: "Bespoke websites engineered for performance, built with cutting-edge technology.", slug: "website-creation", accent: "175 70% 40%" },
@@ -71,7 +72,8 @@ const ServicesSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="relative py-32 px-6 snap-section" ref={ref}>
+    <section id="services" className="relative py-32 px-6 overflow-hidden" ref={ref}>
+      <FloatingPixels />
       {/* Light background with checkered grid */}
       <div className="absolute inset-0" style={{
         background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",
