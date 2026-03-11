@@ -81,7 +81,7 @@ const ServicesSection = () => {
       {/* Decorative wave lines */}
       <WaveDecoration
         color="hsl(var(--primary) / 0.06)"
-        className="top-20 left-0 right-0 h-[100px]"
+        className="top-32 left-0 right-0 h-[100px]"
       />
       <WaveDecoration
         color="hsl(var(--primary) / 0.04)"
