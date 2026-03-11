@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import FloatingPixels from "./FloatingPixels";
 
 const ContactSection = () => {
   const ref = useRef(null);
