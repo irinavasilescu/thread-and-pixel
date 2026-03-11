@@ -16,7 +16,7 @@ const ProcessSection = () => {
 
   return (
     <section id="process" className="relative py-32 px-6 overflow-hidden" ref={ref}>
-      <FloatingPixels />
+      <FloatingPixels variant="dark" />
       {/* Light background matching services */}
       <div className="absolute inset-0" style={{
         background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",

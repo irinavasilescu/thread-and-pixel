@@ -228,10 +228,6 @@ const ServiceDetail = () => {
         background: "linear-gradient(180deg, hsl(210 22% 12%), hsl(175 20% 13%))",
       }}>
         <div className="absolute inset-0 grid-bg-dark opacity-20" />
-        <WaveDecoration
-          color="hsl(175 70% 50% / 0.08)"
-          className="top-10 left-0 right-0 h-[80px]"
-        />
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
