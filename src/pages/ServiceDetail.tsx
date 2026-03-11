@@ -32,7 +32,8 @@ const ServiceDetail = () => {
   const accent = service.accent;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <FloatingPixels variant="dark" />
       <CustomCursor />
       <Navbar />
 
