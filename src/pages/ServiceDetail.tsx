@@ -128,10 +128,6 @@ const ServiceDetail = () => {
           background: "linear-gradient(180deg, hsl(175 12% 90%), hsl(var(--background)))",
         }}>
           <div className="absolute inset-0 grid-bg opacity-20" />
-          <WaveDecoration
-            color={`hsl(${accent} / 0.06)`}
-            className="bottom-8 left-0 right-0 h-[80px]"
-          />
           <div className="relative z-10 max-w-5xl mx-auto">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
