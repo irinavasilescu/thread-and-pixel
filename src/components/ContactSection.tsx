@@ -8,13 +8,28 @@ const ContactSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="contact" className="relative py-32 px-6 snap-section" ref={ref}>
-      <div className="max-w-4xl mx-auto text-center">
+    <section id="contact" className="relative py-32 px-6 snap-section overflow-hidden" ref={ref}>
+      {/* Dark background continuing from FAQ */}
+      <div className="absolute inset-0" style={{
+        background: "linear-gradient(180deg, hsl(210 25% 10%), hsl(210 20% 12%))",
+      }} />
+      <div className="absolute inset-0 grid-bg-dark opacity-10" />
+      
+      {/* Glow */}
+      <motion.div
+        animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.15, 0.08] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[150px]"
+        style={{ background: "hsl(175 70% 40%)" }}
+      />
+
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="font-mono text-xs tracking-[0.3em] uppercase text-primary mb-4"
+          className="font-mono text-xs tracking-[0.3em] uppercase mb-4"
+          style={{ color: "hsl(175 70% 50%)" }}
         >
           Let's talk
         </motion.p>
@@ -22,17 +37,17 @@ const ContactSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl md:text-6xl font-light tracking-tight mb-8"
+          className="text-4xl md:text-6xl font-light tracking-tight mb-8 text-white/90"
         >
           Ready to craft
           <br />
-          something <span className="text-primary">extraordinary</span>?
+          something <span style={{ color: "hsl(175 70% 50%)" }}>extraordinary</span>?
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-muted-foreground text-lg max-w-xl mx-auto mb-12 font-light"
+          className="text-white/50 text-lg max-w-xl mx-auto mb-12 font-light"
         >
           Tell us about your project and let's explore how we can bring your vision to life.
         </motion.p>
