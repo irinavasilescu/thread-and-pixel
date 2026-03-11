@@ -9,7 +9,8 @@ const ContactSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="contact" className="relative py-32 px-6 snap-section overflow-hidden" ref={ref}>
+    <section id="contact" className="relative py-32 px-6 overflow-hidden" ref={ref}>
+      <FloatingPixels />
       {/* Dark background continuing from FAQ */}
       <div className="absolute inset-0" style={{
         background: "linear-gradient(180deg, hsl(210 25% 10%), hsl(210 20% 12%))",

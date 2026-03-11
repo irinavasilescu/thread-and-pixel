@@ -86,7 +86,7 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section ref={ref} className="relative py-32 px-6 snap-section overflow-hidden">
+    <section ref={ref} className="relative py-32 px-6 overflow-hidden">
       {/* Light background matching services */}
       <div className="absolute inset-0" style={{
         background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",

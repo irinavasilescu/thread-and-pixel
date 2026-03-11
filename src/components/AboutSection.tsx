@@ -16,7 +16,8 @@ const AboutSection = () => {
   const statsY = useTransform(scrollYProgress, [0, 1], [100, -20]);
 
   return (
-    <section id="about" className="relative py-32 px-6 snap-section overflow-hidden" ref={ref}>
+    <section id="about" className="relative py-32 px-6 overflow-hidden" ref={ref}>
+      <FloatingPixels />
       {/* Dark themed background */}
       <div className="absolute inset-0" style={{
         background: "linear-gradient(180deg, hsl(210 25% 11%), hsl(200 20% 14%), hsl(175 20% 12%))",

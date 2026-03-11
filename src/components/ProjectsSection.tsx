@@ -39,7 +39,8 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="relative py-32 px-6 snap-section overflow-hidden" ref={ref}>
+    <section id="projects" className="relative py-32 px-6 overflow-hidden" ref={ref}>
+      <FloatingPixels />
       {/* Colored background */}
       <div className="absolute inset-0" style={{
         background: "linear-gradient(180deg, hsl(210 20% 13%), hsl(200 25% 15%), hsl(175 30% 14%))",
