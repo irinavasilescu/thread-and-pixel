@@ -22,19 +22,17 @@ interface Pill {
   y: number;
   vx: number;
   vy: number;
-  rotation: number;
-  vr: number;
   width: number;
   settled: boolean;
 }
 
 const PILL_H = 44;
-const GRAVITY = 0.4;
-const BOUNCE = 0.35;
-const FRICTION = 0.98;
-const FLOOR_FRICTION = 0.85;
+const GRAVITY = 0.5;
+const BOUNCE = 0.25;
+const FRICTION = 0.97;
+const FLOOR_FRICTION = 0.8;
 const DRAG_HISTORY_SIZE = 5;
-const SETTLE_THRESHOLD = 0.15;
+const SETTLE_THRESHOLD = 0.3;
 
 const TechnologiesSection = () => {
   const ref = useRef(null);
@@ -60,7 +58,7 @@ const TechnologiesSection = () => {
     }
   }, []);
 
-  // Drop pills when section comes into view
+  // Drop pills when section comes into view — stagger them
   useEffect(() => {
     if (!sectionInView || hasDropped || pillWidths.length === 0) return;
     const container = containerRef.current;
@@ -70,12 +68,12 @@ const TechnologiesSection = () => {
     const initial: Pill[] = technologies.map((tech, i) => ({
       ...tech,
       width: pillWidths[i] || 120,
-      x: 30 + ((W - 160) / (technologies.length - 1)) * i,
-      y: -60 - Math.random() * 200,
-      vx: (Math.random() - 0.5) * 1,
+      // Spread across the width
+      x: 20 + ((W - 140) / (technologies.length - 1)) * i,
+      // Stagger the drop heights so they don't all collide at once
+      y: -60 - i * 40,
+      vx: 0,
       vy: 0,
-      rotation: 0,
-      vr: 0,
       settled: false,
     }));
     pillsRef.current = initial;
@@ -96,31 +94,27 @@ const TechnologiesSection = () => {
       const W = container.offsetWidth;
       const H = container.offsetHeight;
 
-      let anyMoving = false;
-
       const updated = pillsRef.current.map((pill, i) => {
         if (i === draggingRef.current) return pill;
-
-        // If settled, skip physics
         if (pill.settled) return pill;
 
-        let { x, y, vx, vy, rotation, vr, width } = pill;
+        let { x, y, vx, vy, width } = pill;
 
         vy += GRAVITY;
         x += vx;
         y += vy;
         vx *= FRICTION;
-        rotation += vr;
-        vr *= 0.94;
 
         // Floor
         if (y > H - PILL_H) {
           y = H - PILL_H;
-          vy = -Math.abs(vy) * BOUNCE;
+          if (Math.abs(vy) < 2) {
+            vy = 0;
+          } else {
+            vy = -Math.abs(vy) * BOUNCE;
+          }
           vx *= FLOOR_FRICTION;
-          vr *= 0.5;
-          if (Math.abs(vy) < 1.2) vy = 0;
-          if (Math.abs(vx) < 0.3) { vx = 0; vr = 0; }
+          if (Math.abs(vx) < 0.2) vx = 0;
         }
 
         // Walls
@@ -130,30 +124,27 @@ const TechnologiesSection = () => {
         // Ceiling
         if (y < 0) { y = 0; vy = Math.abs(vy) * BOUNCE; }
 
-        // Pill-pill collisions
+        // Pill-pill: only horizontal push to stack side by side
         for (let j = 0; j < pillsRef.current.length; j++) {
           if (j === i) continue;
           const other = pillsRef.current[j];
+          // Only interact if both are near the floor
           const cx1 = x + width / 2;
           const cy1 = y + PILL_H / 2;
           const cx2 = other.x + other.width / 2;
           const cy2 = other.y + PILL_H / 2;
           const dx = cx1 - cx2;
           const dy = cy1 - cy2;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          const minDist = (width + other.width) / 2 * 0.6;
-          if (dist < minDist && dist > 0) {
-            const nx = dx / dist;
-            const ny = dy / dist;
-            const overlap = minDist - dist;
-            x += nx * overlap * 0.3;
-            y += ny * overlap * 0.3;
-            const relVx = vx - other.vx;
-            const relVy = vy - other.vy;
-            const dot = relVx * nx + relVy * ny;
-            if (dot > 0) {
-              vx -= dot * nx * 0.4;
-              vy -= dot * ny * 0.4;
+          const overlapX = (width + other.width) / 2 - Math.abs(dx);
+          const overlapY = PILL_H - Math.abs(dy);
+          if (overlapX > 0 && overlapY > 0) {
+            // Push apart horizontally
+            const pushX = dx > 0 ? overlapX * 0.3 : -overlapX * 0.3;
+            x += pushX;
+            // If falling on top, push up
+            if (dy < 0 && overlapY < PILL_H * 0.8) {
+              y -= overlapY * 0.5;
+              if (vy > 0) vy *= -BOUNCE;
             }
           }
         }
@@ -161,26 +152,19 @@ const TechnologiesSection = () => {
         // Check if settled
         const speed = Math.sqrt(vx * vx + vy * vy);
         const isOnFloor = y >= H - PILL_H - 1;
-        const settled = isOnFloor && speed < SETTLE_THRESHOLD && Math.abs(vr) < 0.05;
+        const settled = isOnFloor && speed < SETTLE_THRESHOLD;
 
-        if (!settled) anyMoving = true;
-
-        // Snap rotation to 0 when nearly settled
         if (settled) {
-          rotation = rotation * 0.8; // ease rotation toward 0
-          if (Math.abs(rotation) < 0.5) rotation = 0;
-          vr = 0;
           vx = 0;
           vy = 0;
+          y = H - PILL_H;
         }
 
-        return { ...pill, x, y, vx, vy, rotation, vr, settled };
+        return { ...pill, x, y, vx, vy, settled };
       });
 
       pillsRef.current = updated;
       setPills([...updated]);
-
-      // Always keep the loop running so dragging works
       animRef.current = requestAnimationFrame(step);
     };
 
@@ -199,8 +183,7 @@ const TechnologiesSection = () => {
     const pointerY = e.clientY - rect.top;
     dragOffset.current = { x: pointerX - pill.x, y: pointerY - pill.y };
     dragHistory.current = [{ x: pointerX, y: pointerY, time: Date.now() }];
-    // Unsettle pill and zero velocity
-    pillsRef.current[index] = { ...pill, vx: 0, vy: 0, vr: 0, settled: false };
+    pillsRef.current[index] = { ...pill, vx: 0, vy: 0, settled: false };
   }, []);
 
   const handlePointerMove = useCallback((e: React.PointerEvent) => {
@@ -217,7 +200,7 @@ const TechnologiesSection = () => {
       ...pill,
       x: Math.max(0, Math.min(x, rect.width - pill.width)),
       y: Math.max(0, Math.min(y, rect.height - PILL_H)),
-      vx: 0, vy: 0, vr: 0, settled: false,
+      vx: 0, vy: 0, settled: false,
     };
 
     dragHistory.current.push({ x: pointerX, y: pointerY, time: Date.now() });
@@ -239,9 +222,8 @@ const TechnologiesSection = () => {
 
       pillsRef.current[draggingRef.current] = {
         ...pillsRef.current[draggingRef.current],
-        vx: Math.max(-20, Math.min(20, vx)),
-        vy: Math.max(-20, Math.min(20, vy)),
-        vr: vx * 0.1,
+        vx: Math.max(-15, Math.min(15, vx)),
+        vy: Math.max(-15, Math.min(15, vy)),
         settled: false,
       };
     }
@@ -311,7 +293,7 @@ const TechnologiesSection = () => {
               onPointerDown={(e) => handlePointerDown(e, i)}
               className={`absolute cursor-grab active:cursor-grabbing ${draggingRef.current === i ? "z-20" : "z-10"}`}
               style={{
-                transform: `translate(${pill.x}px, ${pill.y}px) rotate(${pill.rotation}deg)`,
+                transform: `translate(${pill.x}px, ${pill.y}px)`,
                 willChange: "transform",
               }}
             >

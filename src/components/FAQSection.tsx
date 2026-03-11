@@ -44,19 +44,19 @@ const FAQItem = ({ faq, index, isOpen, onToggle }: {
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className="border-b border-white/10"
+      className="border-b border-border/50"
     >
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between py-6 text-left group"
       >
-        <span className="text-base md:text-lg font-medium tracking-tight pr-8 text-white/80 group-hover:text-primary transition-colors duration-300">
+        <span className="text-base md:text-lg font-medium tracking-tight pr-8 group-hover:text-primary transition-colors duration-300">
           {faq.q}
         </span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
-          className="flex-shrink-0 text-white/30 group-hover:text-primary transition-colors"
+          className="flex-shrink-0 text-muted-foreground group-hover:text-primary transition-colors"
         >
           <ChevronDown size={20} />
         </motion.div>
@@ -70,7 +70,7 @@ const FAQItem = ({ faq, index, isOpen, onToggle }: {
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
         className="overflow-hidden"
       >
-        <p className="pb-6 text-white/45 font-light leading-relaxed text-sm md:text-base">
+        <p className="pb-6 text-muted-foreground font-light leading-relaxed text-sm md:text-base">
           {faq.a}
         </p>
       </motion.div>
@@ -85,11 +85,11 @@ const FAQSection = () => {
 
   return (
     <section ref={ref} className="relative py-32 px-6 snap-section overflow-hidden">
-      {/* Dark background matching About/Process */}
+      {/* Light background matching services */}
       <div className="absolute inset-0" style={{
-        background: "linear-gradient(180deg, hsl(200 20% 13%), hsl(210 22% 11%), hsl(210 25% 10%))",
+        background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",
       }} />
-      <div className="absolute inset-0 grid-bg-dark opacity-15" />
+      <div className="absolute inset-0 grid-bg opacity-40" />
 
       <div className="relative z-10 max-w-3xl mx-auto">
         <motion.div className="mb-16">
@@ -97,8 +97,7 @@ const FAQSection = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="font-mono text-xs tracking-[0.3em] uppercase mb-4"
-            style={{ color: "hsl(175 70% 50%)" }}
+            className="font-mono text-xs tracking-[0.3em] uppercase text-primary mb-4"
           >
             Common Questions
           </motion.p>
@@ -106,7 +105,7 @@ const FAQSection = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-light tracking-tight text-white/90"
+            className="text-4xl md:text-5xl font-light tracking-tight"
           >
             FAQ
           </motion.h2>
