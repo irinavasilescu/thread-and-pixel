@@ -74,6 +74,7 @@ const HeroSection = () => {
 
   return (
     <section
+      id="hero"
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden snap-section bg-hero text-hero-foreground"
     >
@@ -138,9 +139,9 @@ const HeroSection = () => {
             ))}
           </motion.span>
           <motion.span
-            initial={{ opacity: 0, scale: 0.8, filter: "blur(20px)" }}
+            initial={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 0.4, delay: 0.8 }}
+            transition={{ duration: 0.3, delay: 0.8 }}
             className="text-gradient-hero font-medium inline-block my-2"
           >
             {"digital experiences".split("").map((char, i) => (
