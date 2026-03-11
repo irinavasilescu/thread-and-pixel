@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { Globe, Search, ShoppingCart, MessageSquare, Palette, Wrench } from "lucide-react";
 import { Link } from "react-router-dom";
 import ServiceCardPixels from "./ServiceCardPixels";
+import WaveDecoration from "./WaveDecoration";
 
 const services = [
   { icon: Globe, title: "Website Creation", desc: "Bespoke websites engineered for performance, built with cutting-edge technology.", slug: "website-creation", accent: "175 70% 40%" },
@@ -76,6 +77,16 @@ const ServicesSection = () => {
         background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",
       }} />
       <div className="absolute inset-0 grid-bg opacity-40" />
+
+      {/* Decorative wave lines */}
+      <WaveDecoration
+        color="hsl(var(--primary) / 0.06)"
+        className="top-20 left-0 right-0 h-[100px]"
+      />
+      <WaveDecoration
+        color="hsl(var(--primary) / 0.04)"
+        className="bottom-16 left-0 right-0 h-[80px]"
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="mb-20">

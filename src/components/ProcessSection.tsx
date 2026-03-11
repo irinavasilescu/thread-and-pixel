@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import WaveDecoration from "./WaveDecoration";
 
 const steps = [
   { num: "01", title: "Discovery", desc: "Deep dive into your brand, goals, and audience to define the project blueprint.", accent: "175 70% 40%" },
@@ -19,6 +20,12 @@ const ProcessSection = () => {
         background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",
       }} />
       <div className="absolute inset-0 grid-bg opacity-40" />
+
+      {/* Decorative wave lines */}
+      <WaveDecoration
+        color="hsl(var(--primary) / 0.05)"
+        className="top-12 left-0 right-0 h-[80px]"
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div className="mb-20">

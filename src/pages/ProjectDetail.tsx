@@ -6,6 +6,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import ProjectScreenshots from "@/components/ProjectScreenshots";
+import WaveDivider from "@/components/WaveDivider";
+import WaveDecoration from "@/components/WaveDecoration";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -26,14 +28,32 @@ const ProjectDetail = () => {
     );
   }
 
+  const mainColor = project.brandColors[0]?.hex || "hsl(var(--primary))";
+
   return (
     <div className="min-h-screen bg-background">
       <CustomCursor />
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-5xl mx-auto">
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+        {/* Glow orb based on brand color */}
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-10 right-[20%] w-[500px] h-[500px] rounded-full blur-[180px]"
+          style={{ background: mainColor }}
+        />
+
+        <div className="absolute inset-0 grid-bg opacity-30" />
+
+        {/* Decorative wave */}
+        <WaveDecoration
+          color="hsl(var(--primary) / 0.06)"
+          className="top-[40%] left-0 right-0 h-[100px]"
+        />
+
+        <div className="max-w-5xl mx-auto relative z-10">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
             <Link
               to="/#projects"
@@ -68,6 +88,11 @@ const ProjectDetail = () => {
             {project.tagline}
           </motion.p>
         </div>
+
+        {/* Wave transition */}
+        <div className="absolute -bottom-1 left-0 right-0 z-20">
+          <WaveDivider fillColor="hsl(var(--background))" speed={9} />
+        </div>
       </section>
 
       {/* Brand Colors Strip */}
@@ -91,8 +116,12 @@ const ProjectDetail = () => {
       </motion.div>
 
       {/* Description */}
-      <section className="py-24 px-6">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <section className="py-24 px-6 relative overflow-hidden">
+        <WaveDecoration
+          color="hsl(var(--primary) / 0.04)"
+          className="bottom-0 left-0 right-0 h-[60px]"
+        />
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -119,10 +148,16 @@ const ProjectDetail = () => {
         <ProjectScreenshots screenshots={project.screenshots} title={project.title} />
       )}
 
-      <div className="glow-line" />
-
       {/* Brandbook */}
-      <section className="py-24 px-6 bg-surface noise-bg">
+      <WaveDivider fillColor="hsl(175 15% 96%)" speed={10} />
+      <section className="relative py-24 px-6 overflow-hidden" style={{
+        background: "linear-gradient(180deg, hsl(175 15% 96%), hsl(var(--background)))",
+      }}>
+        <div className="absolute inset-0 grid-bg opacity-20" />
+        <WaveDecoration
+          color="hsl(var(--primary) / 0.05)"
+          className="top-10 left-0 right-0 h-[80px]"
+        />
         <div className="relative z-10 max-w-5xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -197,11 +232,13 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      <div className="glow-line" />
-
       {/* Work Done */}
-      <section className="py-24 px-6">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-24 px-6 relative overflow-hidden">
+        <WaveDecoration
+          color="hsl(var(--primary) / 0.04)"
+          className="top-8 left-0 right-0 h-[60px]"
+        />
+        <div className="max-w-5xl mx-auto relative z-10">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -248,14 +285,23 @@ const ProjectDetail = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 text-center">
+      <WaveDivider fillColor="hsl(210 25% 11%)" speed={9} />
+      <section className="relative py-24 px-6 text-center overflow-hidden" style={{
+        background: "linear-gradient(135deg, hsl(210 25% 11%), hsl(175 20% 13%))",
+      }}>
+        <div className="absolute inset-0 grid-bg-dark opacity-20" />
+        <WaveDecoration
+          color="hsl(175 70% 50% / 0.08)"
+          className="top-8 left-0 right-0 h-[80px]"
+        />
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease }}
+          className="relative z-10"
         >
-          <p className="text-muted-foreground font-light mb-6">Interested in a similar project?</p>
+          <p className="text-white/50 font-light mb-6">Interested in a similar project?</p>
           <Link
             to="/contact"
             className="inline-flex items-center gap-3 font-mono text-sm tracking-wider uppercase px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 rounded-sm"

@@ -8,6 +8,7 @@ import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import WaveDivider from "@/components/WaveDivider";
 
 const Index = () => {
   return (
@@ -16,13 +17,20 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <ServicesSection />
-      <div className="glow-line" />
+      {/* Services (light) → Projects (dark) */}
+      <WaveDivider fillColor="hsl(210 20% 12%)" speed={9} />
       <ProjectsSection />
-      <div className="glow-line" />
+      {/* Projects (dark) → Process (light) */}
+      <WaveDivider fillColor="hsl(var(--background))" flip speed={7} />
       <ProcessSection />
-      <div className="glow-line" />
+      {/* Process (light) → About (dark) */}
+      <WaveDivider fillColor="hsl(210 25% 11%)" speed={10} />
       <AboutSection />
+      {/* About (dark) → FAQ (light) */}
+      <WaveDivider fillColor="hsl(var(--background))" flip speed={8} />
       <FAQSection />
+      {/* FAQ (light) → Contact (dark) */}
+      <WaveDivider fillColor="hsl(210 25% 10%)" speed={9} />
       <ContactSection />
       <Footer />
     </div>
