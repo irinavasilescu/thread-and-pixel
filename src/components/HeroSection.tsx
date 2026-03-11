@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, Fragment } from "react";
 import WaveDivider from "./WaveDivider";
 
 const GlitchText = ({ children, delay = 0 }: { children: string; delay?: number }) => {
