@@ -36,20 +36,20 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
         </div>
 
         {/* Content */}
-        <div className="space-y-5">
+        <div className="space-y-3 md:space-y-5">
           <p
             className="font-mono text-xs tracking-[0.2em] uppercase"
             style={{ color: "hsl(175 70% 50%)" }}
           >
             {project.category}
           </p>
-          <h3 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-white group-hover:text-primary transition-colors duration-300">
+          <h3 className="text-2xl md:text-4xl lg:text-5xl font-light tracking-tight text-white group-hover:text-primary transition-colors duration-300">
             {project.title}
           </h3>
-          <p className="text-white/50 font-light leading-relaxed text-lg max-w-lg">
+          <p className="text-white/50 font-light leading-relaxed text-sm md:text-lg max-w-lg hidden md:block">
             {project.tagline}
           </p>
-          <div className="flex flex-wrap gap-2 pt-2">
+          <div className="hidden md:flex flex-wrap gap-2 pt-2">
             {project.technologies.map((tech) => (
               <span
                 key={tech}
@@ -59,7 +59,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
               </span>
             ))}
           </div>
-          <div className="flex items-center gap-2 text-white/40 group-hover:text-primary transition-colors duration-300 pt-4">
+          <div className="flex items-center gap-2 text-white/40 group-hover:text-primary transition-colors duration-300 pt-2 md:pt-4">
             <span className="font-mono text-xs tracking-wider uppercase">View project</span>
             <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </div>
