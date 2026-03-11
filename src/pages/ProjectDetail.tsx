@@ -38,6 +38,7 @@ const ProjectDetail = () => {
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+        <FloatingPixels variant="dark" />
         {/* Glow orb based on brand color */}
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
