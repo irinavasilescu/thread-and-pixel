@@ -32,9 +32,10 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
         onMouseLeave={() => setIsHovered(false)}
         style={{
           background: isHovered
-            ? `linear-gradient(135deg, hsl(${service.accent} / 0.12), hsl(${service.accent} / 0.04))`
-            : "hsl(var(--hero-bg))",
-          border: `1px solid ${isHovered ? `hsl(${service.accent} / 0.3)` : "hsl(0 0% 100% / 0.08)"}`,
+            ? `linear-gradient(135deg, hsl(${service.accent} / 0.08), hsl(${service.accent} / 0.03))`
+            : "hsl(0 0% 100% / 0.6)",
+          border: `1px solid ${isHovered ? `hsl(${service.accent} / 0.3)` : "hsl(var(--border) / 0.4)"}`,
+          backdropFilter: "blur(8px)",
           transition: "all 0.5s ease",
         }}
       >
@@ -43,7 +44,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
           <div
             className="w-12 h-12 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500"
             style={{
-              background: `hsl(${service.accent} / 0.15)`,
+              background: `hsl(${service.accent} / 0.12)`,
             }}
           >
             <service.icon
@@ -52,8 +53,8 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
               style={{ color: `hsl(${service.accent})` }}
             />
           </div>
-          <h3 className="text-lg font-medium mb-3 tracking-tight text-white/90 group-hover:text-white transition-colors">{service.title}</h3>
-          <p className="text-white/50 text-sm leading-relaxed font-light group-hover:text-white/65 transition-colors">{service.desc}</p>
+          <h3 className="text-lg font-medium mb-3 tracking-tight text-foreground/90 group-hover:text-foreground transition-colors">{service.title}</h3>
+          <p className="text-muted-foreground text-sm leading-relaxed font-light group-hover:text-foreground/65 transition-colors">{service.desc}</p>
           <div
             className="mt-6 h-px w-0 group-hover:w-full transition-all duration-700"
             style={{ background: `hsl(${service.accent} / 0.4)` }}
@@ -70,11 +71,11 @@ const ServicesSection = () => {
 
   return (
     <section id="services" className="relative py-32 px-6 snap-section" ref={ref}>
-      {/* Dark background */}
+      {/* Light background with checkered grid */}
       <div className="absolute inset-0" style={{
-        background: "linear-gradient(180deg, hsl(var(--hero-bg)), hsl(210 25% 10%), hsl(var(--hero-bg)))",
+        background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",
       }} />
-      <div className="absolute inset-0 grid-bg-dark" />
+      <div className="absolute inset-0 grid-bg opacity-40" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="mb-20">
@@ -90,7 +91,7 @@ const ServicesSection = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-light tracking-tight text-white/90"
+            className="text-4xl md:text-5xl font-light tracking-tight"
           >
             Services
           </motion.h2>

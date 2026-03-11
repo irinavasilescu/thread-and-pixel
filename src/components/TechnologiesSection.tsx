@@ -25,14 +25,16 @@ interface Pill {
   rotation: number;
   vr: number;
   width: number;
+  settled: boolean;
 }
 
 const PILL_H = 44;
-const GRAVITY = 0.35;
-const BOUNCE = 0.5;
-const FRICTION = 0.99;
-const FLOOR_FRICTION = 0.92;
+const GRAVITY = 0.4;
+const BOUNCE = 0.35;
+const FRICTION = 0.98;
+const FLOOR_FRICTION = 0.85;
 const DRAG_HISTORY_SIZE = 5;
+const SETTLE_THRESHOLD = 0.15;
 
 const TechnologiesSection = () => {
   const ref = useRef(null);
@@ -70,10 +72,11 @@ const TechnologiesSection = () => {
       width: pillWidths[i] || 120,
       x: 30 + ((W - 160) / (technologies.length - 1)) * i,
       y: -60 - Math.random() * 200,
-      vx: (Math.random() - 0.5) * 2,
-      vy: Math.random() * 2 + 1,
-      rotation: (Math.random() - 0.5) * 20,
-      vr: (Math.random() - 0.5) * 2,
+      vx: (Math.random() - 0.5) * 1,
+      vy: 0,
+      rotation: 0,
+      vr: 0,
+      settled: false,
     }));
     pillsRef.current = initial;
     setPills([...initial]);
@@ -93,8 +96,13 @@ const TechnologiesSection = () => {
       const W = container.offsetWidth;
       const H = container.offsetHeight;
 
+      let anyMoving = false;
+
       const updated = pillsRef.current.map((pill, i) => {
         if (i === draggingRef.current) return pill;
+
+        // If settled, skip physics
+        if (pill.settled) return pill;
 
         let { x, y, vx, vy, rotation, vr, width } = pill;
 
@@ -103,27 +111,26 @@ const TechnologiesSection = () => {
         y += vy;
         vx *= FRICTION;
         rotation += vr;
-        vr *= 0.96;
+        vr *= 0.94;
 
         // Floor
         if (y > H - PILL_H) {
           y = H - PILL_H;
           vy = -Math.abs(vy) * BOUNCE;
           vx *= FLOOR_FRICTION;
-          vr *= 0.7;
-          if (Math.abs(vy) < 0.8) vy = 0;
-          // Slow rotation to stop on floor
-          if (Math.abs(vx) < 0.5) vr *= 0.5;
+          vr *= 0.5;
+          if (Math.abs(vy) < 1.2) vy = 0;
+          if (Math.abs(vx) < 0.3) { vx = 0; vr = 0; }
         }
 
         // Walls
-        if (x < 0) { x = 0; vx = Math.abs(vx) * BOUNCE; vr += vx * 0.1; }
-        if (x > W - width) { x = W - width; vx = -Math.abs(vx) * BOUNCE; vr -= Math.abs(vx) * 0.1; }
+        if (x < 0) { x = 0; vx = Math.abs(vx) * BOUNCE; }
+        if (x > W - width) { x = W - width; vx = -Math.abs(vx) * BOUNCE; }
 
         // Ceiling
         if (y < 0) { y = 0; vy = Math.abs(vy) * BOUNCE; }
 
-        // Pill-pill collisions (simple push-apart)
+        // Pill-pill collisions
         for (let j = 0; j < pillsRef.current.length; j++) {
           if (j === i) continue;
           const other = pillsRef.current[j];
@@ -134,30 +141,46 @@ const TechnologiesSection = () => {
           const dx = cx1 - cx2;
           const dy = cy1 - cy2;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          const minDist = (width + other.width) / 2 * 0.65;
+          const minDist = (width + other.width) / 2 * 0.6;
           if (dist < minDist && dist > 0) {
             const nx = dx / dist;
             const ny = dy / dist;
             const overlap = minDist - dist;
-            x += nx * overlap * 0.4;
-            y += ny * overlap * 0.4;
-            // Transfer some velocity
+            x += nx * overlap * 0.3;
+            y += ny * overlap * 0.3;
             const relVx = vx - other.vx;
             const relVy = vy - other.vy;
-            const dotProduct = relVx * nx + relVy * ny;
-            if (dotProduct > 0) {
-              vx -= dotProduct * nx * 0.5;
-              vy -= dotProduct * ny * 0.5;
+            const dot = relVx * nx + relVy * ny;
+            if (dot > 0) {
+              vx -= dot * nx * 0.4;
+              vy -= dot * ny * 0.4;
             }
-            vr += (Math.random() - 0.5) * 1.5;
           }
         }
 
-        return { ...pill, x, y, vx, vy, rotation, vr };
+        // Check if settled
+        const speed = Math.sqrt(vx * vx + vy * vy);
+        const isOnFloor = y >= H - PILL_H - 1;
+        const settled = isOnFloor && speed < SETTLE_THRESHOLD && Math.abs(vr) < 0.05;
+
+        if (!settled) anyMoving = true;
+
+        // Snap rotation to 0 when nearly settled
+        if (settled) {
+          rotation = rotation * 0.8; // ease rotation toward 0
+          if (Math.abs(rotation) < 0.5) rotation = 0;
+          vr = 0;
+          vx = 0;
+          vy = 0;
+        }
+
+        return { ...pill, x, y, vx, vy, rotation, vr, settled };
       });
 
       pillsRef.current = updated;
       setPills([...updated]);
+
+      // Always keep the loop running so dragging works
       animRef.current = requestAnimationFrame(step);
     };
 
@@ -174,11 +197,10 @@ const TechnologiesSection = () => {
     const pill = pillsRef.current[index];
     const pointerX = e.clientX - rect.left;
     const pointerY = e.clientY - rect.top;
-    // Store offset from pill origin to pointer
     dragOffset.current = { x: pointerX - pill.x, y: pointerY - pill.y };
     dragHistory.current = [{ x: pointerX, y: pointerY, time: Date.now() }];
-    // Zero velocity while grabbing
-    pillsRef.current[index] = { ...pill, vx: 0, vy: 0, vr: 0 };
+    // Unsettle pill and zero velocity
+    pillsRef.current[index] = { ...pill, vx: 0, vy: 0, vr: 0, settled: false };
   }, []);
 
   const handlePointerMove = useCallback((e: React.PointerEvent) => {
@@ -195,10 +217,9 @@ const TechnologiesSection = () => {
       ...pill,
       x: Math.max(0, Math.min(x, rect.width - pill.width)),
       y: Math.max(0, Math.min(y, rect.height - PILL_H)),
-      vx: 0, vy: 0, vr: 0,
+      vx: 0, vy: 0, vr: 0, settled: false,
     };
 
-    // Track history for velocity calculation
     dragHistory.current.push({ x: pointerX, y: pointerY, time: Date.now() });
     if (dragHistory.current.length > DRAG_HISTORY_SIZE) {
       dragHistory.current.shift();
@@ -210,18 +231,18 @@ const TechnologiesSection = () => {
     const history = dragHistory.current;
 
     if (history.length >= 2) {
-      // Use the oldest and newest positions in history for velocity
       const oldest = history[0];
       const newest = history[history.length - 1];
       const dt = Math.max(1, newest.time - oldest.time);
-      const vx = ((newest.x - oldest.x) / dt) * 16; // convert to per-frame
+      const vx = ((newest.x - oldest.x) / dt) * 16;
       const vy = ((newest.y - oldest.y) / dt) * 16;
 
       pillsRef.current[draggingRef.current] = {
         ...pillsRef.current[draggingRef.current],
-        vx: Math.max(-25, Math.min(25, vx)),
-        vy: Math.max(-25, Math.min(25, vy)),
-        vr: vx * 0.15,
+        vx: Math.max(-20, Math.min(20, vx)),
+        vy: Math.max(-20, Math.min(20, vy)),
+        vr: vx * 0.1,
+        settled: false,
       };
     }
 
@@ -232,7 +253,7 @@ const TechnologiesSection = () => {
   return (
     <section ref={ref} className="relative py-32 px-6 snap-section overflow-hidden">
       <div className="absolute inset-0" style={{
-        background: "linear-gradient(180deg, hsl(var(--background)), hsl(45 30% 96%), hsl(var(--background)))",
+        background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",
       }} />
 
       <div className="relative z-10 max-w-5xl mx-auto">
@@ -276,8 +297,9 @@ const TechnologiesSection = () => {
           ref={containerRef}
           className="relative mx-auto w-full max-w-3xl h-[300px] md:h-[350px] rounded-3xl overflow-hidden touch-none select-none"
           style={{
-            background: "hsl(40 20% 96%)",
+            background: "hsl(0 0% 100% / 0.5)",
             border: "1px solid hsl(var(--border) / 0.3)",
+            backdropFilter: "blur(4px)",
           }}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}

@@ -21,12 +21,9 @@ const Index = () => {
       <ProjectsSection />
       <div className="glow-line" />
       <TechnologiesSection />
-      <div className="glow-line" />
       <AboutSection />
       <ProcessSection />
-      <div className="glow-line" />
       <FAQSection />
-      <div className="glow-line" />
       <ContactSection />
       <Footer />
     </div>
