@@ -10,11 +10,13 @@ import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import WaveDivider from "@/components/WaveDivider";
 import MarqueeBanner from "@/components/MarqueeBanner";
+import ScrollProgressDots from "@/components/ScrollProgressDots";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <CustomCursor />
+      <ScrollProgressDots />
       <Navbar />
       <HeroSection />
       <MarqueeBanner className="border-y border-border/50" />

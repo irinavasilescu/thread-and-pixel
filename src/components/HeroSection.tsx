@@ -74,6 +74,7 @@ const HeroSection = () => {
 
   return (
     <section
+      id="hero"
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden snap-section bg-hero text-hero-foreground"
     >
