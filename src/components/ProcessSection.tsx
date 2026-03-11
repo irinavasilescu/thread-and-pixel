@@ -21,11 +21,6 @@ const ProcessSection = () => {
       }} />
       <div className="absolute inset-0 grid-bg opacity-40" />
 
-      {/* Decorative wave lines */}
-      <WaveDecoration
-        color="hsl(var(--primary) / 0.05)"
-        className="top-12 left-0 right-0 h-[80px]"
-      />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div className="mb-20">

@@ -78,15 +78,6 @@ const ServicesSection = () => {
       }} />
       <div className="absolute inset-0 grid-bg opacity-40" />
 
-      {/* Decorative wave lines */}
-      <WaveDecoration
-        color="hsl(var(--primary) / 0.06)"
-        className="top-32 left-0 right-0 h-[100px]"
-      />
-      <WaveDecoration
-        color="hsl(var(--primary) / 0.04)"
-        className="bottom-16 left-0 right-0 h-[80px]"
-      />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="mb-20">
