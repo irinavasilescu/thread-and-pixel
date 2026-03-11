@@ -2,15 +2,19 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState, useCallback, useEffect } from "react";
 
 const technologies = [
-  { name: "React", color: "61 DAFB", bg: "220 20% 15%" },
-  { name: "Angular", color: "0 100% 50%", bg: "0 70% 20%" },
-  { name: "Shopify", color: "146 72% 44%", bg: "146 50% 15%" },
-  { name: "WordPress", color: "204 25% 40%", bg: "204 30% 15%" },
-  { name: "PHP", color: "240 40% 60%", bg: "240 30% 18%" },
-  { name: "Go", color: "192 80% 50%", bg: "192 50% 15%" },
+  { name: "React", color: "191 97% 77%", bg: "191 60% 85%" },
+  { name: "Angular", color: "0 80% 55%", bg: "0 70% 88%" },
+  { name: "Shopify", color: "146 55% 50%", bg: "146 45% 85%" },
+  { name: "WordPress", color: "204 30% 50%", bg: "204 25% 85%" },
+  { name: "PHP", color: "240 40% 55%", bg: "240 30% 87%" },
+  { name: "Go", color: "192 70% 45%", bg: "192 50% 85%" },
+  { name: "TypeScript", color: "211 60% 48%", bg: "211 50% 87%" },
+  { name: "Node.js", color: "120 35% 45%", bg: "120 30% 85%" },
+  { name: "Tailwind", color: "198 80% 50%", bg: "198 60% 87%" },
+  { name: "Next.js", color: "0 0% 25%", bg: "0 0% 88%" },
 ];
 
-interface Chip {
+interface Pill {
   name: string;
   color: string;
   bg: string;
@@ -18,43 +22,67 @@ interface Chip {
   y: number;
   vx: number;
   vy: number;
+  rotation: number;
+  vr: number;
+  width: number;
 }
+
+const PILL_H = 44;
+const GRAVITY = 0.4;
+const DAMPING = 0.985;
+const BOUNCE = 0.55;
+const FRICTION = 0.98;
 
 const TechnologiesSection = () => {
   const ref = useRef(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const animRef = useRef<number>(0);
-  const chipsRef = useRef<Chip[]>([]);
-  const [chips, setChips] = useState<Chip[]>([]);
+  const pillsRef = useRef<Pill[]>([]);
+  const [pills, setPills] = useState<Pill[]>([]);
   const draggingRef = useRef<number | null>(null);
-  const dragStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
   const lastDragPos = useRef<{ x: number; y: number; time: number } | null>(null);
+  const [hasDropped, setHasDropped] = useState(false);
+  const sectionInView = useInView(ref, { once: true, margin: "-200px" });
 
-  // Initialize chip positions
+  // Measure pill widths
+  const measureRef = useRef<HTMLDivElement>(null);
+  const [pillWidths, setPillWidths] = useState<number[]>([]);
+
   useEffect(() => {
+    if (measureRef.current) {
+      const spans = measureRef.current.querySelectorAll("span");
+      const widths = Array.from(spans).map((s) => s.offsetWidth + 48); // padding
+      setPillWidths(widths);
+    }
+  }, []);
+
+  // Drop pills when section comes into view
+  useEffect(() => {
+    if (!sectionInView || hasDropped || pillWidths.length === 0) return;
     const container = containerRef.current;
     if (!container) return;
-    const w = container.offsetWidth;
-    const h = container.offsetHeight;
+    const W = container.offsetWidth;
 
-    const initial: Chip[] = technologies.map((tech, i) => ({
+    // Start pills above the container spread out
+    const initial: Pill[] = technologies.map((tech, i) => ({
       ...tech,
-      x: 40 + ((w - 160) / (technologies.length - 1)) * i,
-      y: 60 + Math.sin(i * 1.8) * (h * 0.25),
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
+      width: pillWidths[i] || 120,
+      x: 30 + ((W - 160) / (technologies.length - 1)) * i,
+      y: -60 - Math.random() * 200, // above container
+      vx: (Math.random() - 0.5) * 2,
+      vy: Math.random() * 2 + 1,
+      rotation: (Math.random() - 0.5) * 30,
+      vr: (Math.random() - 0.5) * 3,
     }));
-    chipsRef.current = initial;
-    setChips([...initial]);
-  }, []);
+    pillsRef.current = initial;
+    setPills([...initial]);
+    setHasDropped(true);
+  }, [sectionInView, hasDropped, pillWidths]);
 
   // Physics loop
   useEffect(() => {
-    const CHIP_W = 120;
-    const CHIP_H = 48;
-    const DAMPING = 0.995;
-    const BOUNCE = 0.7;
+    if (!hasDropped) return;
 
     const step = () => {
       const container = containerRef.current;
@@ -65,49 +93,71 @@ const TechnologiesSection = () => {
       const W = container.offsetWidth;
       const H = container.offsetHeight;
 
-      const updated = chipsRef.current.map((chip, i) => {
-        if (i === draggingRef.current) return chip;
+      const updated = pillsRef.current.map((pill, i) => {
+        if (i === draggingRef.current) return pill;
 
-        let { x, y, vx, vy } = chip;
+        let { x, y, vx, vy, rotation, vr, width } = pill;
+
+        // Apply gravity
+        vy += GRAVITY;
+
         x += vx;
         y += vy;
         vx *= DAMPING;
         vy *= DAMPING;
+        rotation += vr;
+        vr *= FRICTION;
 
-        // Bounce off walls
-        if (x < 0) { x = 0; vx = Math.abs(vx) * BOUNCE; }
-        if (x > W - CHIP_W) { x = W - CHIP_W; vx = -Math.abs(vx) * BOUNCE; }
+        // Floor
+        if (y > H - PILL_H) {
+          y = H - PILL_H;
+          vy = -Math.abs(vy) * BOUNCE;
+          vx *= FRICTION;
+          vr *= 0.8;
+          if (Math.abs(vy) < 1) vy = 0;
+        }
+
+        // Walls
+        if (x < 0) { x = 0; vx = Math.abs(vx) * BOUNCE; vr += 1; }
+        if (x > W - width) { x = W - width; vx = -Math.abs(vx) * BOUNCE; vr -= 1; }
+
+        // Ceiling
         if (y < 0) { y = 0; vy = Math.abs(vy) * BOUNCE; }
-        if (y > H - CHIP_H) { y = H - CHIP_H; vy = -Math.abs(vy) * BOUNCE; }
 
-        // Chip-chip collision (simple push)
-        chipsRef.current.forEach((other, j) => {
+        // Pill-pill collisions
+        pillsRef.current.forEach((other, j) => {
           if (j === i) return;
-          const dx = x - other.x;
-          const dy = y - other.y;
+          const cx1 = x + width / 2;
+          const cy1 = y + PILL_H / 2;
+          const cx2 = other.x + other.width / 2;
+          const cy2 = other.y + PILL_H / 2;
+          const dx = cx1 - cx2;
+          const dy = cy1 - cy2;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CHIP_W * 0.8 && dist > 0) {
+          const minDist = (width + other.width) / 2 * 0.7;
+          if (dist < minDist && dist > 0) {
             const nx = dx / dist;
             const ny = dy / dist;
-            const overlap = CHIP_W * 0.8 - dist;
+            const overlap = minDist - dist;
             x += nx * overlap * 0.5;
             y += ny * overlap * 0.5;
-            vx += nx * 0.3;
-            vy += ny * 0.3;
+            vx += nx * 0.8;
+            vy += ny * 0.8;
+            vr += (Math.random() - 0.5) * 2;
           }
         });
 
-        return { ...chip, x, y, vx, vy };
+        return { ...pill, x, y, vx, vy, rotation, vr };
       });
 
-      chipsRef.current = updated;
-      setChips([...updated]);
+      pillsRef.current = updated;
+      setPills([...updated]);
       animRef.current = requestAnimationFrame(step);
     };
 
     animRef.current = requestAnimationFrame(step);
     return () => cancelAnimationFrame(animRef.current);
-  }, []);
+  }, [hasDropped]);
 
   const handlePointerDown = useCallback((e: React.PointerEvent, index: number) => {
     e.preventDefault();
@@ -115,53 +165,57 @@ const TechnologiesSection = () => {
     draggingRef.current = index;
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
-    const pos = { x: e.clientX - rect.left, y: e.clientY - rect.top, time: Date.now() };
-    dragStartRef.current = pos;
-    lastDragPos.current = pos;
+    lastDragPos.current = { x: e.clientX - rect.left, y: e.clientY - rect.top, time: Date.now() };
   }, []);
 
   const handlePointerMove = useCallback((e: React.PointerEvent) => {
     if (draggingRef.current === null) return;
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
-    const x = e.clientX - rect.left - 60;
-    const y = e.clientY - rect.top - 24;
-    const now = Date.now();
+    const pill = pillsRef.current[draggingRef.current];
+    const x = e.clientX - rect.left - pill.width / 2;
+    const y = e.clientY - rect.top - PILL_H / 2;
 
-    chipsRef.current[draggingRef.current] = {
-      ...chipsRef.current[draggingRef.current],
-      x: Math.max(0, Math.min(x, rect.width - 120)),
-      y: Math.max(0, Math.min(y, rect.height - 48)),
+    pillsRef.current[draggingRef.current] = {
+      ...pill,
+      x: Math.max(0, Math.min(x, rect.width - pill.width)),
+      y: Math.max(0, Math.min(y, rect.height - PILL_H)),
       vx: 0,
       vy: 0,
+      vr: 0,
     };
-    lastDragPos.current = { x: e.clientX - rect.left, y: e.clientY - rect.top, time: now };
+    lastDragPos.current = { x: e.clientX - rect.left, y: e.clientY - rect.top, time: Date.now() };
   }, []);
 
   const handlePointerUp = useCallback((e: React.PointerEvent) => {
     if (draggingRef.current === null) return;
     const rect = containerRef.current?.getBoundingClientRect();
-    if (rect && lastDragPos.current && dragStartRef.current) {
+    if (rect && lastDragPos.current) {
       const dt = Math.max(1, Date.now() - lastDragPos.current.time) / 16;
       const currentX = e.clientX - rect.left;
       const currentY = e.clientY - rect.top;
-      const vx = (currentX - lastDragPos.current.x) / dt * 2;
-      const vy = (currentY - lastDragPos.current.y) / dt * 2;
+      const vx = (currentX - lastDragPos.current.x) / dt * 2.5;
+      const vy = (currentY - lastDragPos.current.y) / dt * 2.5;
 
-      chipsRef.current[draggingRef.current] = {
-        ...chipsRef.current[draggingRef.current],
-        vx: Math.max(-15, Math.min(15, vx)),
-        vy: Math.max(-15, Math.min(15, vy)),
+      pillsRef.current[draggingRef.current] = {
+        ...pillsRef.current[draggingRef.current],
+        vx: Math.max(-20, Math.min(20, vx)),
+        vy: Math.max(-20, Math.min(20, vy)),
+        vr: vx * 0.3,
       };
     }
     draggingRef.current = null;
-    dragStartRef.current = null;
     lastDragPos.current = null;
   }, []);
 
   return (
     <section ref={ref} className="relative py-32 px-6 snap-section overflow-hidden">
-      <div className="max-w-5xl mx-auto">
+      {/* Subtle warm gradient background */}
+      <div className="absolute inset-0" style={{
+        background: "linear-gradient(180deg, hsl(var(--background)), hsl(45 30% 96%), hsl(var(--background)))",
+      }} />
+
+      <div className="relative z-10 max-w-5xl mx-auto">
         <motion.div className="text-center mb-8">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -189,41 +243,50 @@ const TechnologiesSection = () => {
           </motion.p>
         </motion.div>
 
+        {/* Hidden measure container */}
+        <div ref={measureRef} className="absolute opacity-0 pointer-events-none flex gap-2" aria-hidden>
+          {technologies.map((t) => (
+            <span key={t.name} className="font-sans text-sm md:text-base font-medium px-6 py-2.5 whitespace-nowrap">
+              {t.name}
+            </span>
+          ))}
+        </div>
+
         <div
           ref={containerRef}
-          className="relative mx-auto w-full max-w-2xl h-[320px] md:h-[360px] rounded-2xl border border-border/20 overflow-hidden touch-none select-none"
+          className="relative mx-auto w-full max-w-3xl h-[300px] md:h-[350px] rounded-3xl overflow-hidden touch-none select-none"
           style={{
-            background: "linear-gradient(180deg, hsl(var(--surface) / 0.2), hsl(var(--surface) / 0.5))",
+            background: "hsl(40 20% 96%)",
+            border: "1px solid hsl(var(--border) / 0.3)",
           }}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerLeave={handlePointerUp}
         >
-          {chips.map((chip, i) => (
+          {pills.map((pill, i) => (
             <div
-              key={chip.name}
+              key={pill.name}
               onPointerDown={(e) => handlePointerDown(e, i)}
               className={`absolute cursor-grab active:cursor-grabbing ${draggingRef.current === i ? "z-20" : "z-10"}`}
               style={{
-                transform: `translate(${chip.x}px, ${chip.y}px)`,
+                transform: `translate(${pill.x}px, ${pill.y}px) rotate(${pill.rotation}deg)`,
                 willChange: "transform",
               }}
             >
               <div
-                className="px-6 py-3 rounded-lg border backdrop-blur-sm shadow-lg transition-shadow duration-300"
+                className="px-6 py-2.5 rounded-full shadow-md transition-shadow duration-200"
                 style={{
-                  background: `hsl(${chip.bg} / 0.9)`,
-                  borderColor: `hsl(${chip.color} / 0.3)`,
+                  background: `hsl(${pill.bg})`,
                   boxShadow: draggingRef.current === i
-                    ? `0 20px 40px hsl(${chip.color} / 0.2), 0 0 20px hsl(${chip.color} / 0.1)`
-                    : `0 4px 12px hsl(${chip.color} / 0.1)`,
+                    ? `0 12px 30px hsl(${pill.color} / 0.25)`
+                    : `0 2px 8px hsl(0 0% 0% / 0.06)`,
                 }}
               >
                 <span
-                  className="font-mono text-sm md:text-base font-medium tracking-wider whitespace-nowrap"
-                  style={{ color: `hsl(${chip.color})` }}
+                  className="font-sans text-sm md:text-base font-medium whitespace-nowrap"
+                  style={{ color: `hsl(${pill.color})` }}
                 >
-                  {chip.name}
+                  {pill.name}
                 </span>
               </div>
             </div>
