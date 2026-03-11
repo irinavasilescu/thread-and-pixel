@@ -187,8 +187,44 @@ const HeroSection = () => {
         </motion.div>
       </motion.div>
 
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background" />
+      {/* Animated wave transition */}
+      <div className="absolute -bottom-1 left-0 right-0 z-20">
+        <svg
+          viewBox="0 0 1440 120"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-auto block"
+          preserveAspectRatio="none"
+        >
+          <motion.path
+            d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z"
+            fill="hsl(var(--background))"
+            animate={{
+              d: [
+                "M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z",
+                "M0,80 C240,20 480,100 720,40 C960,0 1200,100 1440,80 L1440,120 L0,120 Z",
+                "M0,40 C240,100 480,20 720,80 C960,120 1200,20 1440,40 L1440,120 L0,120 Z",
+                "M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z",
+              ],
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.path
+            d="M0,80 C360,40 720,100 1080,60 C1260,40 1380,80 1440,80 L1440,120 L0,120 Z"
+            fill="hsl(var(--background))"
+            opacity={0.6}
+            animate={{
+              d: [
+                "M0,80 C360,40 720,100 1080,60 C1260,40 1380,80 1440,80 L1440,120 L0,120 Z",
+                "M0,60 C360,100 720,40 1080,80 C1260,100 1380,60 1440,60 L1440,120 L0,120 Z",
+                "M0,90 C360,50 720,90 1080,50 C1260,30 1380,90 1440,90 L1440,120 L0,120 Z",
+                "M0,80 C360,40 720,100 1080,60 C1260,40 1380,80 1440,80 L1440,120 L0,120 Z",
+              ],
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </svg>
+      </div>
     </section>
   );
 };
