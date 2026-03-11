@@ -41,7 +41,7 @@ const ProjectsSection = () => {
     <section id="projects" className="relative py-32 px-6 snap-section overflow-hidden" ref={ref}>
       {/* Colored background */}
       <div className="absolute inset-0" style={{
-        background: "linear-gradient(135deg, hsl(210 20% 12%), hsl(200 25% 15%), hsl(175 30% 14%))",
+        background: "linear-gradient(180deg, hsl(210 20% 13%), hsl(200 25% 15%), hsl(175 30% 14%))",
       }} />
       <div className="absolute inset-0 grid-bg-dark opacity-30" />
 

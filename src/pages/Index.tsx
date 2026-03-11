@@ -18,7 +18,7 @@ const Index = () => {
       <HeroSection />
       <ServicesSection />
       {/* Services (light) → Projects (dark) */}
-      <WaveDivider fillColor="hsl(210 20% 12%)" speed={9} />
+      <WaveDivider fillColor="hsl(210 20% 13%)" speed={9} />
       <ProjectsSection />
       {/* Projects (dark) → Process (light) */}
       <WaveDivider fillColor="hsl(var(--background))" flip speed={7} />

@@ -149,9 +149,9 @@ const ProjectDetail = () => {
       )}
 
       {/* Brandbook */}
-      <WaveDivider fillColor="hsl(175 15% 96%)" speed={10} />
+      <WaveDivider fillColor="hsl(175 12% 90%)" speed={10} />
       <section className="relative py-24 px-6 overflow-hidden" style={{
-        background: "linear-gradient(180deg, hsl(175 15% 96%), hsl(var(--background)))",
+        background: "linear-gradient(180deg, hsl(175 12% 90%), hsl(var(--background)))",
       }}>
         <div className="absolute inset-0 grid-bg opacity-20" />
         <WaveDecoration
@@ -285,9 +285,9 @@ const ProjectDetail = () => {
       </section>
 
       {/* CTA */}
-      <WaveDivider fillColor="hsl(210 25% 11%)" speed={9} />
+      <WaveDivider fillColor="hsl(210 22% 12%)" speed={9} />
       <section className="relative py-24 px-6 text-center overflow-hidden" style={{
-        background: "linear-gradient(135deg, hsl(210 25% 11%), hsl(175 20% 13%))",
+        background: "linear-gradient(180deg, hsl(210 22% 12%), hsl(175 20% 13%))",
       }}>
         <div className="absolute inset-0 grid-bg-dark opacity-20" />
         <WaveDecoration
