@@ -225,6 +225,7 @@ const ProjectDetail = () => {
 
       {/* Work Done */}
       <section className="py-24 px-6 relative overflow-hidden">
+        <FloatingPixels variant="dark" />
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
