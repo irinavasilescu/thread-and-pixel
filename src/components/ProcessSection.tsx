@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import WaveDecoration from "./WaveDecoration";
+import FloatingPixels from "./FloatingPixels";
 
 const steps = [
   { num: "01", title: "Discovery", desc: "Deep dive into your brand, goals, and audience to define the project blueprint.", accent: "175 70% 40%" },
