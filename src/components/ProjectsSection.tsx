@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
+import FloatingPixels from "./FloatingPixels";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
