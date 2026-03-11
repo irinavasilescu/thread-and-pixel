@@ -15,7 +15,7 @@ const FloatingPixels = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
       {pixels.map((p) => (
         <motion.div
           key={p.id}
