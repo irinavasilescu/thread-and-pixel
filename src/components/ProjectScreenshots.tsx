@@ -14,7 +14,7 @@ const ProjectScreenshots = ({ screenshots, title }: ProjectScreenshotsProps) => 
   const remaining = screenshots.slice(1);
 
   return (
-    <section className="py-24 px-6">
+    <section className="py-24 px-6 relative z-[2]">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
