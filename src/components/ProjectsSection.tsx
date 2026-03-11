@@ -1,199 +1,186 @@
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
 
-const ProjectCard = ({
-  project,
-  index,
-  isActive,
-}: {
-  project: (typeof projects)[0];
-  index: number;
-  isActive: boolean;
-}) => {
-  const chars = project.title.split("");
-
-  return (
-    <div className="flex-shrink-0 w-screen h-full flex items-center justify-center px-4 md:px-12 lg:px-20">
-      <Link
-        to={`/projects/${project.slug}`}
-        className="group relative w-full max-w-[1200px] h-[75vh] rounded-2xl overflow-hidden cursor-pointer"
-      >
-        {/* Background image */}
-        <img
-          src={project.previewImage}
-          alt={project.title}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
-          loading="lazy"
-        />
-
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
-
-        {/* Content overlay */}
-        <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-14">
-          {/* Category */}
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-mono text-[10px] tracking-[0.3em] uppercase mb-4"
-            style={{ color: "hsl(175 70% 50%)" }}
-          >
-            {project.category}
-          </motion.p>
-
-          {/* Title with character reveal */}
-          <h3 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-white mb-5 overflow-hidden">
-            {chars.map((char, i) => (
-              <motion.span
-                key={i}
-                initial={{ y: "110%", opacity: 0 }}
-                animate={
-                  isActive
-                    ? { y: "0%", opacity: 1 }
-                    : { y: "110%", opacity: 0 }
-                }
-                transition={{
-                  duration: 0.6,
-                  delay: 0.15 + i * 0.025,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="inline-block"
-                style={{ whiteSpace: char === " " ? "pre" : undefined }}
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-          </h3>
-
-          {/* View project link */}
-          <motion.div
-            initial={{ opacity: 0, x: -15 }}
-            animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: -15 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="flex items-center gap-2 text-white/40 group-hover:text-white transition-colors duration-500"
-          >
-            <span className="font-mono text-xs tracking-wider uppercase">
-              View project
-            </span>
-            <ArrowUpRight
-              size={14}
-              className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
-            />
-          </motion.div>
-        </div>
-
-        {/* Index number */}
-        <div className="absolute top-8 right-8 md:top-12 md:right-12">
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={isActive ? { opacity: 0.12 } : { opacity: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-mono text-8xl md:text-9xl font-bold text-white"
-          >
-            {String(index + 1).padStart(2, "0")}
-          </motion.span>
-        </div>
-      </Link>
-    </div>
-  );
-};
+const ease = [0.22, 1, 0.36, 1] as const;
 
 const ProjectsSection = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const totalCards = projects.length;
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(0);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
+  const project = projects[current];
 
-  // Each card gets one full screen of scroll. Map progress to active index.
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const idx = Math.min(
-      Math.floor(latest * totalCards),
-      totalCards - 1
-    );
-    setActiveIndex(idx);
-  });
+  const navigate = (dir: number) => {
+    setDirection(dir);
+    setCurrent((prev) => (prev + dir + projects.length) % projects.length);
+  };
 
-  // Horizontal translation: snap one card-width per scroll step
-  const x = useTransform(
-    scrollYProgress,
-    Array.from({ length: totalCards }, (_, i) => i / totalCards),
-    Array.from({ length: totalCards }, (_, i) => `${-i * 100}vw`)
-  );
+  const variants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 600 : -600,
+      opacity: 0,
+      scale: 0.9,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (dir: number) => ({
+      x: dir > 0 ? -600 : 600,
+      opacity: 0,
+      scale: 0.9,
+    }),
+  };
 
   return (
-    <div
-      ref={containerRef}
-      style={{ height: `${(totalCards + 1) * 100}vh` }}
-    >
-      <section
-        id="projects"
-        className="sticky top-0 h-screen overflow-hidden"
-      >
-        {/* Background */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, hsl(210 20% 13%), hsl(200 25% 15%), hsl(175 30% 14%))",
-          }}
-        />
+    <section id="projects" className="relative py-32 px-6 snap-section overflow-hidden" ref={ref}>
+      {/* Colored background */}
+      <div className="absolute inset-0" style={{
+        background: "linear-gradient(180deg, hsl(210 20% 13%), hsl(200 25% 15%), hsl(175 30% 14%))",
+      }} />
+      <div className="absolute inset-0 grid-bg-dark opacity-30" />
 
-        {/* Header */}
-        <div className="relative z-10 pt-10 md:pt-14 px-6 md:px-12 lg:px-20 flex items-end justify-between">
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <motion.div className="mb-16 flex items-end justify-between">
           <div>
-            <p
-              className="font-mono text-xs tracking-[0.3em] uppercase mb-2"
+            <motion.p
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5 }}
+              className="font-mono text-xs tracking-[0.3em] uppercase mb-4"
               style={{ color: "hsl(175 70% 50%)" }}
             >
               Selected work
-            </p>
-            <h2 className="text-4xl md:text-5xl font-light tracking-tight text-white">
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, x: -30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-4xl md:text-5xl font-light tracking-tight text-white"
+            >
               Projects
-            </h2>
+            </motion.h2>
           </div>
-          <span className="font-mono text-sm text-white/30 tracking-wider hidden md:block">
-            {String(activeIndex + 1).padStart(2, "0")} / {String(totalCards).padStart(2, "0")}
-          </span>
-        </div>
 
-        {/* Horizontal scroll container */}
-        <motion.div
-          style={{ x }}
-          className="relative z-10 flex h-[calc(100vh-120px)] items-center"
-        >
-          {projects.map((project, i) => (
-            <ProjectCard
-              key={project.slug}
-              project={project}
-              index={i}
-              isActive={activeIndex === i}
-            />
-          ))}
+          {/* Navigation arrows */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.3 }}
+            className="flex items-center gap-3"
+          >
+            <button
+              onClick={() => navigate(-1)}
+              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 transition-all duration-300 hover:scale-105"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <span className="font-mono text-xs text-white/40 min-w-[3rem] text-center">
+              {String(current + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+            </span>
+            <button
+              onClick={() => navigate(1)}
+              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 transition-all duration-300 hover:scale-105"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </motion.div>
         </motion.div>
 
-        {/* Scroll progress bar */}
-        <div className="absolute bottom-6 left-6 md:left-12 lg:left-20 right-6 md:right-12 lg:right-20 z-10">
-          <div className="h-px bg-white/10 w-full">
+        {/* Project showcase */}
+        <div className="relative min-h-[480px] md:min-h-[420px]">
+          <AnimatePresence custom={direction} mode="wait">
             <motion.div
-              className="h-full"
-              style={{
-                scaleX: scrollYProgress,
-                transformOrigin: "left",
-                background: "hsl(175 70% 50%)",
-              }}
-            />
-          </div>
+              key={project.slug}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.6, ease }}
+            >
+              <Link
+                to={`/projects/${project.slug}`}
+                className="group grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+              >
+                {/* Image */}
+                <div className="relative overflow-hidden rounded-lg">
+                  <div className="aspect-[4/3] overflow-hidden rounded-lg">
+                    <img
+                      src={project.previewImage}
+                      alt={`${project.title} preview`}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                  {/* Brand color dots */}
+                  <div className="absolute bottom-4 left-4 flex gap-2">
+                    {project.brandColors.map((color) => (
+                      <div
+                        key={color.name}
+                        className="w-4 h-4 rounded-full border border-white/20 shadow-lg"
+                        style={{ backgroundColor: color.hex }}
+                        title={color.name}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="space-y-6">
+                  <div>
+                    <p className="font-mono text-xs tracking-[0.2em] uppercase mb-3"
+                       style={{ color: "hsl(175 70% 50%)" }}>
+                      {project.category}
+                    </p>
+                    <h3 className="text-3xl md:text-4xl font-light tracking-tight text-white group-hover:text-primary transition-colors duration-300 mb-4">
+                      {project.title}
+                    </h3>
+                    <p className="text-white/60 font-light leading-relaxed">
+                      {project.tagline}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="font-mono text-[10px] tracking-wider uppercase px-3 py-1 rounded-full text-white/50 border border-white/10"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-2 text-white/40 group-hover:text-primary transition-colors duration-300">
+                    <span className="font-mono text-xs tracking-wider uppercase">View project</span>
+                    <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          </AnimatePresence>
         </div>
-      </section>
-    </div>
+
+        {/* Progress dots */}
+        <div className="flex justify-center gap-2 mt-12">
+          {projects.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                i === current ? "w-8 bg-primary" : "w-1.5 bg-white/20 hover:bg-white/40"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
