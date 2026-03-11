@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
+import WaveDecoration from "./WaveDecoration";
 
 const faqs = [
   {
@@ -90,6 +91,12 @@ const FAQSection = () => {
         background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",
       }} />
       <div className="absolute inset-0 grid-bg opacity-40" />
+
+      {/* Decorative wave lines */}
+      <WaveDecoration
+        color="hsl(var(--primary) / 0.05)"
+        className="bottom-10 left-0 right-0 h-[80px]"
+      />
 
       <div className="relative z-10 max-w-3xl mx-auto">
         <motion.div className="mb-16">

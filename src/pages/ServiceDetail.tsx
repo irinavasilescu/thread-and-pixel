@@ -5,6 +5,8 @@ import { servicesData } from "@/data/services";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import WaveDivider from "@/components/WaveDivider";
+import WaveDecoration from "@/components/WaveDecoration";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -52,6 +54,12 @@ const ServiceDetail = () => {
         {/* Grid pattern */}
         <div className="absolute inset-0 grid-bg opacity-30" />
 
+        {/* Decorative wave lines */}
+        <WaveDecoration
+          color={`hsl(${accent} / 0.1)`}
+          className="top-[30%] left-0 right-0 h-[120px]"
+        />
+
         <div className="relative z-10 max-w-5xl mx-auto w-full">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
             <Link
@@ -94,15 +102,19 @@ const ServiceDetail = () => {
           </motion.p>
         </div>
 
-        {/* Bottom accent line */}
-        <div className="absolute bottom-0 left-0 right-0 h-px" style={{
-          background: `linear-gradient(90deg, transparent, hsl(${accent} / 0.3), transparent)`,
-        }} />
+        {/* Wave transition at bottom */}
+        <div className="absolute -bottom-1 left-0 right-0 z-20">
+          <WaveDivider fillColor="hsl(var(--background))" speed={8} />
+        </div>
       </section>
 
       {/* Description */}
-      <section className="py-24 px-6">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-24 px-6 relative overflow-hidden">
+        <WaveDecoration
+          color="hsl(var(--primary) / 0.04)"
+          className="top-0 left-0 right-0 h-[60px]"
+        />
+        <div className="max-w-5xl mx-auto relative z-10">
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -116,60 +128,64 @@ const ServiceDetail = () => {
       </section>
 
       {/* Features */}
-      <section className="py-24 px-6 relative overflow-hidden">
-        <div className="absolute inset-0" style={{
-          background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",
-        }} />
-        <div className="absolute inset-0 grid-bg opacity-20" />
-        <div className="relative z-10 max-w-5xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease }}
-            className="text-3xl md:text-4xl font-light tracking-tight mb-16"
-          >
-            What's <span style={{ color: `hsl(${accent})` }}>included</span>
-          </motion.h2>
+      <section className="relative overflow-hidden">
+        <WaveDivider fillColor="hsl(175 15% 96%)" speed={10} />
+        <div className="relative py-24 px-6" style={{
+          background: "linear-gradient(180deg, hsl(175 15% 96%), hsl(var(--background)))",
+        }}>
+          <div className="absolute inset-0 grid-bg opacity-20" />
+          <WaveDecoration
+            color={`hsl(${accent} / 0.06)`}
+            className="bottom-8 left-0 right-0 h-[80px]"
+          />
+          <div className="relative z-10 max-w-5xl mx-auto">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease }}
+              className="text-3xl md:text-4xl font-light tracking-tight mb-16"
+            >
+              What's <span style={{ color: `hsl(${accent})` }}>included</span>
+            </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {service.features.map((feature, i) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease }}
-                className="group p-8 rounded-lg bg-background/80 backdrop-blur-sm hover:shadow-lg transition-all duration-500"
-                style={{
-                  border: "1px solid hsl(var(--border) / 0.5)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = `0 8px 32px hsl(${accent} / 0.1)`;
-                  e.currentTarget.style.borderColor = `hsl(${accent} / 0.3)`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = "none";
-                  e.currentTarget.style.borderColor = "hsl(var(--border) / 0.5)";
-                }}
-              >
-                <h3 className="text-lg font-medium mb-3 tracking-tight transition-colors duration-300"
-                  style={{ color: undefined }}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {service.features.map((feature, i) => (
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1, ease }}
+                  className="group p-8 rounded-lg bg-background/80 backdrop-blur-sm hover:shadow-lg transition-all duration-500"
+                  style={{
+                    border: "1px solid hsl(var(--border) / 0.5)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.boxShadow = `0 8px 32px hsl(${accent} / 0.1)`;
+                    e.currentTarget.style.borderColor = `hsl(${accent} / 0.3)`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.borderColor = "hsl(var(--border) / 0.5)";
+                  }}
                 >
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground font-light text-sm leading-relaxed">{feature.description}</p>
-              </motion.div>
-            ))}
+                  <h3 className="text-lg font-medium mb-3 tracking-tight">{feature.title}</h3>
+                  <p className="text-muted-foreground font-light text-sm leading-relaxed">{feature.description}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <div className="glow-line" />
-
       {/* Process & Deliverables */}
-      <section className="py-24 px-6">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <section className="py-24 px-6 relative overflow-hidden">
+        <WaveDecoration
+          color="hsl(var(--primary) / 0.04)"
+          className="top-16 left-0 right-0 h-[60px]"
+        />
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -221,10 +237,15 @@ const ServiceDetail = () => {
       </section>
 
       {/* CTA */}
+      <WaveDivider fillColor="hsl(210 25% 11%)" speed={9} />
       <section className="relative py-24 px-6 text-center overflow-hidden" style={{
         background: "linear-gradient(135deg, hsl(210 25% 11%), hsl(175 20% 13%))",
       }}>
         <div className="absolute inset-0 grid-bg-dark opacity-20" />
+        <WaveDecoration
+          color="hsl(175 70% 50% / 0.08)"
+          className="top-10 left-0 right-0 h-[80px]"
+        />
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
