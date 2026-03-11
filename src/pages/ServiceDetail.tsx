@@ -108,10 +108,6 @@ const ServiceDetail = () => {
 
       {/* Description */}
       <section className="py-24 px-6 relative overflow-hidden">
-        <WaveDecoration
-          color="hsl(var(--primary) / 0.04)"
-          className="top-0 left-0 right-0 h-[60px]"
-        />
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.p
             initial={{ opacity: 0, y: 30 }}
