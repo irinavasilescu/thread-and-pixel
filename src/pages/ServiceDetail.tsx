@@ -229,6 +229,7 @@ const ServiceDetail = () => {
       <section className="relative py-24 px-6 text-center overflow-hidden" style={{
         background: "linear-gradient(180deg, hsl(210 22% 12%), hsl(175 20% 13%))",
       }}>
+        <FloatingPixels />
         <div className="absolute inset-0 grid-bg-dark opacity-20" />
         <motion.div
           initial={{ opacity: 0, y: 30 }}
