@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, Fragment } from "react";
 import WaveDivider from "./WaveDivider";
 
 const GlitchText = ({ children, delay = 0 }: { children: string; delay?: number }) => {
@@ -133,7 +133,17 @@ const HeroSection = () => {
             transition={{ duration: 1.2, delay: 0.8 }}
             className="text-gradient-hero font-medium inline-block my-2"
           >
-            digital experiences
+            {"digital experiences".split("").map((char, i) => (
+              <motion.span
+                key={i}
+                className="inline-block"
+                whileHover={{ y: -8, rotate: Math.random() > 0.5 ? 6 : -6, scale: 1.15 }}
+                transition={{ type: "spring", stiffness: 400, damping: 12 }}
+                style={{ cursor: "default" }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
           </motion.span>
           <motion.span
             initial={{ opacity: 0, y: -40, filter: "blur(12px)" }}
@@ -141,7 +151,17 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 1.1 }}
             className="block"
           >
-            pixel by pixel
+            {"pixel by pixel".split("").map((char, i) => (
+              <motion.span
+                key={i}
+                className="inline-block"
+                whileHover={{ y: -6, rotate: Math.random() > 0.5 ? 5 : -5, scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 12 }}
+                style={{ cursor: "default" }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
           </motion.span>
         </motion.h1>
 
@@ -185,29 +205,6 @@ const HeroSection = () => {
           >
             Learn More
           </motion.a>
-        </motion.div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-28 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-3"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 0.8 }}
-      >
-        <motion.span
-          className="font-mono text-[10px] tracking-[0.35em] uppercase"
-          style={{ color: "hsl(220 10% 50%)" }}
-        >
-          Scroll
-        </motion.span>
-        <motion.div className="relative w-[1px] h-8 overflow-hidden" style={{ background: "hsl(0 0% 100% / 0.1)" }}>
-          <motion.div
-            className="absolute top-0 left-0 w-full bg-primary"
-            animate={{ height: ["0%", "100%"], top: ["0%", "0%", "100%"] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            style={{ height: "50%" }}
-          />
         </motion.div>
       </motion.div>
 
