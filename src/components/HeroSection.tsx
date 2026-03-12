@@ -131,7 +131,7 @@ const HeroSection = () => {
                 key={i}
                 className="inline-block"
                 whileHover={{ y: -6, rotate: Math.random() > 0.5 ? 5 : -5, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 12 }}
+                transition={{ type: "spring", stiffness: 600, damping: 25 }}
                 style={{ cursor: "default" }}
               >
                 {char === " " ? "\u00A0" : char}
@@ -149,7 +149,7 @@ const HeroSection = () => {
                 key={i}
                 className="inline-block"
                 whileHover={{ y: -6, rotate: Math.random() > 0.5 ? 5 : -5, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 12 }}
+                transition={{ type: "spring", stiffness: 600, damping: 25 }}
                 style={{ cursor: "default" }}
               >
                 {char === " " ? "\u00A0" : char}
@@ -167,7 +167,7 @@ const HeroSection = () => {
                 key={i}
                 className="inline-block"
                 whileHover={{ y: -6, rotate: Math.random() > 0.5 ? 5 : -5, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 12 }}
+                transition={{ type: "spring", stiffness: 600, damping: 25 }}
                 style={{ cursor: "default" }}
               >
                 {char === " " ? "\u00A0" : char}
