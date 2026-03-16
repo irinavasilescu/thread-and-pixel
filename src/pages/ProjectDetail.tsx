@@ -89,7 +89,7 @@ const ProjectDetail = () => {
 
         {/* Wave transition */}
         <div className="absolute -bottom-1 left-0 right-0 z-20">
-          <WaveDivider fillColor="hsl(var(--background))" speed={9} />
+          <WaveDivider fillColor="hsl(var(--background))" />
         </div>
       </section>
 
@@ -143,7 +143,7 @@ const ProjectDetail = () => {
       )}
 
       {/* Brandbook */}
-      <WaveDivider fillColor="hsl(175 12% 90%)" speed={10} />
+      <WaveDivider fillColor="hsl(175 12% 90%)" />
       <section className="relative py-24 px-6 overflow-hidden" style={{
         background: "linear-gradient(180deg, hsl(175 12% 90%), hsl(var(--background)))",
       }}>
@@ -271,7 +271,7 @@ const ProjectDetail = () => {
       </section>
 
       {/* CTA */}
-      <WaveDivider fillColor="hsl(210 22% 12%)" speed={9} />
+      <WaveDivider fillColor="hsl(210 22% 12%)" />
       <section className="relative py-24 px-6 text-center overflow-hidden" style={{
         background: "linear-gradient(180deg, hsl(210 22% 12%), hsl(175 20% 13%))",
       }}>

@@ -102,7 +102,7 @@ const ServiceDetail = () => {
 
         {/* Wave transition at bottom */}
         <div className="absolute -bottom-1 left-0 right-0 z-20">
-          <WaveDivider fillColor="hsl(var(--background))" speed={8} />
+          <WaveDivider fillColor="hsl(var(--background))" />
         </div>
       </section>
 
@@ -123,7 +123,7 @@ const ServiceDetail = () => {
 
       {/* Features */}
       <section className="relative overflow-hidden">
-        <WaveDivider fillColor="hsl(175 12% 90%)" speed={10} />
+        <WaveDivider fillColor="hsl(175 12% 90%)" />
         <div className="relative py-24 px-6" style={{
           background: "linear-gradient(180deg, hsl(175 12% 90%), hsl(var(--background)))",
         }}>
@@ -223,7 +223,7 @@ const ServiceDetail = () => {
       </section>
 
       {/* CTA */}
-      <WaveDivider fillColor="hsl(210 22% 12%)" speed={9} />
+      <WaveDivider fillColor="hsl(210 22% 12%)" />
       <section className="relative py-24 px-6 text-center overflow-hidden" style={{
         background: "linear-gradient(180deg, hsl(210 22% 12%), hsl(175 20% 13%))",
       }}>

@@ -221,7 +221,7 @@ const HeroSection = () => {
 
       {/* Animated wave transition to next section */}
       <div className="absolute bottom-0 left-0 right-0 z-20">
-        <WaveDivider fillColor="hsl(var(--background))" speed={8} />
+        <WaveDivider fillColor="hsl(var(--background))" />
       </div>
     </section>
   );
