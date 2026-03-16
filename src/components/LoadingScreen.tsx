@@ -15,12 +15,11 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
     <AnimatePresence>
       <motion.div
         className="fixed inset-0 z-[9999] flex items-center justify-center"
-        style={{ background: "hsl(210 25% 8%)" }}
+        style={{ background: "hsl(210 25% 8%)", pointerEvents: phase === "exit" ? "none" : "auto" }}
         initial={{ opacity: 1 }}
         animate={phase === "exit" ? { opacity: 0, scale: 1.1 } : { opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
-        style2={{ pointerEvents: phase === "exit" ? "none" : "auto" }}
       >
         <div className="absolute inset-0 grid-bg-dark opacity-20" />
 
