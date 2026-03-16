@@ -3,112 +3,158 @@ import { useRef } from "react";
 import FloatingPixels from "./FloatingPixels";
 
 const stats = [
-  { value: "150+", label: "Projects Delivered", accent: "175 70% 40%" },
-  { value: "98%", label: "Client Satisfaction", accent: "45 90% 55%" },
-  { value: "5+", label: "Years of Craft", accent: "280 60% 55%" },
+  { value: "150+", label: "Projects Delivered" },
+  { value: "98%", label: "Client Satisfaction" },
+  { value: "5+", label: "Years of Craft" },
+];
+
+const technologies = [
+  { name: "React", category: "Frontend" },
+  { name: "Next.js", category: "Frontend" },
+  { name: "TypeScript", category: "Frontend" },
+  { name: "Tailwind CSS", category: "Frontend" },
+  { name: "Framer Motion", category: "Frontend" },
+  { name: "Node.js", category: "Backend" },
+  { name: "PostgreSQL", category: "Backend" },
+  { name: "Supabase", category: "Backend" },
+  { name: "Stripe", category: "Integrations" },
+  { name: "Figma", category: "Design" },
+  { name: "Webflow", category: "CMS" },
+  { name: "Shopify", category: "E-Commerce" },
+  { name: "WordPress", category: "CMS" },
+  { name: "Vercel", category: "Infrastructure" },
+  { name: "SEO", category: "Growth" },
+  { name: "Analytics", category: "Growth" },
 ];
 
 const AboutSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const textY = useTransform(scrollYProgress, [0, 1], [80, -40]);
-  const statsY = useTransform(scrollYProgress, [0, 1], [100, -20]);
+  const textY = useTransform(scrollYProgress, [0, 1], [60, -30]);
 
   return (
     <section id="about" className="relative py-32 px-6 overflow-hidden" ref={ref}>
       <FloatingPixels />
-      {/* Dark themed background */}
+      {/* Background */}
       <div className="absolute inset-0" style={{
-        background: "linear-gradient(180deg, hsl(210 25% 11%), hsl(200 20% 14%), hsl(175 20% 12%))",
+        background: "linear-gradient(180deg, hsl(210 25% 9%), hsl(210 20% 11%), hsl(210 25% 9%))",
       }} />
-      <div className="absolute inset-0 grid-bg-dark opacity-30" />
-      
-      {/* Subtle glow orbs */}
+      <div className="absolute inset-0 grid-bg-dark opacity-20" />
+
+      {/* Large ambient glow */}
       <motion.div
-        animate={{ scale: [1, 1.3, 1], opacity: [0.08, 0.15, 0.08] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[120px]"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.06, 0.12, 0.06] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full blur-[150px]"
         style={{ background: "hsl(175 70% 40%)" }}
-      />
-      <motion.div
-        animate={{ scale: [1, 1.2, 1], opacity: [0.05, 0.1, 0.05] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-        className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] rounded-full blur-[100px]"
-        style={{ background: "hsl(280 60% 50%)" }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <motion.div style={{ y: textY }}>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}
-              className="font-mono text-xs tracking-[0.3em] uppercase mb-4"
-              style={{ color: "hsl(175 70% 50%)" }}
-            >
-              About us
-            </motion.p>
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-light tracking-tight mb-8 text-white/90"
-            >
-              Where thread
-              <br />
-              meets <span style={{ color: "hsl(175 70% 50%)" }}>pixel</span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="leading-relaxed mb-6 font-light text-white/60"
-            >
-              We are a digital studio obsessed with the intersection of design and technology.
-              Every project is a tapestry — threads of strategy, design, and code woven into
-              seamless digital experiences.
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="leading-relaxed font-light text-white/50"
-            >
-              From startups to established brands, we partner with visionaries who believe
-              their digital presence should be as refined as their product.
-            </motion.p>
-          </motion.div>
+        {/* Header */}
+        <motion.div style={{ y: textY }} className="text-center mb-20">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="font-mono text-xs tracking-[0.3em] uppercase mb-4"
+            style={{ color: "hsl(175 70% 50%)" }}
+          >
+            About us
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl md:text-6xl font-light tracking-tight text-white/90 max-w-3xl mx-auto"
+          >
+            Where thread
+            <br />
+            meets <span style={{ color: "hsl(175 70% 50%)" }}>pixel</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-6 max-w-2xl mx-auto leading-relaxed font-light text-white/50"
+          >
+            We are a digital studio obsessed with the intersection of design and technology.
+            Every project is a tapestry — threads of strategy, design, and code woven into
+            seamless digital experiences.
+          </motion.p>
+        </motion.div>
 
-          <motion.div style={{ y: statsY }} className="grid grid-cols-1 gap-6">
-            {stats.map((stat, i) => (
+        {/* Stats row */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="grid grid-cols-3 gap-4 md:gap-8 mb-24 max-w-3xl mx-auto"
+        >
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.4 + i * 0.1 }}
+              className="text-center group"
+            >
+              <span
+                className="text-3xl md:text-5xl font-light block"
+                style={{ color: "hsl(175 70% 50%)" }}
+              >
+                {stat.value}
+              </span>
+              <div
+                className="w-8 h-[1px] mx-auto my-3 transition-all duration-500 group-hover:w-12"
+                style={{ background: "hsl(175 70% 50% / 0.3)" }}
+              />
+              <p className="font-mono text-[10px] md:text-xs tracking-wider uppercase text-white/35">
+                {stat.label}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Technologies section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5, duration: 0.7 }}
+        >
+          <p className="font-mono text-xs tracking-[0.3em] uppercase text-center mb-10 text-white/30">
+            Technologies we master
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+            {technologies.map((tech, i) => (
               <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, x: 40 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.3 + i * 0.15, ease: [0.22, 1, 0.36, 1], duration: 0.7 }}
-                className="relative p-8 rounded-lg overflow-hidden group transition-all duration-500"
+                key={tech.name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: 0.55 + i * 0.03, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.08, y: -2 }}
+                className="group relative px-5 py-2.5 rounded-full cursor-default transition-all duration-300"
                 style={{
-                  background: "hsl(0 0% 100% / 0.05)",
+                  background: "hsl(0 0% 100% / 0.04)",
                   border: "1px solid hsl(0 0% 100% / 0.08)",
-                  backdropFilter: "blur(8px)",
                 }}
               >
-                {/* Accent line */}
+                {/* Hover glow */}
                 <div
-                  className="absolute left-0 top-0 bottom-0 w-1 transition-all duration-500 group-hover:w-1.5"
-                  style={{ background: `hsl(${stat.accent})` }}
+                  className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background: "hsl(175 70% 40% / 0.08)",
+                    border: "1px solid hsl(175 70% 40% / 0.25)",
+                  }}
                 />
-                <span className="text-4xl md:text-5xl font-light bg-clip-text text-transparent"
-                  style={{ backgroundImage: `linear-gradient(135deg, hsl(${stat.accent}), hsl(${stat.accent} / 0.6))` }}>
-                  {stat.value}
+                <span className="relative font-mono text-xs tracking-wider text-white/50 group-hover:text-white/90 transition-colors duration-300">
+                  {tech.name}
                 </span>
-                <p className="font-mono text-xs tracking-wider uppercase text-white/40 mt-2">{stat.label}</p>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
