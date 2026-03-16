@@ -89,7 +89,7 @@ const ProjectDetail = () => {
 
         {/* Wave transition */}
         <div className="absolute -bottom-1 left-0 right-0 z-20">
-          <WaveDivider fillColor="hsl(var(--background))" speed={9} />
+          <WaveDivider fillColor="hsl(var(--background))" />
         </div>
       </section>
 
