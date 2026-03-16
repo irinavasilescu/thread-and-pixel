@@ -31,7 +31,7 @@ const CustomCursor = () => {
           rafRef.current = 0;
         });
       }
-      if (!visible) setVisible(true);
+      setVisible(true);
     };
 
     const hide = () => setVisible(false);
@@ -44,7 +44,7 @@ const CustomCursor = () => {
       document.removeEventListener("mouseleave", hide);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [visible]);
+  }, []);
 
   // Attach hover listeners with proper cleanup via event delegation
   useEffect(() => {
