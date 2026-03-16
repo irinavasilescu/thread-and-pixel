@@ -22,19 +22,19 @@ const Index = () => {
       <MarqueeBanner className="border-y border-border/50" />
       <ServicesSection />
       {/* Services (light) → Projects (dark) */}
-      <WaveDivider fillColor="hsl(210 20% 13%)" speed={9} />
+      <WaveDivider fillColor="hsl(210 20% 13%)" />
       <ProjectsSection />
       {/* Projects (dark) → Process (light) */}
-      <WaveDivider fillColor="hsl(var(--background))" flip speed={7} />
+      <WaveDivider fillColor="hsl(var(--background))" flip />
       <ProcessSection />
       {/* Process (light) → About (dark) */}
-      <WaveDivider fillColor="hsl(210 25% 11%)" speed={10} />
+      <WaveDivider fillColor="hsl(210 25% 11%)" />
       <AboutSection />
       {/* About (dark) → FAQ (light) */}
-      <WaveDivider fillColor="hsl(var(--background))" flip speed={8} />
+      <WaveDivider fillColor="hsl(var(--background))" flip />
       <FAQSection />
       {/* FAQ (light) → Contact (dark) */}
-      <WaveDivider fillColor="hsl(210 25% 10%)" speed={9} />
+      <WaveDivider fillColor="hsl(210 25% 10%)" />
       <ContactSection />
       <Footer />
     </div>

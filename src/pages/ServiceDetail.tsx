@@ -223,7 +223,7 @@ const ServiceDetail = () => {
       </section>
 
       {/* CTA */}
-      <WaveDivider fillColor="hsl(210 22% 12%)" speed={9} />
+      <WaveDivider fillColor="hsl(210 22% 12%)" />
       <section className="relative py-24 px-6 text-center overflow-hidden" style={{
         background: "linear-gradient(180deg, hsl(210 22% 12%), hsl(175 20% 13%))",
       }}>
