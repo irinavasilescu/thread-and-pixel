@@ -10,21 +10,20 @@ const stats = [
 
 const technologies = [
   { name: "React", category: "Frontend" },
-  { name: "Next.js", category: "Frontend" },
+  { name: "Angular", category: "Frontend" },
+  { name: "Vue", category: "Frontend" },
   { name: "TypeScript", category: "Frontend" },
-  { name: "Tailwind CSS", category: "Frontend" },
-  { name: "Framer Motion", category: "Frontend" },
-  { name: "Node.js", category: "Backend" },
-  { name: "PostgreSQL", category: "Backend" },
-  { name: "Supabase", category: "Backend" },
-  { name: "Stripe", category: "Integrations" },
+  { name: "JavaScript", category: "Frontend" },
   { name: "Figma", category: "Design" },
-  { name: "Webflow", category: "CMS" },
   { name: "Shopify", category: "E-Commerce" },
   { name: "WordPress", category: "CMS" },
-  { name: "Vercel", category: "Infrastructure" },
+  { name: "Squarespace", category: "CMS" },
   { name: "SEO", category: "Growth" },
-  { name: "Analytics", category: "Growth" },
+  { name: "Node.js", category: "Backend" },
+  { name: "PHP", category: "Backend" },
+  { name: "Go", category: "Backend" },
+  { name: "MongoDB", category: "Database" },
+  { name: "MySQL", category: "Database" },
 ];
 
 const AboutSection = () => {
