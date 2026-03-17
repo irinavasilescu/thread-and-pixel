@@ -24,19 +24,18 @@ const Contact = () => {
     e.preventDefault();
     setSending(true);
     try {
-      await emailjs.send(
-        "service_elow43a",
-        "template_4je3rch",
-        {
-          to_email: "contact@threadandpixel.eu",
-          from_name: formState.name,
-          from_email: formState.email,
-          company: formState.company,
-          service: formState.service,
-          message: formState.message,
-        },
-        "wibDA9Q-rf5Zrxd51"
-      );
+      const templateParams = {
+        to_email: "contact@threadandpixel.eu",
+        from_name: formState.name,
+        from_email: formState.email,
+        company: formState.company,
+        service: formState.service,
+        message: formState.message,
+      };
+      await Promise.all([
+        emailjs.send("service_elow43a", "template_mtnuz8e", templateParams, "wibDA9Q-rf5Zrxd51"),
+        emailjs.send("service_elow43a", "template_4je3rch", templateParams, "wibDA9Q-rf5Zrxd51"),
+      ]);
       setSubmitted(true);
     } catch (error) {
       console.error("EmailJS error:", error);
