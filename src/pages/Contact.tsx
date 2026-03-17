@@ -18,10 +18,31 @@ const contactInfo = [
 const Contact = () => {
   const [formState, setFormState] = useState({ name: "", email: "", company: "", service: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    try {
+      await emailjs.send(
+        "service_elow43a",
+        "template_4je3rch",
+        {
+          from_name: formState.name,
+          from_email: formState.email,
+          company: formState.company,
+          service: formState.service,
+          message: formState.message,
+        },
+        "wibDA9Q-rf5Zrxd51"
+      );
+      setSubmitted(true);
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      alert("Failed to send message. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
