@@ -22,7 +22,7 @@ const WaveDivider = ({
         viewBox="0 0 1440 120"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-[60px] md:h-[80px] lg:h-[100px] block"
+        className="w-[120%] -ml-[10%] h-[60px] md:h-[80px] lg:h-[100px] block"
         preserveAspectRatio="none"
       >
         {/* Shadow wave */}
