@@ -28,6 +28,7 @@ const Contact = () => {
         "service_elow43a",
         "template_4je3rch",
         {
+          to_email: "contact@threadandpixel.eu",
           from_name: formState.name,
           from_email: formState.email,
           company: formState.company,
