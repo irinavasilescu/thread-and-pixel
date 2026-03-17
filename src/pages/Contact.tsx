@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowUpRight, Mail, MapPin, Clock } from "lucide-react";
+import emailjs from "@emailjs/browser";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
@@ -17,10 +18,31 @@ const contactInfo = [
 const Contact = () => {
   const [formState, setFormState] = useState({ name: "", email: "", company: "", service: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    try {
+      await emailjs.send(
+        "service_elow43a",
+        "template_4je3rch",
+        {
+          from_name: formState.name,
+          from_email: formState.email,
+          company: formState.company,
+          service: formState.service,
+          message: formState.message,
+        },
+        "wibDA9Q-rf5Zrxd51"
+      );
+      setSubmitted(true);
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      alert("Failed to send message. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -165,12 +187,14 @@ const Contact = () => {
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="inline-flex items-center gap-3 font-mono text-sm tracking-wider uppercase px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 rounded-sm mt-4"
+                  disabled={sending}
+                  whileHover={{ scale: sending ? 1 : 1.02 }}
+                  whileTap={{ scale: sending ? 1 : 0.98 }}
+                  className="inline-flex items-center gap-3 font-mono text-sm tracking-wider uppercase px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 rounded-sm mt-4 disabled:opacity-60"
                 >
-                  Send message <ArrowUpRight size={16} />
+                  {sending ? "Sending..." : "Send message"} <ArrowUpRight size={16} />
                 </motion.button>
+
               </form>
             )}
           </motion.div>
