@@ -187,12 +187,13 @@ const Contact = () => {
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="inline-flex items-center gap-3 font-mono text-sm tracking-wider uppercase px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 rounded-sm mt-4"
+                  disabled={sending}
+                  whileHover={{ scale: sending ? 1 : 1.02 }}
+                  whileTap={{ scale: sending ? 1 : 0.98 }}
+                  className="inline-flex items-center gap-3 font-mono text-sm tracking-wider uppercase px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 rounded-sm mt-4 disabled:opacity-60"
                 >
-                   Send message <ArrowUpRight size={16} />
-                 </motion.button>
+                  {sending ? "Sending..." : "Send message"} <ArrowUpRight size={16} />
+                </motion.button>
 
               </form>
             )}
