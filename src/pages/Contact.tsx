@@ -191,8 +191,9 @@ const Contact = () => {
                   whileTap={{ scale: 0.98 }}
                   className="inline-flex items-center gap-3 font-mono text-sm tracking-wider uppercase px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 rounded-sm mt-4"
                 >
-                  Send message <ArrowUpRight size={16} />
-                </motion.button>
+                   Send message <ArrowUpRight size={16} />
+                 </motion.button>
+
               </form>
             )}
           </motion.div>
