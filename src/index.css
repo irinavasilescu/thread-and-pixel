@@ -194,14 +194,14 @@
 
 /* Wave divider animations using CSS transforms instead of path morphing */
 @keyframes wave-sway {
-  0%, 100% { transform: scaleY(1) translateX(0); }
-  33% { transform: scaleY(1.15) translateX(-1%); }
-  66% { transform: scaleY(0.9) translateX(1%); }
+  0%, 100% { transform: scaleY(1); }
+  33% { transform: scaleY(1.12); }
+  66% { transform: scaleY(0.92); }
 }
 
 @keyframes wave-sway-slow {
-  0%, 100% { transform: scaleY(1) translateX(0); }
-  50% { transform: scaleY(1.1) translateX(0.5%); }
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.08); }
 }
 
 .animate-wave {
