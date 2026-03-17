@@ -142,18 +142,23 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 0.3, delay: 0.8 }}
-            className="text-gradient-hero font-medium inline-block my-2"
+            className="text-gradient-hero font-medium inline-flex flex-wrap justify-center my-2"
           >
-            {"digital experiences".split("").map((char, i) => (
-              <motion.span
-                key={i}
-                className="inline-block"
-                whileHover={{ y: -6, rotate: Math.random() > 0.5 ? 5 : -5, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 600, damping: 25 }}
-                style={{ cursor: "default" }}
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
+            {"digital experiences".split(" ").map((word, wi) => (
+              <span key={wi} className="inline-block whitespace-nowrap">
+                {wi > 0 && <span>{"\u00A0"}</span>}
+                {word.split("").map((char, ci) => (
+                  <motion.span
+                    key={ci}
+                    className="inline-block"
+                    whileHover={{ y: -6, rotate: Math.random() > 0.5 ? 5 : -5, scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 600, damping: 25 }}
+                    style={{ cursor: "default" }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
             ))}
           </motion.span>
           <motion.span
