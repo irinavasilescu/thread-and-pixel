@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowUpRight, Mail, MapPin, Clock } from "lucide-react";
+import emailjs from "@emailjs/browser";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
