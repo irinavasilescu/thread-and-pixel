@@ -10,7 +10,7 @@ import FloatingPixels from "@/components/FloatingPixels";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "hello@threadandpixel.com", href: "mailto:hello@threadandpixel.com" },
+  { icon: Mail, label: "Email", value: "contact@threadandpixel.eu", href: "mailto:contact@threadandpixel.eu" },
   { icon: MapPin, label: "Location", value: "Remote-first, Worldwide", href: null },
   { icon: Clock, label: "Response Time", value: "Within 24 hours", href: null },
 ];
@@ -229,10 +229,10 @@ const Contact = () => {
             <div className="border border-border/50 p-6 rounded-sm bg-surface">
               <p className="font-mono text-[10px] tracking-wider uppercase text-muted-foreground mb-3">Prefer email?</p>
               <a
-                href="mailto:hello@threadandpixel.com"
+                href="mailto:contact@threadandpixel.eu"
                 className="text-primary hover:underline font-light text-sm"
               >
-                hello@threadandpixel.com
+                contact@threadandpixel.eu
               </a>
             </div>
           </motion.div>
