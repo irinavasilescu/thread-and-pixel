@@ -229,7 +229,7 @@ const Contact = () => {
             <div className="border border-border/50 p-6 rounded-sm bg-surface">
               <p className="font-mono text-[10px] tracking-wider uppercase text-muted-foreground mb-3">Prefer email?</p>
               <a
-                href="mailto:hello@threadandpixel.com"
+                href="mailto:contact@threadandpixel.eu"
                 className="text-primary hover:underline font-light text-sm"
               >
                 hello@threadandpixel.com
