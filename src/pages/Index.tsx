@@ -28,7 +28,7 @@ const Index = () => {
       <WaveDivider fillColor="hsl(var(--background))" flip />
       <ProcessSection />
       {/* Process (light) → About (dark) */}
-      <WaveDivider fillColor="hsl(210 25% 11%)" />
+      <WaveDivider fillColor="hsl(210 25% 9%)" />
       <AboutSection />
       {/* About (dark) → FAQ (light) */}
       <WaveDivider fillColor="hsl(var(--background))" flip />
