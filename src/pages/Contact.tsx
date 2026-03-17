@@ -232,7 +232,7 @@ const Contact = () => {
                 href="mailto:contact@threadandpixel.eu"
                 className="text-primary hover:underline font-light text-sm"
               >
-                hello@threadandpixel.com
+                contact@threadandpixel.eu
               </a>
             </div>
           </motion.div>
