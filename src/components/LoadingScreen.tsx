@@ -2,146 +2,87 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
-  const [phase, setPhase] = useState<"logo" | "text" | "exit">("logo");
+  const [phase, setPhase] = useState<"reveal" | "hold" | "exit">("reveal");
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase("text"), 600);
+    const t1 = setTimeout(() => setPhase("hold"), 1000);
     const t2 = setTimeout(() => setPhase("exit"), 1800);
-    const t3 = setTimeout(onComplete, 2400);
+    const t3 = setTimeout(onComplete, 2300);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, [onComplete]);
+
+  const letters = "Thread".split("");
+  const letters2 = "Pixel".split("");
 
   return (
     <AnimatePresence>
       <motion.div
         className="fixed inset-0 z-[9999] flex items-center justify-center"
-        style={{ background: "hsl(210 25% 8%)", pointerEvents: phase === "exit" ? "none" : "auto" }}
+        style={{ background: "hsl(210 25% 8%)" }}
         initial={{ opacity: 1 }}
-        animate={phase === "exit" ? { opacity: 0, scale: 1.1 } : { opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
+        animate={phase === "exit" ? { opacity: 0 } : { opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
       >
-        <div className="absolute inset-0 grid-bg-dark opacity-20" />
+        {/* Subtle grid */}
+        <div className="absolute inset-0 grid-bg-dark opacity-15" />
 
-        {/* Radiating pulse rings */}
-        {[0, 1, 2].map((i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full border border-primary/15"
-            initial={{ width: 0, height: 0, opacity: 0.5 }}
-            animate={{ width: 500 + i * 200, height: 500 + i * 200, opacity: 0 }}
-            transition={{ duration: 2.5, delay: 0.3 + i * 0.4, repeat: Infinity, ease: "easeOut" }}
-          />
-        ))}
+        {/* Horizontal glow line */}
+        <motion.div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[1px]"
+          style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), transparent)" }}
+          initial={{ width: 0 }}
+          animate={{ width: phase === "reveal" ? "240px" : "300px" }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        />
 
-        <div className="relative flex flex-col items-center gap-8">
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative"
+        <div className="relative font-mono text-2xl sm:text-3xl tracking-[0.3em] uppercase select-none">
+          {/* Thread */}
+          {letters.map((char, i) => (
+            <motion.span
+              key={`t-${i}`}
+              className="inline-block text-white/90"
+              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.4, delay: i * 0.06, ease: "easeOut" }}
+            >
+              {char}
+            </motion.span>
+          ))}
+
+          {/* & */}
+          <motion.span
+            className="inline-block text-primary mx-[2px]"
+            initial={{ opacity: 0, scale: 0, rotate: -180 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Glow behind logo */}
-            <motion.div
-              className="absolute -inset-8 rounded-full blur-[60px]"
-              style={{ background: "hsl(var(--primary) / 0.25)" }}
-              animate={{ scale: [1, 1.4, 1], opacity: [0.2, 0.5, 0.2] }}
-              transition={{ duration: 2.5, repeat: Infinity }}
-            />
+            &amp;
+          </motion.span>
 
-            {/* Logo — T&P monogram */}
-            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" className="relative z-10">
-              {/* T letter */}
-              <motion.line
-                x1="20" y1="25" x2="50" y2="25"
-                stroke="hsl(var(--primary))"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
-              />
-              <motion.line
-                x1="35" y1="25" x2="35" y2="55"
-                stroke="hsl(var(--primary))"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 0.5, delay: 0.3, ease: "easeInOut" }}
-              />
-
-              {/* & symbol — small */}
-              <motion.path
-                d="M44 42 C42 38, 46 35, 48 37 C50 39, 44 44, 44 44 C44 44, 52 48, 48 52 C46 54, 42 52, 44 48"
-                stroke="hsl(0 0% 100% / 0.3)"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                fill="none"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 0.6, delay: 0.5, ease: "easeInOut" }}
-              />
-
-              {/* P letter */}
-              <motion.line
-                x1="55" y1="25" x2="55" y2="55"
-                stroke="hsl(var(--primary))"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 0.5, delay: 0.4, ease: "easeInOut" }}
-              />
-              <motion.path
-                d="M55 25 C55 25, 75 25, 75 37 C75 49, 55 49, 55 49"
-                stroke="hsl(var(--primary))"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                fill="none"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 0.7, delay: 0.5, ease: "easeInOut" }}
-              />
-
-              {/* Pixel accents */}
-              {[
-                [22, 60], [30, 66], [38, 60], [58, 60], [66, 66], [74, 60],
-              ].map(([cx, cy], i) => (
-                <motion.rect
-                  key={i}
-                  x={cx - 2}
-                  y={cy - 2}
-                  width={4}
-                  height={4}
-                  fill="hsl(var(--primary))"
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: [0, 1, 0.4], scale: 1 }}
-                  transition={{ delay: 0.8 + i * 0.08, duration: 0.4 }}
-                />
-              ))}
-            </svg>
-          </motion.div>
-
-          {/* Brand text */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={phase === "text" || phase === "exit" ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="text-center"
-          >
-            <p className="font-mono text-xs tracking-[0.3em] uppercase text-white/70">
-              Thread<span className="text-primary">&</span>Pixel
-            </p>
-            <motion.div
-              className="mt-4 h-[1px] mx-auto"
-              style={{ background: "hsl(var(--primary) / 0.3)" }}
-              initial={{ width: 0 }}
-              animate={phase === "text" || phase === "exit" ? { width: 100 } : {}}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            />
-          </motion.div>
+          {/* Pixel */}
+          {letters2.map((char, i) => (
+            <motion.span
+              key={`p-${i}`}
+              className="inline-block text-white/90"
+              initial={{ opacity: 0, y: -20, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.4, delay: 0.5 + i * 0.06, ease: "easeOut" }}
+            >
+              {char}
+            </motion.span>
+          ))}
         </div>
+
+        {/* Bottom tagline */}
+        <motion.p
+          className="absolute bottom-[45%] sm:bottom-[42%] mt-6 font-mono text-[10px] tracking-[0.4em] uppercase text-white/30"
+          style={{ transform: "translateY(60px)" }}
+          initial={{ opacity: 0 }}
+          animate={phase !== "reveal" ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Digital Studio
+        </motion.p>
       </motion.div>
     </AnimatePresence>
   );
