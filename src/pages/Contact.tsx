@@ -10,7 +10,7 @@ import FloatingPixels from "@/components/FloatingPixels";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "hello@threadandpixel.com", href: "mailto:hello@threadandpixel.com" },
+  { icon: Mail, label: "Email", value: "contact@threadandpixel.eu", href: "mailto:contact@threadandpixel.eu" },
   { icon: MapPin, label: "Location", value: "Remote-first, Worldwide", href: null },
   { icon: Clock, label: "Response Time", value: "Within 24 hours", href: null },
 ];
