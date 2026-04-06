@@ -1,7 +1,7 @@
-import auroraWellness1 from "@/assets/aurora-wellness-1.jpg";
-import auroraWellness2 from "@/assets/aurora-wellness-2.jpg";
-import auroraWellness3 from "@/assets/aurora-wellness-3.jpg";
-import auroraWellness4 from "@/assets/aurora-wellness-4.jpg";
+import primeFinish1 from "@/assets/prime-finish-1.png";
+import primeFinish2 from "@/assets/prime-finish-2.png";
+import primeFinish3 from "@/assets/prime-finish-3.png";
+import primeFinish4 from "@/assets/prime-finish-4.png";
 import neonStreetwear1 from "@/assets/neon-streetwear-1.jpg";
 import neonStreetwear2 from "@/assets/neon-streetwear-2.jpg";
 import neonStreetwear3 from "@/assets/neon-streetwear-3.jpg";
@@ -33,14 +33,12 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "aurora-wellness",
-    title: "Aurora Wellness",
+    slug: "prime-finish",
+    title: "Prime Finish",
     category: "Website Design & Development",
-    tagline: "A serene digital experience for a luxury wellness brand.",
-    description:
-      "Aurora Wellness needed a complete digital overhaul to match their premium in-person experience. We crafted an immersive website that blends calming aesthetics with intuitive booking functionality, resulting in a 40% increase in online reservations.",
-    clientExpectation:
-      "The client wanted a website that felt like stepping into their spa — tranquil, refined, and effortlessly navigable. They needed seamless booking integration and a design that conveyed luxury without excess.",
+    tagline: "A robust digital presence for an independent European contractor specializing in industrial, civil and naval construction.",
+    description: "We designed a high-autority interface focusing on technical mastery. By utilizing industrial-grade imagery and a structured service hierarchy (Industrial, Civil, Naval), we positioned the brand as a premier partner for multifaceted infrastructure projects.",
+    clientExpectation: "Prime Finish operates across complex sectors, from structural steelwork to ship repair. They needed a digital presence that moved away from general renovation and instead communicated their capacity for large-scale, high-stakes industrial projects and European-wide logistics.",
     workDone: [
       "Full brand identity refresh for digital presence",
       "Custom UI/UX design with micro-interactions",
@@ -49,16 +47,16 @@ export const projects: Project[] = [
       "SEO optimization for local search",
     ],
     brandColors: [
-      { name: "Sage", hex: "#8FAE8B" },
-      { name: "Cream", hex: "#F5F0E8" },
-      { name: "Charcoal", hex: "#2D2D2D" },
-      { name: "Gold Accent", hex: "#C9A96E" },
+      { name: "Blaze Orange", hex: "#FF5E14" },
+      { name: "Deep Navy", hex: "#01165B" },
+      { name: "Charcoal", hex: "#565656" },
+      { name: "Platinum", hex: "#F3F4F5" },
     ],
-    fonts: ["Cormorant Garamond", "DM Sans"],
-    keyElements: ["Organic shapes", "Soft gradients", "Generous whitespace", "Natural textures"],
-    screenshots: [auroraWellness1, auroraWellness2, auroraWellness3, auroraWellness4],
+    fonts: ["Poppins"],
+    keyElements: ["Geometric precision", "High-contrast industrial tones", "Structured hierarchy", "Utility-driven design"],
+    screenshots: [primeFinish1, primeFinish2, primeFinish3, primeFinish4],
     technologies: ["React", "Tailwind CSS", "Framer Motion", "Supabase"],
-    previewImage: auroraWellness1,
+    previewImage: primeFinish1,
   },
   {
     slug: "neon-streetwear",
