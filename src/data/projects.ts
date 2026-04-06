@@ -2,10 +2,10 @@ import primeFinish1 from "@/assets/prime-finish-1.png";
 import primeFinish2 from "@/assets/prime-finish-2.png";
 import primeFinish3 from "@/assets/prime-finish-3.png";
 import primeFinish4 from "@/assets/prime-finish-4.png";
-import neonStreetwear1 from "@/assets/neon-streetwear-1.jpg";
-import neonStreetwear2 from "@/assets/neon-streetwear-2.jpg";
-import neonStreetwear3 from "@/assets/neon-streetwear-3.jpg";
-import neonStreetwear4 from "@/assets/neon-streetwear-4.jpg";
+import croseteleIrinei1 from "@/assets/crosetele-irinei-1.png";
+import croseteleIrinei2 from "@/assets/crosetele-irinei-2.png";
+import croseteleIrinei3 from "@/assets/crosetele-irinei-3.png";
+import croseteleIrinei4 from "@/assets/crosetele-irinei-4.png";
 import terraArchitecture1 from "@/assets/terra-architecture-1.jpg";
 import terraArchitecture2 from "@/assets/terra-architecture-2.jpg";
 import terraArchitecture3 from "@/assets/terra-architecture-3.jpg";
@@ -60,8 +60,8 @@ export const projects: Project[] = [
     previewImage: primeFinish1,
   },
   {
-    slug: "neon-streetwear",
-    title: "Neon Streetwear",
+    slug: "crosetele-irinei",
+    title: "Croșetele Irinei",
     category: "E-Commerce",
     tagline: "A bold e-commerce platform for an urban fashion brand.",
     description:
@@ -76,16 +76,16 @@ export const projects: Project[] = [
       "Performance optimization achieving 95+ Lighthouse score",
     ],
     brandColors: [
-      { name: "Electric Lime", hex: "#CCFF00" },
-      { name: "Midnight", hex: "#0A0A0A" },
-      { name: "Concrete", hex: "#B0B0B0" },
-      { name: "Hot Pink", hex: "#FF2D7B" },
+      { name: "Cinnabar", hex: "#FE3636" },
+      { name: "Pastel Petal", hex: "#F8C9D3" },
+      { name: "Snow", hex: "#FFF8FB" },
+      { name: "Graphite", hex: "#373436" },
     ],
-    fonts: ["Clash Display", "Space Mono"],
+    fonts: ["Rubik Mono One", "Rubik"],
     keyElements: ["High-contrast typography", "Grid-breaking layouts", "Motion-heavy transitions", "Dark mode default"],
-    screenshots: [neonStreetwear1, neonStreetwear2, neonStreetwear3, neonStreetwear4],
-    technologies: ["Next.js", "Stripe", "Sanity CMS", "Vercel"],
-    previewImage: neonStreetwear1,
+    screenshots: [croseteleIrinei1, croseteleIrinei2, croseteleIrinei3, croseteleIrinei4],
+    technologies: ["Shopify"],
+    previewImage: croseteleIrinei1,
   },
   {
     slug: "terra-architecture",
