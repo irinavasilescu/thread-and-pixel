@@ -8,10 +8,10 @@
   },
   "hero": {
     "tag": "Studio Digital Creativ",
-    "line1": "Țesem",
+    "line1": "Construim",
     "line2": "experiențe digitale",
     "line3": "pixel cu pixel",
-    "subtitle": "Creăm website-uri premium, platforme e-commerce și strategii digitale care duc brandurile în viitor.",
+    "subtitle": "Creăm website-uri premium, platforme e-commerce și strategii digitale care proiectează brandurile în viitor.",
     "cta1": "Explorează Serviciile",
     "cta2": "Află Mai Multe"
   },
@@ -133,8 +133,8 @@
       "crosetele-irinei": {
         "category": "E-Commerce",
         "title": "Croșetele Irinei",
-        "tagline": "Un website e-commerce personalizat pentru un brand sustenabil de croșetat manual.",
-        "description": "Croșetele Irinei este un brand boutique centrat pe sustenabilitate și mișcarea \"slow-made\". Obiectivul a fost tranziția de la un model de vânzări exclusiv pe social media la un magazin digital profesionist, de înaltă performanță. Am dezvoltat o platformă care păstrează identitatea brandului, oferind o experiență modernă de cumpărare.",
+        "tagline": "Un website e-commerce personalizat pentru un brand sustenabil de obiecte croșetate.",
+        "description": "Croșetele Irinei este un brand centrat pe sustenabilitate și mișcarea \"slow-made\". Obiectivul a fost tranziția de la un model de vânzări exclusiv pe social media la un magazin digital profesionist, de înaltă performanță. Am dezvoltat o platformă care păstrează identitatea brandului, oferind o experiență modernă de cumpărare.",
         "clientExpectation": "Brandul avea nevoie să se îndepărteze de \"dezordinea\" tipică a e-commerce-ului. Provocarea principală a fost echilibrarea imaginilor de înaltă rezoluție, esențiale pentru prezentarea texturilor firelor, cu obiectivele de performanță. Obiectivele cheie au inclus reducerea abandonului coșului și crearea unui flux personalizat de adopție pentru articole unice.",
         "workDone": [
           "Arhitectură Shopify personalizată",
@@ -184,9 +184,9 @@
     "titleHighlight": "pixelul",
     "description": "Suntem un studio digital obsedat de intersecția dintre design și tehnologie. Fiecare proiect este o tapiserie — fire de strategie, design și cod împletite în experiențe digitale fără cusur.",
     "stats": {
-      "projects": { "value": "150+", "label": "Proiecte Livrate" },
-      "satisfaction": { "value": "98%", "label": "Satisfacție Client" },
-      "years": { "value": "5+", "label": "Ani de Meșteșug" }
+      "projects": { "value": "100%", "label": "Design exclusiv" },
+      "satisfaction": { "value": "100%", "label": "Atenție la detalii" },
+      "years": { "value": "8+", "label": "Ani de expertiză" }
     },
     "techTitle": "Tehnologii pe care le stăpânim"
   },

@@ -134,7 +134,7 @@
         "category": "E-Commerce",
         "title": "Croșetele Irinei",
         "tagline": "A bespoke e-commerce website for a sustainable, handmade crochet brand.",
-        "description": "Croșetele Irinei is a boutique brand centered on sustainability and the \"slow-made\" movement. The goal was to transition from a social-media-only sales model to a professional, high-performance digital storefront. We developed a platform that preserves the brand's identity, while delivering a modern shopping experience.",
+        "description": "Croșetele Irinei is a brand centered on sustainability and the \"slow-made\" movement. The goal was to transition from a social-media-only sales model to a professional, high-performance digital storefront. We developed a platform that preserves the brand's identity, while delivering a modern shopping experience.",
         "clientExpectation": "The brand needed to move away from the \"clutter\" of typical e-commerce. The primary challenge was balancing high-resolution imagery, essential for showing yarn textures, with high performance goals. Key objectives included reducing cart abandonment and creating a custom adoption flow for one-of-a-kind items.",
         "workDone": [
           "Custom Shopify architecture",
@@ -184,9 +184,9 @@
     "titleHighlight": "pixel",
     "description": "We are a digital studio obsessed with the intersection of design and technology. Every project is a tapestry — threads of strategy, design, and code woven into seamless digital experiences.",
     "stats": {
-      "projects": { "value": "150+", "label": "Projects Delivered" },
-      "satisfaction": { "value": "98%", "label": "Client Satisfaction" },
-      "years": { "value": "5+", "label": "Years of Craft" }
+      "projects": { "value": "100%", "label": "Exclusive design" },
+      "satisfaction": { "value": "100%", "label": "Attention to detail" },
+      "years": { "value": "8+", "label": "Years of Craft" }
     },
     "techTitle": "Technologies we master"
   },
