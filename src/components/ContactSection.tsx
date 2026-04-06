@@ -2,22 +2,22 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import FloatingPixels from "./FloatingPixels";
 
 const ContactSection = () => {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="contact" className="relative py-32 px-6 overflow-hidden" ref={ref}>
       <FloatingPixels />
-      {/* Dark background continuing from FAQ */}
       <div className="absolute inset-0" style={{
         background: "linear-gradient(180deg, hsl(210 25% 10%), hsl(210 20% 12%))",
       }} />
       <div className="absolute inset-0 grid-bg-dark opacity-10" />
       
-      {/* Glow */}
       <motion.div
         animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.15, 0.08] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
@@ -33,7 +33,7 @@ const ContactSection = () => {
           className="font-mono text-xs tracking-[0.3em] uppercase mb-4"
           style={{ color: "hsl(175 70% 50%)" }}
         >
-          Let's talk
+          {t("contactSection.label")}
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
@@ -41,9 +41,9 @@ const ContactSection = () => {
           transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="text-4xl md:text-6xl font-light tracking-tight mb-8 text-white/90"
         >
-          Ready to craft
+          {t("contactSection.title1")}
           <br />
-          something <span style={{ color: "hsl(175 70% 50%)" }}>extraordinary</span>?
+          {t("contactSection.title2")} <span style={{ color: "hsl(175 70% 50%)" }}>{t("contactSection.titleHighlight")}</span>?
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -51,7 +51,7 @@ const ContactSection = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-white/50 text-lg max-w-xl mx-auto mb-12 font-light"
         >
-          Tell us about your project and let's explore how we can bring your vision to life.
+          {t("contactSection.description")}
         </motion.p>
 
         <motion.div
@@ -65,7 +65,7 @@ const ContactSection = () => {
             to="/contact"
             className="inline-flex items-center gap-3 font-mono text-sm tracking-wider uppercase px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 rounded-sm"
           >
-            Start a conversation
+            {t("contactSection.cta")}
             <ArrowUpRight size={16} />
           </Link>
         </motion.div>
