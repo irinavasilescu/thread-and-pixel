@@ -40,11 +40,12 @@ export const projects: Project[] = [
     description: "We designed a high-autority interface focusing on technical mastery. By utilizing industrial-grade imagery and a structured service hierarchy (Industrial, Civil, Naval), we positioned the brand as a premier partner for multifaceted infrastructure projects.",
     clientExpectation: "Prime Finish operates across complex sectors, from structural steelwork to ship repair. They needed a digital presence that moved away from general renovation and instead communicated their capacity for large-scale, high-stakes industrial projects and European-wide logistics.",
     workDone: [
-      "Full brand identity refresh for digital presence",
-      "Custom UI/UX design with micro-interactions",
-      "Booking system integration with real-time availability",
-      "Mobile-first responsive development",
-      "SEO optimization for local search",
+      "Global industrial brand alignment",
+      "High-performance technical UI/UX",
+      "Service inquiry & lead generation system",
+      "Multi-device performance engineering",
+      "European-wide SEO & technical optimization",
+      "Multi-lingual localization"
     ],
     brandColors: [
       { name: "Blaze Orange", hex: "#FF5E14" },
@@ -55,7 +56,7 @@ export const projects: Project[] = [
     fonts: ["Poppins"],
     keyElements: ["Geometric precision", "High-contrast industrial tones", "Structured hierarchy", "Utility-driven design"],
     screenshots: [primeFinish1, primeFinish2, primeFinish3, primeFinish4],
-    technologies: ["React", "Tailwind CSS", "Framer Motion", "Supabase"],
+    technologies: ["Wordpress", "TranslatePress"],
     previewImage: primeFinish1,
   },
   {
