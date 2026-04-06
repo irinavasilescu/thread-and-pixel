@@ -1,12 +1,7 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useTranslation } from "react-i18next";
 import FloatingPixels from "./FloatingPixels";
-
-const stats = [
-  { value: "150+", label: "Projects Delivered" },
-  { value: "98%", label: "Client Satisfaction" },
-  { value: "5+", label: "Years of Craft" },
-];
 
 const technologies = [
   { name: "React", category: "Frontend" },
@@ -27,21 +22,26 @@ const technologies = [
 ];
 
 const AboutSection = () => {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const textY = useTransform(scrollYProgress, [0, 1], [60, -30]);
 
+  const stats = [
+    { value: t("about.stats.projects.value"), label: t("about.stats.projects.label") },
+    { value: t("about.stats.satisfaction.value"), label: t("about.stats.satisfaction.label") },
+    { value: t("about.stats.years.value"), label: t("about.stats.years.label") },
+  ];
+
   return (
     <section id="about" className="relative py-32 px-6 overflow-hidden" ref={ref}>
       <FloatingPixels />
-      {/* Background */}
       <div className="absolute inset-0" style={{
         background: "linear-gradient(180deg, hsl(210 25% 9%), hsl(210 20% 11%), hsl(210 25% 9%))",
       }} />
       <div className="absolute inset-0 grid-bg-dark opacity-20" />
 
-      {/* Large ambient glow */}
       <motion.div
         animate={{ scale: [1, 1.2, 1], opacity: [0.06, 0.12, 0.06] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -50,7 +50,6 @@ const AboutSection = () => {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
         <motion.div style={{ y: textY }} className="text-center mb-20">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -59,7 +58,7 @@ const AboutSection = () => {
             className="font-mono text-xs tracking-[0.3em] uppercase mb-4"
             style={{ color: "hsl(175 70% 50%)" }}
           >
-            About us
+            {t("about.label")}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -67,9 +66,9 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-6xl font-light tracking-tight text-white/90 max-w-3xl mx-auto"
           >
-            Where thread
+            {t("about.title1")}
             <br />
-            meets <span style={{ color: "hsl(175 70% 50%)" }}>pixel</span>
+            {t("about.title2")} <span style={{ color: "hsl(175 70% 50%)" }}>{t("about.titleHighlight")}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -77,13 +76,10 @@ const AboutSection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-6 max-w-2xl mx-auto leading-relaxed font-light text-white/50"
           >
-            We are a digital studio obsessed with the intersection of design and technology.
-            Every project is a tapestry — threads of strategy, design, and code woven into
-            seamless digital experiences.
+            {t("about.description")}
           </motion.p>
         </motion.div>
 
-        {/* Stats row */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -98,10 +94,7 @@ const AboutSection = () => {
               transition={{ delay: 0.4 + i * 0.1 }}
               className="text-center group"
             >
-              <span
-                className="text-3xl md:text-5xl font-light block"
-                style={{ color: "hsl(175 70% 50%)" }}
-              >
+              <span className="text-3xl md:text-5xl font-light block" style={{ color: "hsl(175 70% 50%)" }}>
                 {stat.value}
               </span>
               <div
@@ -115,14 +108,13 @@ const AboutSection = () => {
           ))}
         </motion.div>
 
-        {/* Technologies section */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.5, duration: 0.7 }}
         >
           <p className="font-mono text-xs tracking-[0.3em] uppercase text-center mb-10 text-white/30">
-            Technologies we master
+            {t("about.techTitle")}
           </p>
 
           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
@@ -139,7 +131,6 @@ const AboutSection = () => {
                   border: "1px solid hsl(0 0% 100% / 0.08)",
                 }}
               >
-                {/* Hover glow */}
                 <div
                   className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{

@@ -1,4 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className="border-t border-border/50 py-10 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
@@ -6,7 +9,7 @@ const Footer = () => {
           Thread<span className="text-primary">&</span>Pixel
         </p>
         <p className="font-mono text-xs text-text-dim">
-          © {new Date().getFullYear()} All rights reserved.
+          © {new Date().getFullYear()} {t("footer.rights")}
         </p>
       </div>
     </footer>
