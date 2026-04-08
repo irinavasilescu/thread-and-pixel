@@ -36,16 +36,19 @@ export const projects: Project[] = [
     slug: "prime-finish",
     title: "Prime Finish",
     category: "Website Design & Development",
-    tagline: "A robust digital presence for an independent European contractor specializing in industrial, civil and naval construction.",
-    description: "We designed a high-autority interface focusing on technical mastery. By utilizing industrial-grade imagery and a structured service hierarchy (Industrial, Civil, Naval), we positioned the brand as a premier partner for multifaceted infrastructure projects.",
-    clientExpectation: "Prime Finish operates across complex sectors, from structural steelwork to ship repair. They needed a digital presence that moved away from general renovation and instead communicated their capacity for large-scale, high-stakes industrial projects and European-wide logistics.",
+    tagline:
+      "A robust digital presence for an independent European contractor specializing in industrial, civil and naval construction.",
+    description:
+      "We designed a high-autority interface focusing on technical mastery. By utilizing industrial-grade imagery and a structured service hierarchy (Industrial, Civil, Naval), we positioned the brand as a premier partner for multifaceted infrastructure projects.",
+    clientExpectation:
+      "Prime Finish operates across complex sectors, from structural steelwork to ship repair. They needed a digital presence that moved away from general renovation and instead communicated their capacity for large-scale, high-stakes industrial projects and European-wide logistics.",
     workDone: [
       "Global industrial brand alignment",
       "High-performance technical UI/UX",
       "Service inquiry & lead generation system",
       "Multi-device performance engineering",
       "European-wide SEO & technical optimization",
-      "Multi-lingual localization"
+      "Multi-lingual localization",
     ],
     brandColors: [
       { name: "Blaze Orange", hex: "#FF5E14" },
@@ -54,9 +57,14 @@ export const projects: Project[] = [
       { name: "Platinum", hex: "#F3F4F5" },
     ],
     fonts: ["Poppins"],
-    keyElements: ["Geometric precision", "High-contrast industrial tones", "Structured hierarchy", "Utility-driven design"],
+    keyElements: [
+      "Geometric precision",
+      "High-contrast industrial tones",
+      "Structured hierarchy",
+      "Utility-driven design",
+    ],
     screenshots: [primeFinish1, primeFinish2, primeFinish3, primeFinish4],
-    technologies: ["Wordpress", "TranslatePress"],
+    technologies: ["Wordpress", "TranslatePress", "Javascript", "HTML", "CSS"],
     previewImage: primeFinish1,
   },
   {
@@ -64,8 +72,10 @@ export const projects: Project[] = [
     title: "Croșetele Irinei",
     category: "E-Commerce",
     tagline: "A bespoke e-commerce website for a sustainable, handmade crochet brand.",
-    description: "Croșetele Irinei is a boutique brand centered on sustainability and the \"slow-made\" movement. The goal was to transition from a social-media-only sales model to a professional, high-performance digital storefront. We developed a platform that preserves the brand's identity, while delivering a modern shopping experience.",
-    clientExpectation: "The brand needed to move away from the \"clutter\" of typical e-commerce. The primary challenge was balancing high-resolution imagery, essential for showing yarn textures, with high performance goals. Key objectives included reducing cart abandonment and creating a custom adoption flow for one-of-a-kind items.",
+    description:
+      'Croșetele Irinei is a boutique brand centered on sustainability and the "slow-made" movement. The goal was to transition from a social-media-only sales model to a professional, high-performance digital storefront. We developed a platform that preserves the brand\'s identity, while delivering a modern shopping experience.',
+    clientExpectation:
+      'The brand needed to move away from the "clutter" of typical e-commerce. The primary challenge was balancing high-resolution imagery, essential for showing yarn textures, with high performance goals. Key objectives included reducing cart abandonment and creating a custom adoption flow for one-of-a-kind items.',
     workDone: [
       "Custom Shopify architecture",
       "Enhanced product discovery",
@@ -80,7 +90,14 @@ export const projects: Project[] = [
       { name: "Graphite", hex: "#373436" },
     ],
     fonts: ["Rubik Mono One", "Rubik"],
-    keyElements: ["Texture-first visual design", "Speed-to-cart optimization", "Intuitive navigation", "Custom commision funnel", "Mobile-optimized adoption experience", "Eco-friendly performance"],
+    keyElements: [
+      "Texture-first visual design",
+      "Speed-to-cart optimization",
+      "Intuitive navigation",
+      "Custom commision funnel",
+      "Mobile-optimized adoption experience",
+      "Eco-friendly performance",
+    ],
     screenshots: [croseteleIrinei1, croseteleIrinei2, croseteleIrinei3, croseteleIrinei4],
     technologies: ["Shopify"],
     previewImage: croseteleIrinei1,
