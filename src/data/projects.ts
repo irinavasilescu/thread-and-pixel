@@ -6,10 +6,10 @@ import croseteleIrinei1 from "@/assets/crosetele-irinei-1.png";
 import croseteleIrinei2 from "@/assets/crosetele-irinei-2.png";
 import croseteleIrinei3 from "@/assets/crosetele-irinei-3.png";
 import croseteleIrinei4 from "@/assets/crosetele-irinei-4.png";
-import terraArchitecture1 from "@/assets/terra-architecture-1.jpg";
-import terraArchitecture2 from "@/assets/terra-architecture-2.jpg";
-import terraArchitecture3 from "@/assets/terra-architecture-3.jpg";
-import terraArchitecture4 from "@/assets/terra-architecture-4.jpg";
+import tableTap1 from "@/assets/table-tap-1.png";
+import tableTap2 from "@/assets/table-tap-2.png";
+import tableTap3 from "@/assets/table-tap-3.png";
+import tableTap4 from "@/assets/table-tap-4.png";
 import pulseFintech1 from "@/assets/pulse-fintech-1.jpg";
 import pulseFintech2 from "@/assets/pulse-fintech-2.jpg";
 import pulseFintech3 from "@/assets/pulse-fintech-3.jpg";
@@ -99,37 +99,40 @@ export const projects: Project[] = [
       "Eco-friendly performance",
     ],
     screenshots: [croseteleIrinei1, croseteleIrinei2, croseteleIrinei3, croseteleIrinei4],
-    technologies: ["Shopify"],
+    technologies: ["Shopify", "Javascript", "HTML", "CSS"],
     previewImage: croseteleIrinei1,
   },
-  // {
-  //   slug: "terra-architecture",
-  //   title: "Terra Architecture",
-  //   category: "Web Design & SEO",
-  //   tagline: "A portfolio that lets the architecture speak for itself.",
-  //   description:
-  //     "Terra Architecture required a digital portfolio that showcased their award-winning projects with the same precision they bring to their buildings. We delivered a minimalist, image-forward site that elevated their online presence and tripled organic traffic.",
-  //   clientExpectation:
-  //     "The firm wanted their projects to be the hero — no visual clutter, no distractions. They also needed improved search visibility for high-value commercial architecture keywords.",
-  //   workDone: [
-  //     "Minimalist portfolio design with fullscreen imagery",
-  //     "Custom CMS for easy project management",
-  //     "Comprehensive SEO strategy and implementation",
-  //     "Image optimization and lazy loading",
-  //     "Analytics dashboard setup",
-  //   ],
-  //   brandColors: [
-  //     { name: "Warm White", hex: "#FAF7F2" },
-  //     { name: "Graphite", hex: "#3A3A3A" },
-  //     { name: "Terracotta", hex: "#C67A4B" },
-  //     { name: "Slate", hex: "#6B7B8D" },
-  //   ],
-  //   fonts: ["Archivo", "Inter"],
-  //   keyElements: ["Full-bleed photography", "Horizontal scroll galleries", "Subtle parallax", "Clean grid system"],
-  //   screenshots: [terraArchitecture1, terraArchitecture2, terraArchitecture3, terraArchitecture4],
-  //   technologies: ["Astro", "Tailwind CSS", "Contentful", "Cloudflare"],
-  //   previewImage: terraArchitecture1,
-  // },
+  {
+    slug: "table-tap",
+    title: "Table Tap",
+    category: "Queue Management & Guest Experience",
+    tagline: "Eliminating physical queues with a smart, scan-to-wait digital ecosystem.",
+    description: "We designed a high-efficiency waitlist interface that transforms the traditional 'waiting in line' experience. By replacing physical crowds with a virtual queue, we allow venues to manage guest flow seamlessly while giving customers the freedom to wait anywhere.",
+    clientExpectation: "High-traffic venues were losing customers due to overcrowded entrances and long, visible queues. They needed a low-friction way for guests to check themselves in via QR code, track their position in real-time, and receive automated notifications without staff having to hover at the door.",
+    "workDone": [
+      "QR-based 'Scan-to-Join' virtual waitlist",
+      "Real-time guest position tracking & live ETA",
+      "Automated SMS & WhatsApp notification system",
+      "Live management dashboard for queue orchestration",
+      "Hardware-free check-in (BYOD - Bring Your Own Device)"
+    ],
+    brandColors: [
+      { name: "Shadow Gray", hex: "#2E2321" },
+      { name: "Ochre", hex: "#C5792C" },
+      { name: "Seashell", hex: "#FFF7EF" },
+      { name: "Desert Sand", hex: "#EDD28B" },
+    ],
+    fonts: ["DM Serif Display", "DM Sans"],
+    keyElements: [
+      "Virtual orchestration",
+      "Frictionless check-in",
+      "Real-time transparency",
+      "Congestion relief"
+    ],
+    screenshots: [tableTap1, tableTap2, tableTap3, tableTap4],
+    technologies: ["React", "Tailwind", "Node.js", "PostgreSQL"],
+    previewImage: tableTap1,
+  },
   // {
   //   slug: "pulse-fintech",
   //   title: "Pulse Fintech",
