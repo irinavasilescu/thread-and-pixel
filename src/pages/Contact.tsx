@@ -1,13 +1,18 @@
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { ArrowUpRight, Mail, MapPin, Clock } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import emailjs from "@emailjs/browser";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingPixels from "@/components/FloatingPixels";
 
 const ease = [0.22, 1, 0.36, 1] as const;
+
+const fieldClass =
+  "w-full bg-transparent border border-border px-4 py-3.5 text-foreground text-sm focus:outline-none focus:border-foreground transition-colors duration-200 placeholder:text-muted-foreground/60";
+
+const labelClass =
+  "font-mono text-[10px] tracking-[0.24em] uppercase text-primary mb-3 block";
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -49,115 +54,106 @@ const Contact = () => {
   const serviceKeys = ["website-creation", "seo", "e-commerce", "consulting", "web-design", "support-maintenance"];
 
   return (
-    <div className="min-h-screen bg-background relative">
-      <FloatingPixels variant="dark" />
+    <div className="theme-swiss min-h-screen bg-background text-foreground">
       <Navbar />
 
-      <section className="pt-32 pb-16 px-6">
-        <div className="max-w-5xl mx-auto">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="font-mono text-xs tracking-[0.3em] uppercase text-primary mb-4"
-          >
-            {t("contact.label")}
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease }}
-            className="text-5xl md:text-7xl font-light tracking-tight mb-6"
-          >
-            {t("contact.title1")}
-            <br />
-            {t("contact.title2")} <span className="text-primary">{t("contact.titleHighlight")}</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg text-muted-foreground font-light max-w-2xl"
-          >
-            {t("contact.subtitle")}
-          </motion.p>
+      {/* Hero — Swiss grid lockup */}
+      <section className="border-b border-border px-6 pt-28 md:pt-32 pb-14 md:pb-20">
+        <div className="max-w-7xl mx-auto border-x border-border">
+          <div className="border-b border-border px-6 md:px-10 py-5 flex items-center justify-between">
+            <span className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary">
+              {t("contact.label")}
+            </span>
+            <span className="font-mono text-[11px] tracking-[0.2em] uppercase text-muted-foreground">
+              contact@threadandpixel.eu
+            </span>
+          </div>
+
+          <div className="px-6 md:px-10 py-14 md:py-20">
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease }}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-[-0.04em] leading-[0.95]"
+            >
+              {t("contact.title1")}
+              <br />
+              {t("contact.title2")} <span className="text-primary">{t("contact.titleHighlight")}</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="mt-8 max-w-2xl text-base md:text-lg leading-relaxed text-muted-foreground"
+            >
+              {t("contact.subtitle")}
+            </motion.p>
+          </div>
         </div>
       </section>
 
-      <div className="glow-line" />
-
-      <section className="py-24 px-6">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-16">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3, ease }}
-            className="lg:col-span-3"
-          >
+      {/* Form + info grid */}
+      <section className="border-b border-border py-20 md:py-28 px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 border-t border-l border-border">
+          <div className="lg:col-span-8 border-r border-b border-border p-8 md:p-12">
             {submitted ? (
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-20"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="py-16 md:py-24"
               >
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                  <ArrowUpRight className="text-primary" size={24} />
-                </div>
-                <h3 className="text-2xl font-light mb-3">{t("contact.success.title")}</h3>
-                <p className="text-muted-foreground font-light">{t("contact.success.description")}</p>
+                <span className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary">01 / 01</span>
+                <h2 className="mt-6 text-3xl md:text-4xl font-bold tracking-[-0.03em] uppercase">
+                  {t("contact.success.title")}
+                </h2>
+                <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
+                  {t("contact.success.description")}
+                </p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
-                    <label className="font-mono text-xs tracking-wider uppercase text-muted-foreground mb-2 block">
-                      {t("contact.form.name")} *
-                    </label>
+                    <label className={labelClass}>{t("contact.form.name")} *</label>
                     <input
                       type="text"
                       required
                       value={formState.name}
                       onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                      className="w-full bg-transparent border-b border-border py-3 text-foreground font-light focus:outline-none focus:border-primary transition-colors duration-300 placeholder:text-muted-foreground/50"
+                      className={fieldClass}
                       placeholder={t("contact.form.namePlaceholder")}
                     />
                   </div>
                   <div>
-                    <label className="font-mono text-xs tracking-wider uppercase text-muted-foreground mb-2 block">
-                      {t("contact.form.email")} *
-                    </label>
+                    <label className={labelClass}>{t("contact.form.email")} *</label>
                     <input
                       type="email"
                       required
                       value={formState.email}
                       onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                      className="w-full bg-transparent border-b border-border py-3 text-foreground font-light focus:outline-none focus:border-primary transition-colors duration-300 placeholder:text-muted-foreground/50"
+                      className={fieldClass}
                       placeholder={t("contact.form.emailPlaceholder")}
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
-                    <label className="font-mono text-xs tracking-wider uppercase text-muted-foreground mb-2 block">
-                      {t("contact.form.company")}
-                    </label>
+                    <label className={labelClass}>{t("contact.form.company")}</label>
                     <input
                       type="text"
                       value={formState.company}
                       onChange={(e) => setFormState({ ...formState, company: e.target.value })}
-                      className="w-full bg-transparent border-b border-border py-3 text-foreground font-light focus:outline-none focus:border-primary transition-colors duration-300 placeholder:text-muted-foreground/50"
+                      className={fieldClass}
                       placeholder={t("contact.form.companyPlaceholder")}
                     />
                   </div>
                   <div>
-                    <label className="font-mono text-xs tracking-wider uppercase text-muted-foreground mb-2 block">
-                      {t("contact.form.service")}
-                    </label>
+                    <label className={labelClass}>{t("contact.form.service")}</label>
                     <select
                       value={formState.service}
                       onChange={(e) => setFormState({ ...formState, service: e.target.value })}
-                      className="w-full bg-transparent border-b border-border py-3 text-foreground font-light focus:outline-none focus:border-primary transition-colors duration-300 cursor-pointer"
+                      className={`${fieldClass} cursor-pointer`}
                     >
                       <option value="">{t("contact.form.servicePlaceholder")}</option>
                       {serviceKeys.map((slug) => (
@@ -168,58 +164,52 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label className="font-mono text-xs tracking-wider uppercase text-muted-foreground mb-2 block">
-                    {t("contact.form.message")} *
-                  </label>
+                  <label className={labelClass}>{t("contact.form.message")} *</label>
                   <textarea
                     required
-                    rows={5}
+                    rows={6}
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                    className="w-full bg-transparent border-b border-border py-3 text-foreground font-light focus:outline-none focus:border-primary transition-colors duration-300 resize-none placeholder:text-muted-foreground/50"
+                    className={`${fieldClass} resize-none`}
                     placeholder={t("contact.form.messagePlaceholder")}
                   />
                 </div>
 
-                <motion.button
+                <button
                   type="submit"
                   disabled={sending}
-                  whileHover={{ scale: sending ? 1 : 1.02 }}
-                  whileTap={{ scale: sending ? 1 : 0.98 }}
-                  className="inline-flex items-center gap-3 font-mono text-sm tracking-wider uppercase px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 rounded-sm mt-4 disabled:opacity-60"
+                  className="group inline-flex items-center gap-3 bg-foreground px-10 py-4 font-mono text-xs uppercase tracking-[0.2em] text-background transition-colors duration-200 hover:bg-primary disabled:opacity-60"
                 >
-                  {sending ? t("contact.form.sending") : t("contact.form.send")} <ArrowUpRight size={16} />
-                </motion.button>
+                  {sending ? t("contact.form.sending") : t("contact.form.send")}
+                  <ArrowUpRight size={16} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </button>
               </form>
             )}
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.45, ease }}
-            className="lg:col-span-2 space-y-8"
-          >
+          <div className="lg:col-span-4 border-r border-b border-border">
             {contactInfo.map((item, i) => (
-              <motion.div
+              <div
                 key={item.label}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                className="border border-border/50 p-6 rounded-sm hover:border-primary/30 transition-colors duration-500"
+                className="border-b border-border last:border-b-0 p-8 md:p-10"
               >
-                <item.icon size={18} className="text-primary mb-3" strokeWidth={1.5} />
-                <p className="font-mono text-[10px] tracking-wider uppercase text-muted-foreground mb-1">{item.label}</p>
+                <div className="flex items-center gap-3">
+                  <item.icon size={14} className="text-primary" strokeWidth={2} />
+                  <p className="font-mono text-[10px] tracking-[0.24em] uppercase text-primary">{item.label}</p>
+                </div>
                 {item.href ? (
-                  <a href={item.href} className="text-foreground hover:text-primary transition-colors font-light">
+                  <a href={item.href} className="mt-4 block text-base font-medium text-foreground hover:text-primary transition-colors break-words">
                     {item.value}
                   </a>
                 ) : (
-                  <p className="text-foreground font-light">{item.value}</p>
+                  <p className="mt-4 text-base font-medium text-foreground">{item.value}</p>
                 )}
-              </motion.div>
+                <span className="mt-6 block font-mono text-[10px] tracking-[0.2em] text-muted-foreground">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 

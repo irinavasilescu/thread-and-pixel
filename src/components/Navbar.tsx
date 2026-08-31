@@ -17,7 +17,7 @@ const serviceKeys = [
 ];
 
 const navItems = [
-  { key: "projects", href: "/#projects" },
+  { key: "portfolio", href: "/portfolio" },
   { key: "about", href: "/#about" },
   { key: "process", href: "/#process" },
 ];

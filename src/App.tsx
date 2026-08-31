@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound.tsx";
 import Contact from "./pages/Contact.tsx";
 import ProjectDetail from "./pages/ProjectDetail.tsx";
 import ServiceDetail from "./pages/ServiceDetail.tsx";
+import Portfolio from "./pages/Portfolio.tsx";
 import { useState, useCallback } from "react";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/projects/:slug" element={<ProjectDetail />} />
             <Route path="/services/:slug" element={<ServiceDetail />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

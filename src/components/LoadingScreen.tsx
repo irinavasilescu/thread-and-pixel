@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
@@ -15,76 +15,83 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   const letters2 = "Pixel".split("");
 
   return (
-    <AnimatePresence>
-      <motion.div
-        className="fixed inset-0 z-[9999] flex items-center justify-center"
-        style={{ background: "hsl(210 25% 8%)" }}
-        initial={{ opacity: 1 }}
-        animate={phase === "exit" ? { opacity: 0 } : { opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-      >
-        {/* Subtle grid */}
-        <div className="absolute inset-0 grid-bg-dark opacity-15" />
+    <motion.div
+      className="theme-swiss fixed inset-0 z-[9999] bg-background text-foreground flex flex-col"
+      initial={{ opacity: 1 }}
+      animate={{ opacity: phase === "exit" ? 0 : 1 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+    >
+      {/* Top rule */}
+      <div className="border-b border-border px-6 py-5 flex items-center justify-between">
+        <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-primary">
+          Thread &amp; Pixel
+        </span>
+        <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
+          Web design &amp; development
+        </span>
+      </div>
 
-        {/* Horizontal glow line */}
-        <motion.div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[1px]"
-          style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), transparent)" }}
-          initial={{ width: 0 }}
-          animate={{ width: phase === "reveal" ? "240px" : "300px" }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-        />
+      <div className="flex-1 flex items-center justify-center px-6">
+        <div className="w-full max-w-7xl border-x border-border px-6 md:px-10 py-16">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase leading-[0.85] tracking-tighter select-none">
+            <span className="block">
+              {letters.map((char, i) => (
+                <motion.span
+                  key={`t-${i}`}
+                  className="inline-block"
+                  initial={{ opacity: 0, y: "0.3em" }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+              <motion.span
+                className="inline-block text-primary"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.35 }}
+              >
+                &amp;
+              </motion.span>
+            </span>
+            <span className="block">
+              {letters2.map((char, i) => (
+                <motion.span
+                  key={`p-${i}`}
+                  className="inline-block"
+                  initial={{ opacity: 0, y: "0.3em" }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: 0.45 + i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </span>
+          </h1>
 
-        <div className="relative font-mono text-2xl sm:text-3xl tracking-[0.3em] uppercase select-none">
-          {/* Thread */}
-          {letters.map((char, i) => (
-            <motion.span
-              key={`t-${i}`}
-              className="inline-block text-white/90"
-              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.4, delay: i * 0.06, ease: "easeOut" }}
-            >
-              {char}
-            </motion.span>
-          ))}
-
-          {/* & */}
-          <motion.span
-            className="inline-block text-primary mx-[2px]"
-            initial={{ opacity: 0, scale: 0, rotate: -180 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          >
-            &amp;
-          </motion.span>
-
-          {/* Pixel */}
-          {letters2.map((char, i) => (
-            <motion.span
-              key={`p-${i}`}
-              className="inline-block text-white/90"
-              initial={{ opacity: 0, y: -20, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.4, delay: 0.5 + i * 0.06, ease: "easeOut" }}
-            >
-              {char}
-            </motion.span>
-          ))}
+          {/* Progress rule */}
+          <div className="mt-10 h-[2px] w-full bg-border overflow-hidden">
+            <motion.div
+              className="h-full bg-primary origin-left"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1.9, ease: "easeInOut" }}
+              style={{ width: "100%" }}
+            />
+          </div>
         </div>
+      </div>
 
-        {/* Bottom tagline */}
-        <motion.p
-          className="absolute bottom-[45%] sm:bottom-[42%] mt-6 font-mono text-[10px] tracking-[0.4em] uppercase text-white/30"
-          style={{ transform: "translateY(60px)" }}
-          initial={{ opacity: 0 }}
-          animate={phase !== "reveal" ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Digital Studio
-        </motion.p>
-      </motion.div>
-    </AnimatePresence>
+      <div className="border-t border-border px-6 py-5 flex items-center justify-between">
+        <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
+          Digital studio
+        </span>
+        <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground">
+          {phase === "reveal" ? "Loading" : "Ready"}
+        </span>
+      </div>
+    </motion.div>
   );
 };
 
