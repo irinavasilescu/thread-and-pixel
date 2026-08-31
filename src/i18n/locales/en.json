@@ -7,13 +7,25 @@
     "getInTouch": "Get in touch"
   },
   "hero": {
-    "tag": "Digital Craft Studio",
-    "line1": "We weave",
-    "line2": "digital experiences",
-    "line3": "pixel by pixel",
-    "subtitle": "Crafting premium websites, e-commerce platforms, and digital strategies that elevate brands into the future.",
-    "cta1": "Explore Services",
-    "cta2": "Learn More"
+    "tag": "Web design & development studio",
+    "headline": "We design and build fast, custom websites for growing digital brands.",
+    "subtitle": "We partner with founders and marketing teams to turn positioning into a website that loads in under a second, ranks, and converts visitors into qualified leads.",
+    "cta1": "Start a project",
+    "cta2": "See our work",
+    "proof": {
+      "speed": {
+        "value": "<1s",
+        "label": "Typical load time"
+      },
+      "launch": {
+        "value": "4–6 wks",
+        "label": "Average launch"
+      },
+      "custom": {
+        "value": "100%",
+        "label": "Custom built"
+      }
+    }
   },
   "marquee": {
     "items": [
@@ -255,7 +267,10 @@
           "Quarterly performance reviews"
         ]
       }
-    }
+    },
+    "intro": "From a full custom build to ongoing growth work — pick the engagement that matches where your brand is right now.",
+    "featuredLabel": "Core offering",
+    "explore": "Explore service"
   },
   "projects": {
     "label": "Selected work",
@@ -390,7 +405,8 @@
         "title": "Deploy & Evolve",
         "desc": "Launch with confidence and ongoing support to keep you ahead of the curve."
       }
-    }
+    },
+    "intro": "A tight, four-step engagement with clear deliverables at every stage — no black boxes, no surprise invoices."
   },
   "faq": {
     "label": "Common Questions",

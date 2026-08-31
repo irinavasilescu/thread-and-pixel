@@ -4,15 +4,34 @@ import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { projects } from "@/data/projects";
-import FloatingPixels from "./FloatingPixels";
+import AmbientAccents from "./AmbientAccents";
 
-const ProjectCard = ({ project, direction }: { project: typeof projects[0]; direction: number }) => {
+const DeviceMockup = ({ src, alt }: { src: string; alt: string }) => (
+  <div className="relative rounded-xl border border-border bg-card/60 shadow-[0_24px_60px_-30px_rgba(0,0,0,0.8)] overflow-hidden">
+    <div className="flex items-center gap-1.5 border-b border-border px-4 py-3">
+      <span className="w-2 h-2 rounded-full bg-foreground/15" />
+      <span className="w-2 h-2 rounded-full bg-foreground/15" />
+      <span className="w-2 h-2 rounded-full bg-foreground/15" />
+      <span className="ml-3 h-4 flex-1 max-w-[220px] rounded-full bg-foreground/[0.06]" />
+    </div>
+    <div className="aspect-[16/10] overflow-hidden">
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+        loading="lazy"
+      />
+    </div>
+  </div>
+);
+
+const ProjectSlide = ({ project, direction }: { project: typeof projects[0]; direction: number }) => {
   const { t } = useTranslation();
 
   const variants = {
-    enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
+    enter: (dir: number) => ({ x: dir > 0 ? 60 : -60, opacity: 0 }),
     center: { x: 0, opacity: 1 },
-    exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0 }),
+    exit: (dir: number) => ({ x: dir > 0 ? -60 : 60, opacity: 0 }),
   };
 
   return (
@@ -22,61 +41,44 @@ const ProjectCard = ({ project, direction }: { project: typeof projects[0]; dire
       initial="enter"
       animate="center"
       exit="exit"
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute inset-0 flex items-center px-6 md:px-16 lg:px-24 pt-28 md:pt-32 pb-24"
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      className="w-full"
     >
       <Link
         to={`/projects/${project.slug}`}
-        className="group grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-center w-full max-w-7xl mx-auto"
+        className="group grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center"
       >
-        <div className="relative overflow-hidden rounded-lg">
-          <div className="aspect-[4/3] overflow-hidden rounded-lg">
-            <img
-              src={project.previewImage}
-              alt={`${t(`projects.items.${project.slug}.title`)} preview`}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-            />
-          </div>
-          <div className="absolute bottom-4 left-4 flex gap-2">
-            {project.brandColors.map((color) => (
-              <div
-                key={color.name}
-                className="w-4 h-4 rounded-full border border-white/20 shadow-lg"
-                style={{ backgroundColor: color.hex }}
-                title={color.name}
-              />
-            ))}
-          </div>
+        <div className="lg:col-span-7">
+          <DeviceMockup
+            src={project.previewImage}
+            alt={`${t(`projects.items.${project.slug}.title`)} preview`}
+          />
         </div>
 
-        <div className="space-y-3 md:space-y-5">
-          <p
-            className="font-mono text-xs tracking-[0.2em] uppercase"
-            style={{ color: "hsl(175 70% 50%)" }}
-          >
+        <div className="lg:col-span-5">
+          <p className="font-mono text-[11px] tracking-[0.28em] uppercase text-primary">
             {t(`projects.items.${project.slug}.category`)}
           </p>
-          <h3 className="text-2xl md:text-4xl lg:text-5xl font-light tracking-tight text-white group-hover:text-primary transition-colors duration-300">
+          <h3 className="mt-4 text-2xl md:text-4xl font-medium tracking-[-0.02em] text-foreground">
             {t(`projects.items.${project.slug}.title`)}
           </h3>
-          <p className="text-white/50 font-light leading-relaxed text-sm md:text-lg max-w-lg hidden md:block">
+          <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">
             {t(`projects.items.${project.slug}.tagline`)}
           </p>
-          <div className="hidden md:flex flex-wrap gap-2 pt-2">
+          <div className="mt-6 hidden md:flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="font-mono text-[10px] tracking-wider uppercase px-3 py-1 rounded-full text-white/40 border border-white/10"
+                className="rounded-full border border-border px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground"
               >
                 {tech}
               </span>
             ))}
           </div>
-          <div className="flex items-center gap-2 text-white/40 group-hover:text-primary transition-colors duration-300 pt-2 md:pt-4">
-            <span className="font-mono text-xs tracking-wider uppercase">{t("projects.viewProject")}</span>
-            <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </div>
+          <span className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-primary">
+            {t("projects.viewProject")}
+            <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </span>
         </div>
       </Link>
     </motion.div>
@@ -100,60 +102,50 @@ const ProjectsSection = () => {
 
   useEffect(() => {
     if (isPaused) return;
-    const timer = setInterval(next, 5000);
+    const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
   }, [next, isPaused]);
 
   return (
     <section
       id="projects"
-      className="relative"
+      className="relative border-t border-border py-28 md:py-36 px-6 overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="relative min-h-[85vh] md:min-h-screen overflow-hidden">
-        <div className="absolute inset-0" style={{
-          background: "linear-gradient(180deg, hsl(210 20% 13%), hsl(200 25% 15%), hsl(175 30% 14%))",
-        }} />
-        <div className="absolute inset-0 grid-bg-dark opacity-30" />
-        <FloatingPixels />
+      <AmbientAccents variant="center" />
 
-        {/* Header */}
-        <div className="relative z-10 pt-16 md:pt-20 px-6 md:px-16 lg:px-24">
-          <div className="max-w-7xl mx-auto flex items-end justify-between">
-            <div>
-              <p
-                className="font-mono text-xs tracking-[0.3em] uppercase mb-3"
-                style={{ color: "hsl(175 70% 50%)" }}
-              >
-                {t("projects.label")}
-              </p>
-              <h2 className="text-4xl md:text-5xl font-light tracking-tight text-white">
-                {t("projects.title")}
-              </h2>
-            </div>
-            {/* Nav arrows */}
-            <div className="hidden md:flex items-center gap-3">
-              <button
-                onClick={prev}
-                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/40 transition-colors"
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <button
-                onClick={next}
-                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/40 transition-colors"
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="mb-14 md:mb-20 flex items-end justify-between gap-8">
+          <div className="max-w-2xl">
+            <p className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary mb-5">
+              {t("projects.label")}
+            </p>
+            <h2 className="text-3xl md:text-5xl font-medium tracking-[-0.03em] text-foreground">
+              {t("projects.title")}
+            </h2>
+          </div>
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={prev}
+              aria-label="Previous project"
+              className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground transition-colors hover:border-foreground/40 hover:text-foreground"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              onClick={next}
+              aria-label="Next project"
+              className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground transition-colors hover:border-foreground/40 hover:text-foreground"
+            >
+              <ChevronRight size={18} />
+            </button>
           </div>
         </div>
 
-        {/* Slides */}
-        <div className="relative z-10" style={{ height: "calc(85vh - 120px)" }}>
-          <AnimatePresence custom={direction} mode="popLayout">
-            <ProjectCard
+        <div className="relative">
+          <AnimatePresence custom={direction} mode="wait">
+            <ProjectSlide
               key={projects[activeIndex].slug}
               project={projects[activeIndex]}
               direction={direction}
@@ -161,21 +153,17 @@ const ProjectsSection = () => {
           </AnimatePresence>
         </div>
 
-        {/* Bottom indicators */}
-        <div className="absolute bottom-8 left-0 right-0 z-10 px-6 md:px-16 lg:px-24">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex gap-2 justify-center md:justify-start">
-              {projects.map((p, i) => (
-                <button
-                  key={p.slug}
-                  onClick={() => goTo(i, i > activeIndex ? 1 : -1)}
-                  className={`h-1 rounded-full transition-all duration-500 ${
-                    i === activeIndex ? "w-8 bg-primary" : "w-4 bg-white/20 hover:bg-white/40"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
+        <div className="mt-12 flex gap-2">
+          {projects.map((p, i) => (
+            <button
+              key={p.slug}
+              aria-label={`Go to project ${i + 1}`}
+              onClick={() => goTo(i, i > activeIndex ? 1 : -1)}
+              className={`h-1 rounded-full transition-all duration-500 ${
+                i === activeIndex ? "w-10 bg-primary" : "w-5 bg-foreground/15 hover:bg-foreground/30"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>

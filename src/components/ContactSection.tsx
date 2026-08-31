@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import FloatingPixels from "./FloatingPixels";
+import AmbientAccents from "./AmbientAccents";
 
 const ContactSection = () => {
   const { t } = useTranslation();
@@ -11,63 +11,39 @@ const ContactSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="contact" className="relative py-32 px-6 overflow-hidden" ref={ref}>
-      <FloatingPixels />
-      <div className="absolute inset-0" style={{
-        background: "linear-gradient(180deg, hsl(210 25% 10%), hsl(210 20% 12%))",
-      }} />
-      <div className="absolute inset-0 grid-bg-dark opacity-10" />
-      
-      <motion.div
-        animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.15, 0.08] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[150px]"
-        style={{ background: "hsl(175 70% 40%)" }}
-      />
+    <section id="contact" ref={ref} className="relative border-t border-border py-28 md:py-36 px-6 overflow-hidden">
+      <AmbientAccents variant="center" />
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="font-mono text-xs tracking-[0.3em] uppercase mb-4"
-          style={{ color: "hsl(175 70% 50%)" }}
-        >
-          {t("contactSection.label")}
-        </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl md:text-6xl font-light tracking-tight mb-8 text-white/90"
-        >
-          {t("contactSection.title1")}
-          <br />
-          {t("contactSection.title2")} <span style={{ color: "hsl(175 70% 50%)" }}>{t("contactSection.titleHighlight")}</span>?
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-white/50 text-lg max-w-xl mx-auto mb-12 font-light"
-        >
-          {t("contactSection.description")}
-        </motion.p>
-
+      <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="rounded-2xl border border-border bg-card px-8 py-14 md:px-16 md:py-20"
         >
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-3 font-mono text-sm tracking-wider uppercase px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 rounded-sm"
-          >
-            {t("contactSection.cta")}
-            <ArrowUpRight size={16} />
-          </Link>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+            <div className="lg:col-span-8">
+              <p className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary mb-5">
+                {t("contactSection.label")}
+              </p>
+              <h2 className="text-3xl md:text-5xl font-medium tracking-[-0.03em] text-card-foreground max-w-2xl">
+                {t("contactSection.title1")} {t("contactSection.title2")} {t("contactSection.titleHighlight")}?
+              </h2>
+              <p className="mt-6 max-w-xl leading-relaxed text-muted-foreground">
+                {t("contactSection.description")}
+              </p>
+            </div>
+
+            <div className="lg:col-span-4 lg:text-right">
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2 rounded-md bg-primary px-8 py-4 text-sm font-medium tracking-wide text-primary-foreground transition-colors duration-300 hover:bg-primary/90"
+              >
+                {t("contactSection.cta")}
+                <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
