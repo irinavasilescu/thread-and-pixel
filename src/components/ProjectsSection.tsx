@@ -108,9 +108,10 @@ const ProjectsSection = () => {
               </div>
             </motion.div>
           </AnimatePresence>
+        </div>
 
-          {/* Controls */}
-          <div className="flex items-center justify-center gap-4 mt-10">
+        {/* Controls */}
+        <div className="flex items-center justify-center gap-4 mt-10">
             <button
               type="button"
               onClick={() => go(-1)}
@@ -129,9 +130,7 @@ const ProjectsSection = () => {
               Next
               <ArrowRight size={15} />
             </button>
-          </div>
         </div>
-
       </div>
     </section>
   );
