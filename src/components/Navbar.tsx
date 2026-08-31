@@ -52,7 +52,7 @@ const Navbar = () => {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/90 border-b border-border/40"
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/95 border-b border-border"
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="font-mono text-sm tracking-widest uppercase text-foreground">
@@ -67,7 +67,7 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
               onClick={() => setServicesOpen(!servicesOpen)}
-              className="font-mono text-xs tracking-wider uppercase text-muted-foreground hover:text-primary transition-colors duration-300 flex items-center gap-1"
+              className="font-mono text-xs tracking-wider uppercase text-foreground hover:text-primary transition-colors duration-300 flex items-center gap-1"
             >
               {t("nav.services")}
               <ChevronDown
@@ -83,14 +83,14 @@ const Navbar = () => {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 8, scale: 0.96 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-full left-0 mt-3 w-56 bg-background/95 backdrop-blur-xl border border-border/50 rounded-sm shadow-xl overflow-hidden"
+                  className="absolute top-full left-0 mt-3 w-56 bg-background/95 backdrop-blur-xl border border-border shadow-none overflow-hidden"
                 >
                   {serviceKeys.map((s) => (
                     <Link
                       key={s.slug}
                       to={`/services/${s.slug}`}
                       onClick={() => setServicesOpen(false)}
-                      className="block px-5 py-3 font-mono text-xs tracking-wider text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 border-b border-border/20 last:border-0"
+                      className="block px-5 py-3 font-mono text-xs tracking-wider text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 border-b border-border/20 last:border-0"
                     >
                       {t(`services.items.${s.slug}.title`)}
                     </Link>
@@ -109,7 +109,7 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * i + 0.4 }}
-                className="font-mono text-xs tracking-wider uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
+                className="font-mono text-xs tracking-wider uppercase text-foreground hover:text-primary transition-colors duration-300"
               >
                 {t(`nav.${item.key}`)}
               </motion.a>
@@ -122,7 +122,7 @@ const Navbar = () => {
               >
                 <Link
                   to={item.href}
-                  className="font-mono text-xs tracking-wider uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
+                  className="font-mono text-xs tracking-wider uppercase text-foreground hover:text-primary transition-colors duration-300"
                 >
                   {t(`nav.${item.key}`)}
                 </Link>
@@ -163,7 +163,7 @@ const Navbar = () => {
           <div className="px-6 py-6 flex flex-col gap-4">
             <button
               onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-              className="font-mono text-sm tracking-wider uppercase text-muted-foreground hover:text-primary transition-colors flex items-center justify-between"
+              className="font-mono text-sm tracking-wider uppercase text-foreground hover:text-primary transition-colors flex items-center justify-between"
             >
               {t("nav.services")}
               <ChevronDown
@@ -184,7 +184,7 @@ const Navbar = () => {
                       key={s.slug}
                       to={`/services/${s.slug}`}
                       onClick={() => { setIsOpen(false); setMobileServicesOpen(false); }}
-                      className="font-mono text-xs tracking-wider text-muted-foreground hover:text-primary transition-colors"
+                      className="font-mono text-xs tracking-wider text-foreground hover:text-primary transition-colors"
                     >
                       {t(`services.items.${s.slug}.title`)}
                     </Link>
@@ -198,7 +198,7 @@ const Navbar = () => {
                 key={item.key}
                 to={item.href}
                 onClick={() => handleNavClick(item.href)}
-                className="font-mono text-sm tracking-wider uppercase text-muted-foreground hover:text-primary transition-colors"
+                className="font-mono text-sm tracking-wider uppercase text-foreground hover:text-primary transition-colors"
               >
                 {t(`nav.${item.key}`)}
               </Link>
