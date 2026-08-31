@@ -8,7 +8,13 @@
   },
   "hero": {
     "tag": "Web design & development studio",
-    "headline": "We design and build fast, custom websites for growing digital brands.",
+    "studioLabel": "STUDIO—01",
+    "headline": {
+      "line1": "Digital",
+      "line2": "Interfaces",
+      "line3": "& Engineering"
+    },
+    "description": "Focusing exclusively on technical implementation and interface design. No marketing fluff, just high-performance code.",
     "cta1": "Start a project",
     "cta2": "See our work",
     "proof": {
