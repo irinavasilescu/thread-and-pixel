@@ -20,12 +20,12 @@ const ProjectSlide = ({ project }: { project: typeof projects[0] }) => {
         to={`/projects/${project.slug}`}
         className="group grid grid-cols-1 lg:grid-cols-12 border-t border-l border-border"
       >
-        <div className="lg:col-span-8 border-r border-b border-border overflow-hidden bg-card">
-          <div className="aspect-[16/10] overflow-hidden">
+        <div className="lg:col-span-8 border-r border-b border-border overflow-hidden bg-card lg:h-full">
+          <div className="aspect-[16/10] lg:aspect-auto lg:h-full overflow-hidden">
             <img
               src={project.previewImage}
               alt={`${t(`projects.items.${project.slug}.title`)} website preview`}
-              className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+              className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
               loading="lazy"
             />
           </div>

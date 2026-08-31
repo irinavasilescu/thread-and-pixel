@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import { projects } from "@/data/projects";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
 import ProjectScreenshots from "@/components/ProjectScreenshots";
 import WaveDivider from "@/components/WaveDivider";
 import FloatingPixels from "@/components/FloatingPixels";
@@ -37,7 +36,6 @@ const ProjectDetail = () => {
   return (
     <div className="min-h-screen bg-background relative">
       <FloatingPixels variant="dark" />
-      <CustomCursor />
       <Navbar />
 
       <section className="relative pt-32 pb-20 px-6 overflow-hidden">

@@ -61,7 +61,6 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    cursor: none;
   }
 
   html {
@@ -72,38 +71,6 @@
     background: hsl(175 70% 30% / 0.2);
     color: hsl(220 25% 10%);
   }
-}
-
-/* Custom cursor */
-.custom-cursor {
-  width: 20px;
-  height: 20px;
-  border: 1.5px solid hsl(var(--primary));
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.15s ease, background 0.2s ease, width 0.2s ease, height 0.2s ease;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: difference;
-}
-
-.custom-cursor.hovering {
-  width: 44px;
-  height: 44px;
-  background: hsl(var(--primary) / 0.15);
-}
-
-.cursor-dot {
-  width: 5px;
-  height: 5px;
-  background: hsl(var(--primary));
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.2s ease;
 }
 
 /* Custom scrollbar */

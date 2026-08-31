@@ -7,14 +7,12 @@ import ProjectsSection from "@/components/ProjectsSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
 import MarqueeBanner from "@/components/MarqueeBanner";
 import ScrollProgressDots from "@/components/ScrollProgressDots";
 
 const Index = () => {
   return (
     <div className="theme-swiss min-h-screen bg-background text-foreground">
-      <CustomCursor />
       <ScrollProgressDots />
       <Navbar />
       <main>
