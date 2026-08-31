@@ -16,7 +16,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col md:flex-row justify-between items-start gap-4 border-b border-border pb-6 md:pb-8"
+          className="flex flex-col md:flex-row justify-between items-start gap-4 border-b border-border pb-4 md:pb-6"
         >
           <div className="text-foreground font-bold tracking-tighter text-lg md:text-xl">
             {t("hero.studioLabel")}
@@ -33,9 +33,9 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="flex-1 flex flex-col justify-center py-8 md:py-12"
+          className="flex-1 flex flex-col justify-center py-4 md:py-8"
         >
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[7rem] xl:text-[9rem] 2xl:text-[10rem] font-black leading-[0.85] tracking-tighter text-foreground uppercase">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[7rem] 2xl:text-[9rem] font-black leading-[0.85] tracking-tighter text-foreground uppercase">
             <span className="block">{t("hero.headline.line1")}</span>
             <span className="block">{t("hero.headline.line2")}</span>
             <span className="block">{t("hero.headline.line3")}</span>
