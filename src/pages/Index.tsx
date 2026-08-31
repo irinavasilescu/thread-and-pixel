@@ -13,7 +13,7 @@ import ScrollProgressDots from "@/components/ScrollProgressDots";
 
 const Index = () => {
   return (
-    <div className="theme-slate grain-overlay min-h-screen bg-background text-foreground">
+    <div className="theme-swiss min-h-screen bg-background text-foreground">
       <CustomCursor />
       <ScrollProgressDots />
       <Navbar />
