@@ -110,7 +110,7 @@ const ProjectsSection = () => {
           </AnimatePresence>
 
           {/* Controls */}
-          <div className="grid grid-cols-2 border-t border-border">
+          <div className="grid grid-cols-2 border border-border mt-6">
             <button
               type="button"
               onClick={() => go(-1)}
