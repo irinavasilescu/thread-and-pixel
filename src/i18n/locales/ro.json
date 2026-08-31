@@ -8,7 +8,13 @@
   },
   "hero": {
     "tag": "Studio de design și dezvoltare web",
-    "headline": "Proiectăm și construim site-uri rapide, personalizate, pentru branduri digitale în creștere.",
+    "studioLabel": "STUDIO—01",
+    "headline": {
+      "line1": "Interfețe",
+      "line2": "Digitale",
+      "line3": "& Inginerie"
+    },
+    "description": "Ne concentrăm exclusiv pe implementare tehnică și design de interfețe. Fără marketing inutil, doar cod de înaltă performanță.",
     "cta1": "Începe un proiect",
     "cta2": "Vezi proiectele",
     "proof": {
