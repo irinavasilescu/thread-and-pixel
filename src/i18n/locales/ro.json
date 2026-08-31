@@ -11,9 +11,9 @@
     "tag": "Studio de design și dezvoltare web",
     "studioLabel": "",
     "headline": {
-      "line1": "Web design",
-      "line2": "&",
-      "line3": "Dezvoltare"
+      "line1": "Studio de",
+      "line2": "Web design",
+      "line3": "& Dezvoltare"
     },
     "description": "Ne concentrăm pe implementare tehnică, design de interfețe și cod performant.",
     "cta1": "Începe un proiect",
@@ -192,12 +192,7 @@
           "Prezentare & Aliniere",
           "Suport Implementare"
         ],
-        "deliverables": [
-          "Document de strategie",
-          "Raport audit tehnic",
-          "Roadmap prioritizat",
-          "Materiale workshop"
-        ]
+        "deliverables": ["Document de strategie", "Raport audit tehnic", "Roadmap prioritizat", "Materiale workshop"]
       },
       "web-design": {
         "title": "Web Design",
