@@ -132,20 +132,6 @@ const ProjectsSection = () => {
           </div>
         </div>
 
-        {/* Progress ticks */}
-        <div className="mt-6 flex items-center gap-3">
-          {projects.map((p, i) => (
-            <button
-              key={p.slug}
-              type="button"
-              aria-label={`Go to ${p.title}`}
-              onClick={() => setState([i, i > index ? 1 : -1])}
-              className={`h-[3px] flex-1 transition-colors ${
-                i === index ? "bg-primary" : "bg-border hover:bg-foreground/40"
-              }`}
-            />
-          ))}
-        </div>
       </div>
     </section>
   );
