@@ -63,9 +63,11 @@ export const projects: Project[] = [
       "Structured hierarchy",
       "Utility-driven design",
     ],
-    screenshots: [primeFinish1.url, primeFinish2.url, primeFinish3.url, primeFinish4.url],
+    screenshots: [primeFinish1.url, primeFinish2.url, primeFinish3.url, primeFinish4.url].map(
+      (u) => `https://threadandpixel.lovable.app${u}`
+    ),
     technologies: ["Wordpress", "TranslatePress", "Javascript", "HTML", "CSS"],
-    previewImage: primeFinish1.url,
+    previewImage: `https://threadandpixel.lovable.app${primeFinish1.url}`,
   },
   {
     slug: "crosetele-irinei",
