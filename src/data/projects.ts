@@ -7,6 +7,7 @@ import croseteleIrinei2 from "@/assets/crosetele-irinei-2.png";
 import croseteleIrinei3 from "@/assets/crosetele-irinei-3.png";
 import croseteleIrinei4 from "@/assets/crosetele-irinei-4.png";
 import tableTap1 from "@/assets/table-tap-1.png";
+import tableTapMain from "@/assets/table-tap-1.png.asset.json";
 import tableTap2 from "@/assets/table-tap-2.png";
 import tableTap3 from "@/assets/table-tap-3.png";
 import tableTap4 from "@/assets/table-tap-4.png";
@@ -133,7 +134,7 @@ export const projects: Project[] = [
     ],
     screenshots: [tableTap1, tableTap2, tableTap3, tableTap4],
     technologies: ["React", "Tailwind", "Node.js", "PostgreSQL"],
-    previewImage: tableTap1,
+    previewImage: `https://threadandpixel.lovable.app${tableTapMain.url}`,
   },
   // {
   //   slug: "pulse-fintech",
