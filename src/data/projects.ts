@@ -134,7 +134,7 @@ export const projects: Project[] = [
     ],
     screenshots: [tableTap1, tableTap2, tableTap3, tableTap4],
     technologies: ["React", "Tailwind", "Node.js", "PostgreSQL"],
-    previewImage: tableTap1,
+    previewImage: `https://threadandpixel.lovable.app${tableTapMain.url}`,
   },
   // {
   //   slug: "pulse-fintech",
