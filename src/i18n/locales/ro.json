@@ -4,7 +4,8 @@
     "projects": "Proiecte",
     "about": "Despre noi",
     "process": "Proces",
-    "getInTouch": "Contactează-ne"
+    "getInTouch": "Contactează-ne",
+    "portfolio": "Portofoliu"
   },
   "hero": {
     "tag": "Studio de design și dezvoltare web",
@@ -191,7 +192,12 @@
           "Prezentare & Aliniere",
           "Suport Implementare"
         ],
-        "deliverables": ["Document de strategie", "Raport audit tehnic", "Roadmap prioritizat", "Materiale workshop"]
+        "deliverables": [
+          "Document de strategie",
+          "Raport audit tehnic",
+          "Roadmap prioritizat",
+          "Materiale workshop"
+        ]
       },
       "web-design": {
         "title": "Web Design",
@@ -533,7 +539,10 @@
     "deliveredHighlight": "Livrat",
     "technologiesUsed": "Tehnologii Utilizate",
     "interestedCta": "Interesat de un proiect similar?",
-    "startConversation": "Începe o conversație"
+    "startConversation": "Începe o conversație",
+    "showcaseLabel": "Galerie",
+    "showcaseTitle": "Galerie Proiect",
+    "screen": "Ecran"
   },
   "serviceDetail": {
     "allServices": "Toate serviciile",
@@ -546,5 +555,12 @@
     "startConversation": "Începe o conversație",
     "notFound": "Serviciu negăsit",
     "backToHome": "Înapoi la acasă"
+  },
+  "portfolio": {
+    "label": "Portofoliu",
+    "projectsCount": "Proiecte",
+    "title": "Proiecte Selectate",
+    "subtitle": "Un index complet al site-urilor și produselor digitale pe care le-am proiectat și dezvoltat.",
+    "ctaTitle": "Ai un proiect în minte?"
   }
 }

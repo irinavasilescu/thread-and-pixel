@@ -4,7 +4,8 @@
     "projects": "Projects",
     "about": "About",
     "process": "Process",
-    "getInTouch": "Get in touch"
+    "getInTouch": "Get in touch",
+    "portfolio": "Portfolio"
   },
   "hero": {
     "tag": "Web design & development studio",
@@ -80,7 +81,12 @@
           "Development & Testing",
           "Launch & Handoff"
         ],
-        "deliverables": ["Fully responsive website", "Admin dashboard", "Documentation", "30-day post-launch support"]
+        "deliverables": [
+          "Fully responsive website",
+          "Admin dashboard",
+          "Documentation",
+          "30-day post-launch support"
+        ]
       },
       "seo": {
         "title": "SEO",
@@ -186,7 +192,12 @@
           "Presentation & Alignment",
           "Implementation Support"
         ],
-        "deliverables": ["Strategy document", "Technical audit report", "Prioritized roadmap", "Workshop materials"]
+        "deliverables": [
+          "Strategy document",
+          "Technical audit report",
+          "Prioritized roadmap",
+          "Workshop materials"
+        ]
       },
       "web-design": {
         "title": "Web Design",
@@ -218,7 +229,12 @@
           "Prototype & Testing",
           "Asset Delivery"
         ],
-        "deliverables": ["Brand guidelines", "UI kit / design system", "Interactive prototypes", "Asset library"]
+        "deliverables": [
+          "Brand guidelines",
+          "UI kit / design system",
+          "Interactive prototypes",
+          "Asset library"
+        ]
       },
       "support-maintenance": {
         "title": "Support & Maintenance",
@@ -324,7 +340,12 @@
           "Live management dashboard for queue orchestration",
           "Hardware-free check-in (BYOD - Bring Your Own Device)"
         ],
-        "keyElements": ["Virtual orchestration", "Frictionless check-in", "Real-time transparency", "Congestion relief"]
+        "keyElements": [
+          "Virtual orchestration",
+          "Frictionless check-in",
+          "Real-time transparency",
+          "Congestion relief"
+        ]
       },
       "pulse-fintech": {
         "category": "Consulting & Development",
@@ -518,7 +539,10 @@
     "deliveredHighlight": "Delivered",
     "technologiesUsed": "Technologies Used",
     "interestedCta": "Interested in a similar project?",
-    "startConversation": "Start a conversation"
+    "startConversation": "Start a conversation",
+    "showcaseLabel": "Showcase",
+    "showcaseTitle": "Project Showcase",
+    "screen": "Screen"
   },
   "serviceDetail": {
     "allServices": "All services",
@@ -531,5 +555,12 @@
     "startConversation": "Start a conversation",
     "notFound": "Service not found",
     "backToHome": "Back to home"
+  },
+  "portfolio": {
+    "label": "Portfolio",
+    "projectsCount": "Projects",
+    "title": "Selected Work",
+    "subtitle": "A complete index of the websites and digital products we have designed and engineered.",
+    "ctaTitle": "Have a project in mind?"
   }
 }
