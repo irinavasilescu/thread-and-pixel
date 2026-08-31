@@ -4,6 +4,8 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
+import wordmark from "@/assets/thread-and-pixel-wordmark.png.asset.json";
+
 
 const serviceKeys = [
   { slug: "website-creation" },
@@ -55,9 +57,10 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/95 border-b border-border"
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="font-mono text-sm tracking-widest uppercase text-foreground">
-          Thread<span className="text-primary">&</span>Pixel
+        <Link to="/" className="flex items-center" aria-label="Thread & Pixel">
+          <img src={wordmark.url} alt="Thread & Pixel" className="h-4 w-auto" />
         </Link>
+
 
         <div className="hidden md:flex items-center gap-8">
           {/* Services Dropdown */}
