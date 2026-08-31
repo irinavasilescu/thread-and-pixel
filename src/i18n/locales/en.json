@@ -361,6 +361,11 @@
           "Accessibility-first design"
         ]
       }
+    },
+    "meta": {
+      "client": "Client",
+      "year": "Year",
+      "scope": "Scope of work"
     }
   },
   "about": {
@@ -383,7 +388,27 @@
         "label": "Years of Craft"
       }
     },
-    "techTitle": "Technologies we master"
+    "techTitle": "Capabilities",
+    "metrics": [
+      {
+        "value": "<1s",
+        "label": "Typical load time"
+      },
+      {
+        "value": "4–6 wks",
+        "label": "Average launch"
+      },
+      {
+        "value": "100%",
+        "label": "Custom built"
+      },
+      {
+        "value": "8+",
+        "label": "Years of craft"
+      }
+    ],
+    "clientsLabel": "Selected clients",
+    "clientsTitle": "Brands we build for"
   },
   "process": {
     "label": "How we work",

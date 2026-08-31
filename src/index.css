@@ -240,63 +240,43 @@
   will-change: transform;
 }
 /* ============================================================
-   Slate theme — landing page (deep slate / cool off-white / cobalt)
+   Swiss theme — landing page (crisp light, ink black, cobalt)
    ============================================================ */
-.theme-slate {
-  --background: 222 47% 11%;        /* #0F172A */
-  --foreground: 210 40% 98%;        /* #F8FAFC */
+.theme-swiss {
+  --background: 0 0% 98%;           /* #FAFAFA */
+  --foreground: 0 0% 4%;            /* #0A0A0A */
 
-  --card: 217 33% 15%;
-  --card-foreground: 210 40% 98%;
+  --card: 0 0% 100%;                /* #FFFFFF */
+  --card-foreground: 0 0% 4%;
 
-  --popover: 217 33% 15%;
-  --popover-foreground: 210 40% 98%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 4%;
 
-  --primary: 221 83% 53%;           /* #2563EB */
-  --primary-foreground: 210 40% 98%;
+  --primary: 224 76% 48%;           /* #1D4ED8 */
+  --primary-foreground: 0 0% 100%;
 
-  --secondary: 217 33% 17%;
-  --secondary-foreground: 210 40% 98%;
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 4%;
 
-  --muted: 217 33% 17%;
-  --muted-foreground: 215 20% 68%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 25%;     /* #404040 — still high contrast */
 
-  --accent: 221 83% 53%;
-  --accent-foreground: 210 40% 98%;
+  --accent: 224 76% 48%;
+  --accent-foreground: 0 0% 100%;
 
-  --border: 215 25% 27%;            /* #334155 */
-  --input: 215 25% 27%;
-  --ring: 221 83% 53%;
+  --border: 0 0% 90%;               /* #E5E5E5 */
+  --input: 0 0% 90%;
+  --ring: 224 76% 48%;
 
-  --surface: 217 33% 15%;
-  --surface-hover: 217 33% 19%;
-  --text-dim: 215 20% 55%;
-  --hero-bg: 222 47% 11%;
-  --hero-fg: 210 40% 98%;
+  --surface: 0 0% 100%;
+  --surface-hover: 0 0% 96%;
+  --text-dim: 0 0% 32%;
+  --hero-bg: 0 0% 98%;
+  --hero-fg: 0 0% 4%;
 }
 
-.theme-slate ::selection {
-  background: hsl(221 83% 53% / 0.35);
-  color: hsl(210 40% 98%);
+.theme-swiss ::selection {
+  background: hsl(224 76% 48%);
+  color: #fff;
 }
 
-/* Ultra-subtle organic grain across the page */
-.grain-overlay::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 30;
-  opacity: 0.028;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 320 320' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-@keyframes accent-drift {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(0, -28px, 0) scale(1.06); }
-}
-
-.animate-accent-drift {
-  animation: accent-drift 22s ease-in-out infinite;
-  will-change: transform;
-}

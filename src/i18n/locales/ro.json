@@ -361,6 +361,11 @@
           "Design accessibility-first"
         ]
       }
+    },
+    "meta": {
+      "client": "Client",
+      "year": "An",
+      "scope": "Servicii"
     }
   },
   "about": {
@@ -383,7 +388,27 @@
         "label": "Ani de expertiză"
       }
     },
-    "techTitle": "Tehnologii pe care le stăpânim"
+    "techTitle": "Competențe",
+    "metrics": [
+      {
+        "value": "<1s",
+        "label": "Timp de încărcare"
+      },
+      {
+        "value": "4–6 săpt",
+        "label": "Lansare medie"
+      },
+      {
+        "value": "100%",
+        "label": "Construit la comandă"
+      },
+      {
+        "value": "8+",
+        "label": "Ani de experiență"
+      }
+    ],
+    "clientsLabel": "Clienți selectați",
+    "clientsTitle": "Branduri pentru care construim"
   },
   "process": {
     "label": "Cum lucrăm",

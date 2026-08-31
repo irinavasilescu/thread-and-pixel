@@ -23,10 +23,10 @@ const MarqueeBanner = ({
       >
         {items.map((word, i) => (
           <span key={i} className="flex items-center shrink-0">
-            <span className="font-mono text-sm md:text-base tracking-[0.15em] uppercase text-foreground/70 px-6">
+            <span className="font-mono text-sm md:text-base tracking-[0.15em] uppercase text-foreground px-6">
               {word}
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0" />
+            <span className="w-1 h-1 bg-primary shrink-0" />
           </span>
         ))}
       </motion.div>
