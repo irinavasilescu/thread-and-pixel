@@ -3,9 +3,23 @@ import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 const capabilities = [
-  "React", "Angular", "Vue", "TypeScript", "JavaScript", "Figma",
-  "Shopify", "WordPress", "Squarespace", "SEO", "Node.js", "PHP",
-  "Go", "MongoDB", "MySQL",
+  "React",
+  "Angular",
+  "Vue",
+  "TypeScript",
+  "JavaScript",
+  "HTML",
+  "CSS",
+  "Figma",
+  "Shopify",
+  "WordPress",
+  "Squarespace",
+  "SEO",
+  "Node.js",
+  "PHP",
+  "Go",
+  "MongoDB",
+  "MySQL",
 ];
 
 const AboutSection = () => {
@@ -26,12 +40,9 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7"
           >
-            <p className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary mb-6">
-              {t("about.label")}
-            </p>
+            <p className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary mb-6">{t("about.label")}</p>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] text-foreground leading-[0.95]">
-              {t("about.title1")}{" "}
-              <span className="text-primary">{t("about.titleHighlight")}</span>
+              {t("about.title1")} <span className="text-primary">{t("about.titleHighlight")}</span>
             </h2>
           </motion.div>
 
@@ -41,9 +52,7 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-5 lg:pt-14"
           >
-            <p className="text-lg md:text-xl leading-relaxed text-foreground">
-              {t("about.description")}
-            </p>
+            <p className="text-lg md:text-xl leading-relaxed text-foreground">{t("about.description")}</p>
           </motion.div>
         </div>
 
@@ -59,9 +68,7 @@ const AboutSection = () => {
               key={m.label}
               className={`py-10 md:py-14 px-6 md:px-8 border-border ${i !== 0 ? "md:border-l" : ""} ${i % 2 === 1 ? "border-l md:border-l" : ""} ${i < 2 ? "border-b md:border-b-0" : ""}`}
             >
-              <p className="text-4xl md:text-6xl font-bold tracking-[-0.04em] text-foreground">
-                {m.value}
-              </p>
+              <p className="text-4xl md:text-6xl font-bold tracking-[-0.04em] text-foreground">{m.value}</p>
               <p className="mt-4 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-foreground/70">
                 {m.label}
               </p>
