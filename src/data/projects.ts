@@ -29,11 +29,13 @@ export interface Project {
   screenshots: string[];
   technologies: string[];
   previewImage: string;
+  year: string;
 }
 
 export const projects: Project[] = [
   {
     slug: "prime-finish",
+    year: "2025",
     title: "Prime Finish",
     category: "Website Design & Development",
     tagline:
@@ -71,6 +73,7 @@ export const projects: Project[] = [
   },
   {
     slug: "crosetele-irinei",
+    year: "2024",
     title: "Croșetele Irinei",
     category: "E-Commerce",
     tagline: "A bespoke e-commerce website for a sustainable, handmade crochet brand.",
@@ -106,6 +109,7 @@ export const projects: Project[] = [
   },
   {
     slug: "table-tap",
+    year: "2025",
     title: "Table Tap",
     category: "Queue Management & Guest Experience",
     tagline: "Eliminating physical queues with a smart, scan-to-wait digital ecosystem.",
