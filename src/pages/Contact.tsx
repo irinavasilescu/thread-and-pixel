@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import emailjs from "@emailjs/browser";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
 import FloatingPixels from "@/components/FloatingPixels";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -52,7 +51,6 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background relative">
       <FloatingPixels variant="dark" />
-      <CustomCursor />
       <Navbar />
 
       <section className="pt-32 pb-16 px-6">
