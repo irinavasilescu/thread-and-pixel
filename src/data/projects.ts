@@ -1,4 +1,4 @@
-import primeFinish1 from "@/assets/prime-finish-1.png";
+import primeFinish1 from "@/assets/prime-finish-1.png.asset.json";
 import primeFinish2 from "@/assets/prime-finish-2.png";
 import primeFinish3 from "@/assets/prime-finish-3.png";
 import primeFinish4 from "@/assets/prime-finish-4.png";
