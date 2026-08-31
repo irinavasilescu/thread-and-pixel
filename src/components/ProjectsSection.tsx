@@ -110,12 +110,12 @@ const ProjectsSection = () => {
           </AnimatePresence>
 
           {/* Controls */}
-          <div className="grid grid-cols-2 border border-border mt-8">
+          <div className="flex items-center justify-center gap-4 mt-10">
             <button
               type="button"
               onClick={() => go(-1)}
               aria-label="Previous project"
-              className="flex items-center justify-center gap-3 py-4 border-r border-border font-mono text-[11px] uppercase tracking-[0.2em] text-foreground hover:bg-foreground hover:text-background transition-colors"
+              className="flex items-center justify-center gap-3 px-8 py-3 border border-border font-mono text-[11px] uppercase tracking-[0.2em] text-foreground hover:bg-foreground hover:text-background transition-colors"
             >
               <ArrowLeft size={15} />
               Prev
@@ -124,7 +124,7 @@ const ProjectsSection = () => {
               type="button"
               onClick={() => go(1)}
               aria-label="Next project"
-              className="flex items-center justify-center gap-3 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground hover:bg-foreground hover:text-background transition-colors"
+              className="flex items-center justify-center gap-3 px-8 py-3 border border-border font-mono text-[11px] uppercase tracking-[0.2em] text-foreground hover:bg-foreground hover:text-background transition-colors"
             >
               Next
               <ArrowRight size={15} />
