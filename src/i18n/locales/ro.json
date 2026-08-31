@@ -8,13 +8,13 @@
   },
   "hero": {
     "tag": "Studio de design și dezvoltare web",
-    "studioLabel": "STUDIO—01",
+    "studioLabel": "",
     "headline": {
       "line1": "Interfețe",
       "line2": "Digitale",
       "line3": "& Inginerie"
     },
-    "description": "Ne concentrăm exclusiv pe implementare tehnică și design de interfețe. Fără marketing inutil, doar cod de înaltă performanță.",
+    "description": "Ne concentrăm pe implementare tehnică, design de interfețe și cod performant.",
     "cta1": "Începe un proiect",
     "cta2": "Vezi proiectele",
     "proof": {
@@ -191,12 +191,7 @@
           "Prezentare & Aliniere",
           "Suport Implementare"
         ],
-        "deliverables": [
-          "Document de strategie",
-          "Raport audit tehnic",
-          "Roadmap prioritizat",
-          "Materiale workshop"
-        ]
+        "deliverables": ["Document de strategie", "Raport audit tehnic", "Roadmap prioritizat", "Materiale workshop"]
       },
       "web-design": {
         "title": "Web Design",
