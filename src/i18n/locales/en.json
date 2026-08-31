@@ -10,9 +10,9 @@
     "tag": "Web design & development studio",
     "studioLabel": "STUDIO—01",
     "headline": {
-      "line1": "Digital",
-      "line2": "Interfaces",
-      "line3": "& Engineering"
+      "line1": "Web",
+      "line2": "design",
+      "line3": "& Development"
     },
     "description": "Focusing exclusively on technical implementation and interface design. No marketing fluff, just high-performance code.",
     "cta1": "Start a project",
@@ -80,12 +80,7 @@
           "Development & Testing",
           "Launch & Handoff"
         ],
-        "deliverables": [
-          "Fully responsive website",
-          "Admin dashboard",
-          "Documentation",
-          "30-day post-launch support"
-        ]
+        "deliverables": ["Fully responsive website", "Admin dashboard", "Documentation", "30-day post-launch support"]
       },
       "seo": {
         "title": "SEO",
@@ -191,12 +186,7 @@
           "Presentation & Alignment",
           "Implementation Support"
         ],
-        "deliverables": [
-          "Strategy document",
-          "Technical audit report",
-          "Prioritized roadmap",
-          "Workshop materials"
-        ]
+        "deliverables": ["Strategy document", "Technical audit report", "Prioritized roadmap", "Workshop materials"]
       },
       "web-design": {
         "title": "Web Design",
@@ -228,12 +218,7 @@
           "Prototype & Testing",
           "Asset Delivery"
         ],
-        "deliverables": [
-          "Brand guidelines",
-          "UI kit / design system",
-          "Interactive prototypes",
-          "Asset library"
-        ]
+        "deliverables": ["Brand guidelines", "UI kit / design system", "Interactive prototypes", "Asset library"]
       },
       "support-maintenance": {
         "title": "Support & Maintenance",
@@ -339,12 +324,7 @@
           "Live management dashboard for queue orchestration",
           "Hardware-free check-in (BYOD - Bring Your Own Device)"
         ],
-        "keyElements": [
-          "Virtual orchestration",
-          "Frictionless check-in",
-          "Real-time transparency",
-          "Congestion relief"
-        ]
+        "keyElements": ["Virtual orchestration", "Frictionless check-in", "Real-time transparency", "Congestion relief"]
       },
       "pulse-fintech": {
         "category": "Consulting & Development",
