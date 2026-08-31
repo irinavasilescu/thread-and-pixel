@@ -376,8 +376,7 @@
   },
   "about": {
     "label": "Despre noi",
-    "title1": "Unde firul",
-    "title2": "întâlnește",
+    "title1": "Unde firul întâlnește",
     "titleHighlight": "pixelul",
     "description": "Suntem un studio digital obsedat de intersecția dintre design și tehnologie. Fiecare proiect este o tapiserie — fire de strategie, design și cod împletite în experiențe digitale fără cusur.",
     "stats": {
@@ -395,6 +394,7 @@
       }
     },
     "techTitle": "Competențe",
+    "techHeadline": "Instrumente și tehnologii pe care le stăpânim",
     "metrics": [
       {
         "value": "<1s",
@@ -412,9 +412,7 @@
         "value": "8+",
         "label": "Ani de experiență"
       }
-    ],
-    "clientsLabel": "Clienți selectați",
-    "clientsTitle": "Branduri pentru care construim"
+    ]
   },
   "process": {
     "label": "Cum lucrăm",
