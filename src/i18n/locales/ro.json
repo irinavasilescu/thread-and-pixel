@@ -1,0 +1,509 @@
+{
+  "nav": {
+    "services": "Servicii",
+    "projects": "Proiecte",
+    "about": "Despre noi",
+    "process": "Proces",
+    "getInTouch": "Contactează-ne"
+  },
+  "hero": {
+    "tag": "Studio Digital Creativ",
+    "line1": "Construim",
+    "line2": "experiențe digitale",
+    "line3": "pixel cu pixel",
+    "subtitle": "Creăm website-uri premium, platforme e-commerce și strategii digitale care proiectează brandurile în viitor.",
+    "cta1": "Explorează Serviciile",
+    "cta2": "Află Mai Multe"
+  },
+  "marquee": {
+    "items": [
+      "WEB DESIGN",
+      "BRANDING",
+      "E-COMMERCE",
+      "SEO",
+      "CONSULTANȚĂ",
+      "UI/UX",
+      "DEZVOLTARE",
+      "STRATEGIE",
+      "SUPORT",
+      "PERFORMANȚĂ"
+    ]
+  },
+  "services": {
+    "label": "Ce facem",
+    "title": "Servicii",
+    "items": {
+      "website-creation": {
+        "title": "Creare Website",
+        "desc": "Website-uri personalizate, construite pentru performanță cu tehnologii de ultimă generație.",
+        "tagline": "Website-uri personalizate, construite pentru performanță și durabilitate.",
+        "description": "Nu construim template-uri — arhitecturăm experiențe digitale. Fiecare website pe care îl creăm este o soluție personalizată, proiectată în jurul brandului tău, audienței tale și obiectivelor tale. De la portofolii simple la platforme multi-lingvistice complexe, livrăm rezultate pixel-perfect cu cod curat și scalabil.",
+        "features": [
+          {
+            "title": "Dezvoltare Personalizată",
+            "description": "Soluții programate manual, adaptate specificațiilor tale exacte — fără teme predefinite."
+          },
+          {
+            "title": "Design Responsiv",
+            "description": "Experiențe impecabile pe orice dispozitiv, de la mobil la ecrane ultrawide."
+          },
+          {
+            "title": "Performanță Întâi",
+            "description": "Timpi de încărcare optimizați cu lazy loading, code splitting și livrare CDN."
+          },
+          {
+            "title": "Integrare CMS",
+            "description": "Management ușor al conținutului, astfel încât echipa ta să actualizeze site-ul fără a atinge codul."
+          }
+        ],
+        "process": [
+          "Descoperire & Cerințe",
+          "Wireframing & Prototipare",
+          "Design Vizual",
+          "Dezvoltare & Testare",
+          "Lansare & Predare"
+        ],
+        "deliverables": [
+          "Website complet responsiv",
+          "Panou de administrare",
+          "Documentație",
+          "30 zile suport post-lansare"
+        ]
+      },
+      "seo": {
+        "title": "SEO",
+        "desc": "Strategii de optimizare bazate pe date care te plasează în topul rezultatelor de căutare.",
+        "tagline": "Optimizare bazată pe date care te plasează în topul rezultatelor.",
+        "description": "Vizibilitatea este totul. Strategiile noastre SEO combină excelența tehnică cu inteligența de conținut pentru a asigura că brandul tău apare exact acolo unde audiența ta caută. Nu urmărim algoritmii — construim creștere organică sustenabilă.",
+        "features": [
+          {
+            "title": "Audit SEO Tehnic",
+            "description": "Analiză cuprinzătoare a structurii site-ului, vitezei, crawlability-ului și indexării."
+          },
+          {
+            "title": "Strategie de Cuvinte Cheie",
+            "description": "Mapare a cuvintelor cheie bazată pe cercetare, aliniată cu intenția de căutare și obiectivele de business."
+          },
+          {
+            "title": "Optimizarea Conținutului",
+            "description": "Optimizare on-page incluzând meta tag-uri, schema markup și structura conținutului."
+          },
+          {
+            "title": "Link Building",
+            "description": "Strategii etice de backlink de înaltă calitate care construiesc autoritatea domeniului."
+          }
+        ],
+        "process": [
+          "Audit Site",
+          "Analiză Competitori",
+          "Dezvoltare Strategie",
+          "Implementare",
+          "Monitorizare & Raportare"
+        ],
+        "deliverables": [
+          "Raport audit SEO",
+          "Document strategie cuvinte cheie",
+          "Rapoarte lunare de performanță",
+          "Roadmap de optimizare"
+        ]
+      },
+      "e-commerce": {
+        "title": "E-Commerce",
+        "desc": "Magazine online focusate pe conversie care transformă vizitatorii în clienți fideli.",
+        "tagline": "Magazine online focusate pe conversie care transformă vizitatorii în clienți fideli.",
+        "description": "Un magazin online ar trebui să facă mai mult decât să afișeze produse — ar trebui să le vândă. Construim experiențe e-commerce care reduc fricțiunea, construiesc încredere și ghidează utilizatorii de la descoperire la checkout cu precizie și încântare.",
+        "features": [
+          {
+            "title": "Magazine Personalizate",
+            "description": "Experiențe unice de cumpărături care reflectă identitatea brandului și povestea produsului."
+          },
+          {
+            "title": "Integrare Plăți",
+            "description": "Checkout fără probleme cu Stripe, PayPal și metode de plată regionale."
+          },
+          {
+            "title": "Gestiunea Stocurilor",
+            "description": "Urmărire în timp real a stocului, gestionarea variantelor și alerte automate."
+          },
+          {
+            "title": "Analiză & CRO",
+            "description": "Optimizarea ratei de conversie prin A/B testing, heatmaps și analiză de funnel."
+          }
+        ],
+        "process": [
+          "Selecția Platformei",
+          "Design UX & Mapare Flow",
+          "Dezvoltare & Integrare",
+          "Testare & QA",
+          "Lansare & Creștere"
+        ],
+        "deliverables": [
+          "Platformă e-commerce funcțională",
+          "Panou de administrare",
+          "Configurare plăți",
+          "Documentație de instruire"
+        ]
+      },
+      "consulting": {
+        "title": "Consultanță",
+        "desc": "Ghidare digitală strategică pentru a alinia prezența online cu obiectivele de business.",
+        "tagline": "Ghidare digitală strategică pentru a alinia prezența online cu obiectivele de business.",
+        "description": "Nu fiecare angajament începe cu cod. Uneori ai nevoie de un partener care poate vedea imaginea de ansamblu — cineva care să auditeze ce există, să identifice oportunitățile și să traseze cel mai eficient drum înainte. Acolo strălucește practica noastră de consultanță.",
+        "features": [
+          {
+            "title": "Strategie Digitală",
+            "description": "Evaluare holistică a ecosistemului digital cu recomandări acționabile."
+          },
+          {
+            "title": "Audituri Tehnologice",
+            "description": "Evaluări aprofundate ale stack-ului tehnologic actual, performanței și securității."
+          },
+          {
+            "title": "Roadmapping Produs",
+            "description": "Planificarea prioritizată a funcționalităților bazată pe cercetarea utilizatorilor și impactul business."
+          },
+          {
+            "title": "Împuternicirea Echipei",
+            "description": "Workshop-uri și documentație pentru a ridica nivelul echipei interne."
+          }
+        ],
+        "process": [
+          "Interviuri Stakeholderi",
+          "Cercetare & Analiză",
+          "Formulare Strategie",
+          "Prezentare & Aliniere",
+          "Suport Implementare"
+        ],
+        "deliverables": [
+          "Document de strategie",
+          "Raport audit tehnic",
+          "Roadmap prioritizat",
+          "Materiale workshop"
+        ]
+      },
+      "web-design": {
+        "title": "Web Design",
+        "desc": "Identități vizuale impresionante și interfețe care captivează și convertesc.",
+        "tagline": "Identități vizuale impresionante și interfețe care captivează și convertesc.",
+        "description": "Designul nu este decorațiune — este comunicare. Creăm sisteme vizuale care spun povestea brandului tău, ghidează comportamentul utilizatorului și te diferențiază de zgomot. Fiecare culoare, font și interacțiune este intenționată.",
+        "features": [
+          {
+            "title": "Identitate de Brand",
+            "description": "Logo, paletă de culori, tipografie și limbaj vizual care definesc brandul tău."
+          },
+          {
+            "title": "Design UI/UX",
+            "description": "Design de interfață centrat pe utilizator cu wireframe-uri, prototipuri și testare de uzabilitate."
+          },
+          {
+            "title": "Sisteme de Design",
+            "description": "Biblioteci scalabile de componente care asigură consistența în toate punctele de contact."
+          },
+          {
+            "title": "Motion Design",
+            "description": "Animații și micro-interacțiuni cu scop care îmbunătățesc experiența utilizatorului."
+          }
+        ],
+        "process": [
+          "Descoperire Brand",
+          "Moodboarding & Concepte",
+          "Iterație Design",
+          "Prototip & Testare",
+          "Livrare Asset-uri"
+        ],
+        "deliverables": [
+          "Ghid de brand",
+          "Kit UI / sistem de design",
+          "Prototipuri interactive",
+          "Bibliotecă de asset-uri"
+        ]
+      },
+      "support-maintenance": {
+        "title": "Suport & Mentenanță",
+        "desc": "Îngrijire continuă care asigură funcționarea impecabilă a activelor digitale.",
+        "tagline": "Îngrijire continuă care asigură funcționarea impecabilă a activelor digitale.",
+        "description": "Lansarea unui website este doar începutul. Tehnologia evoluează, conținutul se schimbă și amenințările de securitate apar zilnic. Planurile noastre de suport mențin prezența ta digitală la performanță maximă, astfel încât tu să te poți concentra pe afacerea ta.",
+        "features": [
+          {
+            "title": "Monitorizare Uptime",
+            "description": "Monitorizare 24/7 cu alerte instant și răspuns rapid la incidente."
+          },
+          {
+            "title": "Actualizări de Securitate",
+            "description": "Patching regulat, scanare vulnerabilități și întărire securitate."
+          },
+          {
+            "title": "Optimizare Performanță",
+            "description": "Optimizare continuă a vitezei, Core Web Vitals și resurselor server."
+          },
+          {
+            "title": "Actualizări Conținut",
+            "description": "Modificări regulate de conținut, adăugări de funcționalități și rafinări de design."
+          }
+        ],
+        "process": [
+          "Onboarding & Audit",
+          "Configurare Monitorizare",
+          "Mentenanță Programată",
+          "Răspuns Incidente",
+          "Recenzii Trimestriale"
+        ],
+        "deliverables": [
+          "Rapoarte lunare de status",
+          "Garanții uptime",
+          "Canal de suport prioritar",
+          "Recenzii trimestriale de performanță"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "label": "Lucrări selectate",
+    "title": "Proiecte",
+    "scrollHint": "Derulează pentru a explora",
+    "viewProject": "Vezi proiectul",
+    "items": {
+      "prime-finish": {
+        "category": "Design & Dezvoltare Web",
+        "title": "Prime Finish",
+        "tagline": "O prezență digitală robustă pentru un contractor european independent, specializat în construcții industriale, civile și navale.",
+        "description": "Am proiectat o interfață de înaltă autoritate concentrată pe măiestria tehnică. Utilizând imagini de calitate industrială și o ierarhie structurată a serviciilor (Industrial, Civil, Naval), am poziționat brandul ca partener de top pentru proiecte complexe de infrastructură.",
+        "clientExpectation": "Prime Finish operează în sectoare complexe, de la construcții metalice structurale la reparații navale. Aveau nevoie de o prezență digitală care să se îndepărteze de renovarea generală și să comunice capacitatea lor pentru proiecte industriale de mare amploare și logistică la nivel european.",
+        "workDone": [
+          "Aliniere brand industrial global",
+          "UI/UX tehnic de înaltă performanță",
+          "Sistem de solicitare servicii & generare lead-uri",
+          "Inginerie performanță multi-dispozitiv",
+          "SEO & optimizare tehnică la nivel european",
+          "Localizare multi-lingvistică"
+        ],
+        "keyElements": [
+          "Precizie geometrică",
+          "Tonuri industriale cu contrast puternic",
+          "Ierarhie structurată",
+          "Design utilitar"
+        ]
+      },
+      "crosetele-irinei": {
+        "category": "E-Commerce",
+        "title": "Croșetele Irinei",
+        "tagline": "Un website e-commerce personalizat pentru un brand sustenabil de obiecte croșetate.",
+        "description": "Croșetele Irinei este un brand centrat pe sustenabilitate și mișcarea \"slow-made\". Obiectivul a fost tranziția de la un model de vânzări exclusiv pe social media la un magazin digital profesionist, de înaltă performanță. Am dezvoltat o platformă care păstrează identitatea brandului, oferind o experiență modernă de cumpărare.",
+        "clientExpectation": "Brandul avea nevoie să se îndepărteze de \"dezordinea\" tipică a e-commerce-ului. Provocarea principală a fost echilibrarea imaginilor de înaltă rezoluție, esențiale pentru prezentarea texturilor firelor, cu obiectivele de performanță. Obiectivele cheie au inclus reducerea abandonului coșului și crearea unui flux personalizat de adopție pentru articole unice.",
+        "workDone": [
+          "Arhitectură Shopify personalizată",
+          "Descoperire îmbunătățită a produselor",
+          "Plăți sigure și fără probleme",
+          "Portal personalizat de comenzi",
+          "Optimizare performanță & SEO"
+        ],
+        "keyElements": [
+          "Design vizual cu accent pe textură",
+          "Optimizare viteză-la-coș",
+          "Navigare intuitivă",
+          "Funnel personalizat de comenzi",
+          "Experiență de adopție optimizată pentru mobil",
+          "Performanță eco-friendly"
+        ]
+      },
+      "table-tap": {
+        "category": "Design & Dezvoltare Software de Gestiune",
+        "title": "Table Tap",
+        "tagline": "Transformarea experienței de așteptare prin digitalizarea cozilor cu ajutorul codurilor QR.",
+        "description": "Am creat o interfață intuitivă de tip 'Virtual Queue' care elimină nevoia prezenței fizice la intrarea în restaurant. Prin scanarea unui cod QR, clienții intră într-o listă de așteptare digitală, permițând echipei de management să orchestreze fluxul de persoane fără aglomerație la intrare.",
+        "clientExpectation": "Localurile cu trafic intens se confruntau cu problema clienților care așteptau în fața ușii, creând disconfort. Era necesară o soluție care să permită clienților să se înscrie la rând de la distanță și personalului să gestioneze fluxul de ocupare a meselor într-un mod organizat și modern.",
+        "workDone": [
+          "Listă de așteptare virtuală de tip 'Scan-to-Join' prin cod QR",
+          "Monitorizarea poziției în rând și timp de așteptare estimat (ETA) în timp real",
+          "Sistem automat de notificări prin SMS și WhatsApp",
+          "Panou de control live pentru orchestrarea cozilor de către management",
+          "Check-in fără echipamente dedicate (BYOD - Bring Your Own Device)"
+        ],
+        "keyElements": [
+          "Eficiență operațională",
+          "Eliminarea aglomerației fizice",
+          "Simplitate în utilizare",
+          "Transparență în timp real"
+        ]
+      },
+      "pulse-fintech": {
+        "category": "Consultanță & Dezvoltare",
+        "title": "Pulse Fintech",
+        "tagline": "Transformarea finanțelor complexe într-un produs digital intuitiv.",
+        "description": "Pulse Fintech ne-a abordat pentru a reimagina platforma lor de investiții orientată spre consumatori. Prin consultanță strategică și dezvoltare iterativă, am simplificat un produs financiar complex într-o experiență accesibilă, care construiește încredere.",
+        "clientExpectation": "Aveau nevoie să facă finanțele accesibile pentru demografiile mai tinere, menținând în același timp credibilitatea așteptată de investitorii instituționali. Viteza și securitatea erau non-negociabile.",
+        "workDone": [
+          "Strategie de produs și cercetare utilizatori",
+          "Reproiectare arhitectură informațională",
+          "Dashboard-uri interactive de vizualizare date",
+          "Audit de securitate și implementare conformitate",
+          "Suport continuu și dezvoltare funcționalități"
+        ],
+        "keyElements": [
+          "Dashboard-uri bogate în date",
+          "Pattern-uri UI de construire a încrederii",
+          "Micro-animații la interacțiuni",
+          "Design accessibility-first"
+        ]
+      }
+    }
+  },
+  "about": {
+    "label": "Despre noi",
+    "title1": "Unde firul",
+    "title2": "întâlnește",
+    "titleHighlight": "pixelul",
+    "description": "Suntem un studio digital obsedat de intersecția dintre design și tehnologie. Fiecare proiect este o tapiserie — fire de strategie, design și cod împletite în experiențe digitale fără cusur.",
+    "stats": {
+      "projects": {
+        "value": "100%",
+        "label": "Design exclusiv"
+      },
+      "satisfaction": {
+        "value": "100%",
+        "label": "Atenție la detalii"
+      },
+      "years": {
+        "value": "8+",
+        "label": "Ani de expertiză"
+      }
+    },
+    "techTitle": "Tehnologii pe care le stăpânim"
+  },
+  "process": {
+    "label": "Cum lucrăm",
+    "title": "Proces",
+    "steps": {
+      "01": {
+        "title": "Descoperire",
+        "desc": "Analiză aprofundată a brandului, obiectivelor și audienței tale pentru a defini schița proiectului."
+      },
+      "02": {
+        "title": "Design",
+        "desc": "Crearea conceptelor vizuale și prototipurilor interactive care aduc viziunea ta la viață."
+      },
+      "03": {
+        "title": "Dezvoltare",
+        "desc": "Implementare pixel-perfect cu cod curat, scalabil și orientat pe performanță."
+      },
+      "04": {
+        "title": "Lansare & Evoluție",
+        "desc": "Lansare cu încredere și suport continuu pentru a te menține în fruntea curbei."
+      }
+    }
+  },
+  "faq": {
+    "label": "Întrebări Frecvente",
+    "title": "FAQ",
+    "items": [
+      {
+        "q": "Care este perioada tipică pentru un proiect?",
+        "a": "Majoritatea proiectelor durează 4–8 săptămâni în funcție de complexitate. Un website simplu poate fi livrat în 3–4 săptămâni, în timp ce platformele complexe de e-commerce sau personalizate pot dura 8–12 săptămâni. Vă vom oferi un calendar clar în faza de descoperire."
+      },
+      {
+        "q": "Oferiți suport continuu după lansare?",
+        "a": "Absolut. Fiecare proiect include 30 de zile de suport post-lansare. Dincolo de aceasta, oferim planuri lunare de mentenanță care acoperă actualizări de securitate, monitorizare performanță, modificări de conținut și adăugări de funcționalități."
+      },
+      {
+        "q": "În ce tehnologii vă specializați?",
+        "a": "Lucrăm cu framework-uri moderne precum React, Next.js și Angular pentru front-end, combinate cu Node.js, Go sau PHP pentru back-end. Pentru e-commerce, suntem experți în Shopify și WooCommerce. Alegem întotdeauna cel mai bun instrument pentru fiecare proiect."
+      },
+      {
+        "q": "Cum funcționează prețurile?",
+        "a": "Oferim prețuri pe proiect cu repere și livrabile clare — fără surprize orare. După sesiunea de descoperire, veți primi o propunere detaliată cu costuri transparente. Oferim și planuri flexibile de plată."
+      },
+      {
+        "q": "Puteți lucra cu ghidul nostru de brand existent?",
+        "a": "Desigur. Ne place să lucrăm în cadrul sistemelor de brand existente și să le extindem în digital. Dacă nu aveți încă ghiduri de brand, le putem crea ca parte a procesului nostru de design."
+      },
+      {
+        "q": "Ce face Thread & Pixel diferit de alte agenții?",
+        "a": "Îmbinăm gândirea strategică cu atenția obsesivă la detalii. Fiecare pixel este intenționat, fiecare linie de cod este curată. Suntem suficient de mici pentru a ne pasa profund, suficient de pricepuți pentru a livra la cel mai înalt nivel."
+      }
+    ]
+  },
+  "contactSection": {
+    "label": "Hai să vorbim",
+    "title1": "Pregătit să creăm",
+    "title2": "ceva",
+    "titleHighlight": "extraordinar",
+    "description": "Spune-ne despre proiectul tău și hai să explorăm cum putem aduce viziunea ta la viață.",
+    "cta": "Începe o conversație"
+  },
+  "contact": {
+    "label": "Contactează-ne",
+    "title1": "Hai să construim",
+    "title2": "ceva",
+    "titleHighlight": "grozav",
+    "subtitle": "Spune-ne despre proiectul tău, termenele tale și ambițiile tale. Revenim cu idei.",
+    "info": {
+      "email": {
+        "label": "Email",
+        "value": "contact@threadandpixel.eu"
+      },
+      "location": {
+        "label": "Locație",
+        "value": "Remote-first, la nivel mondial"
+      },
+      "response": {
+        "label": "Timp de Răspuns",
+        "value": "În 24 de ore"
+      }
+    },
+    "form": {
+      "name": "Nume",
+      "namePlaceholder": "Numele tău",
+      "email": "Email",
+      "emailPlaceholder": "email@exemplu.com",
+      "company": "Companie",
+      "companyPlaceholder": "Numele companiei",
+      "service": "Serviciu de Interes",
+      "servicePlaceholder": "Selectează un serviciu",
+      "message": "Mesaj",
+      "messagePlaceholder": "Spune-ne despre proiectul tău...",
+      "send": "Trimite mesajul",
+      "sending": "Se trimite..."
+    },
+    "success": {
+      "title": "Mesaj trimis",
+      "description": "Revenim în 24 de ore."
+    }
+  },
+  "footer": {
+    "rights": "Toate drepturile rezervate."
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Ups! Pagina nu a fost găsită",
+    "link": "Înapoi la Acasă"
+  },
+  "projectDetail": {
+    "backToProjects": "Înapoi la proiecte",
+    "theProject": "Proiectul",
+    "clientExpectations": "Așteptările Clientului",
+    "brandBook": "Cartea",
+    "brandBookHighlight": "Brandului",
+    "colorPalette": "Paleta de Culori",
+    "typography": "Tipografie",
+    "display": "Afișaj",
+    "body": "Corp",
+    "keyElements": "Elemente Cheie",
+    "whatWeDelivered": "Ce Am",
+    "deliveredHighlight": "Livrat",
+    "technologiesUsed": "Tehnologii Utilizate",
+    "interestedCta": "Interesat de un proiect similar?",
+    "startConversation": "Începe o conversație"
+  },
+  "serviceDetail": {
+    "allServices": "Toate serviciile",
+    "whatsIncluded": "Ce este",
+    "includedHighlight": "inclus",
+    "ourProcess": "Procesul Nostru",
+    "deliverables": "Livrabile",
+    "readyToStart": "Pregătit să începem?",
+    "ctaText": "Hai să discutăm cum serviciul nostru de {{service}} poate ajuta la elevarea brandului tău.",
+    "startConversation": "Începe o conversație",
+    "notFound": "Serviciu negăsit",
+    "backToHome": "Înapoi la acasă"
+  }
+}

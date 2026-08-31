@@ -1,17 +1,5 @@
 import { motion } from "framer-motion";
-
-const keywords = [
-  "WEB DESIGN",
-  "BRANDING",
-  "E-COMMERCE",
-  "SEO",
-  "CONSULTING",
-  "UI/UX",
-  "DEVELOPMENT",
-  "STRATEGY",
-  "SUPPORT",
-  "PERFORMANCE",
-];
+import { useTranslation } from "react-i18next";
 
 const MarqueeBanner = ({
   speed = 25,
@@ -22,7 +10,9 @@ const MarqueeBanner = ({
   reverse?: boolean;
   className?: string;
 }) => {
-  const items = [...keywords, ...keywords]; // duplicate for seamless loop
+  const { t } = useTranslation();
+  const keywords = t("marquee.items", { returnObjects: true }) as string[];
+  const items = [...keywords, ...keywords];
 
   return (
     <div className={`overflow-hidden py-5 ${className}`}>

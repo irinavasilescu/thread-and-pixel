@@ -1,42 +1,16 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import WaveDecoration from "./WaveDecoration";
 import FloatingPixels from "./FloatingPixels";
 
-const faqs = [
-  {
-    q: "What is your typical project timeline?",
-    a: "Most projects take 4–8 weeks depending on scope. A simple website can be delivered in 3–4 weeks, while complex e-commerce or custom platforms may take 8–12 weeks. We'll give you a clear timeline during our discovery phase.",
-  },
-  {
-    q: "Do you offer ongoing support after launch?",
-    a: "Absolutely. Every project includes 30 days of post-launch support. Beyond that, we offer monthly maintenance plans covering security updates, performance monitoring, content changes, and feature additions.",
-  },
-  {
-    q: "What technologies do you specialize in?",
-    a: "We work with modern frameworks like React, Next.js, and Angular for front-end, paired with Node.js, Go, or PHP for back-end. For e-commerce, we're experts in Shopify and WooCommerce. We always choose the best tool for the job.",
-  },
-  {
-    q: "How does your pricing work?",
-    a: "We offer project-based pricing with clear milestones and deliverables — no hourly surprises. After our discovery session, you'll receive a detailed proposal with transparent costs. We also offer flexible payment schedules.",
-  },
-  {
-    q: "Can you work with our existing brand guidelines?",
-    a: "Of course. We love working within established brand systems and extending them into digital. If you don't have brand guidelines yet, we can create them as part of our design process.",
-  },
-  {
-    q: "What makes Thread & Pixel different from other agencies?",
-    a: "We blend strategic thinking with obsessive attention to craft. Every pixel is intentional, every line of code is clean. We're small enough to care deeply, skilled enough to deliver at the highest level.",
-  },
-];
-
-const FAQItem = ({ faq, index, isOpen, onToggle }: {
-  faq: typeof faqs[0];
+const FAQItem = ({ index, isOpen, onToggle }: {
   index: number;
   isOpen: boolean;
   onToggle: () => void;
 }) => {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-30px" });
 
@@ -53,7 +27,7 @@ const FAQItem = ({ faq, index, isOpen, onToggle }: {
         className="w-full flex items-center justify-between py-6 text-left group"
       >
         <span className="text-base md:text-lg font-medium tracking-tight pr-8 group-hover:text-primary transition-colors duration-300">
-          {faq.q}
+          {t(`faq.items.${index}.q`)}
         </span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
@@ -73,7 +47,7 @@ const FAQItem = ({ faq, index, isOpen, onToggle }: {
         className="overflow-hidden"
       >
         <p className="pb-6 text-muted-foreground font-light leading-relaxed text-sm md:text-base">
-          {faq.a}
+          {t(`faq.items.${index}.a`)}
         </p>
       </motion.div>
     </motion.div>
@@ -81,20 +55,20 @@ const FAQItem = ({ faq, index, isOpen, onToggle }: {
 };
 
 const FAQSection = () => {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const faqItems = t("faq.items", { returnObjects: true }) as { q: string; a: string }[];
 
   return (
     <section ref={ref} className="relative py-32 px-6 overflow-hidden">
       <FloatingPixels />
-      {/* Light background matching services */}
       <div className="absolute inset-0" style={{
         background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",
       }} />
       <div className="absolute inset-0 grid-bg opacity-40" />
 
-      {/* Decorative wave lines */}
       <WaveDecoration
         color="hsl(var(--primary) / 0.05)"
         className="bottom-10 left-0 right-0 h-[80px]"
@@ -108,7 +82,7 @@ const FAQSection = () => {
             transition={{ duration: 0.5 }}
             className="font-mono text-xs tracking-[0.3em] uppercase text-primary mb-4"
           >
-            Common Questions
+            {t("faq.label")}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, x: -30 }}
@@ -116,15 +90,14 @@ const FAQSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl font-light tracking-tight"
           >
-            FAQ
+            {t("faq.title")}
           </motion.h2>
         </motion.div>
 
         <div>
-          {faqs.map((faq, i) => (
+          {faqItems.map((_, i) => (
             <FAQItem
               key={i}
-              faq={faq}
               index={i}
               isOpen={openIndex === i}
               onToggle={() => setOpenIndex(openIndex === i ? null : i)}

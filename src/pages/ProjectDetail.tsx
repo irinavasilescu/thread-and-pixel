@@ -1,18 +1,19 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { projects } from "@/data/projects";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import ProjectScreenshots from "@/components/ProjectScreenshots";
 import WaveDivider from "@/components/WaveDivider";
-import WaveDecoration from "@/components/WaveDecoration";
 import FloatingPixels from "@/components/FloatingPixels";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const ProjectDetail = () => {
+  const { t } = useTranslation();
   const { slug } = useParams();
   const project = projects.find((p) => p.slug === slug);
 
@@ -22,7 +23,7 @@ const ProjectDetail = () => {
         <div className="text-center">
           <h1 className="text-4xl font-light mb-4">Project not found</h1>
           <Link to="/" className="text-primary font-mono text-sm uppercase tracking-wider hover:underline">
-            Back to home
+            {t("notFound.link")}
           </Link>
         </div>
       </div>
@@ -30,6 +31,8 @@ const ProjectDetail = () => {
   }
 
   const mainColor = project.brandColors[0]?.hex || "hsl(var(--primary))";
+  const workDone = t(`projects.items.${project.slug}.workDone`, { returnObjects: true }) as string[];
+  const keyElements = t(`projects.items.${project.slug}.keyElements`, { returnObjects: true }) as string[];
 
   return (
     <div className="min-h-screen bg-background relative">
@@ -37,9 +40,7 @@ const ProjectDetail = () => {
       <CustomCursor />
       <Navbar />
 
-      {/* Hero */}
       <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-        {/* Glow orb based on brand color */}
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
@@ -49,15 +50,13 @@ const ProjectDetail = () => {
 
         <div className="absolute inset-0 grid-bg opacity-30" />
 
-        {/* Decorative wave */}
-
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
             <Link
               to="/#projects"
               className="inline-flex items-center gap-2 font-mono text-xs tracking-wider uppercase text-muted-foreground hover:text-primary transition-colors mb-10"
             >
-              <ArrowLeft size={14} /> Back to projects
+              <ArrowLeft size={14} /> {t("projectDetail.backToProjects")}
             </Link>
           </motion.div>
 
@@ -67,7 +66,7 @@ const ProjectDetail = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="font-mono text-xs tracking-[0.3em] uppercase text-primary mb-4"
           >
-            {project.category}
+            {t(`projects.items.${project.slug}.category`)}
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -75,7 +74,7 @@ const ProjectDetail = () => {
             transition={{ duration: 0.7, delay: 0.2, ease }}
             className="text-5xl md:text-7xl font-light tracking-tight mb-6"
           >
-            {project.title}
+            {t(`projects.items.${project.slug}.title`)}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -83,17 +82,15 @@ const ProjectDetail = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-xl text-muted-foreground font-light max-w-3xl"
           >
-            {project.tagline}
+            {t(`projects.items.${project.slug}.tagline`)}
           </motion.p>
         </div>
 
-        {/* Wave transition */}
         <div className="absolute -bottom-1 left-0 right-0 z-20">
           <WaveDivider fillColor="hsl(var(--background))" />
         </div>
       </section>
 
-      {/* Brand Colors Strip */}
       <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
@@ -113,7 +110,6 @@ const ProjectDetail = () => {
         </div>
       </motion.div>
 
-      {/* Description */}
       <section className="py-24 px-6 relative overflow-hidden">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
           <motion.div
@@ -122,8 +118,8 @@ const ProjectDetail = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease }}
           >
-            <h2 className="font-mono text-xs tracking-[0.3em] uppercase text-primary mb-6">The Project</h2>
-            <p className="text-foreground leading-relaxed font-light text-lg">{project.description}</p>
+            <h2 className="font-mono text-xs tracking-[0.3em] uppercase text-primary mb-6">{t("projectDetail.theProject")}</h2>
+            <p className="text-foreground leading-relaxed font-light text-lg">{t(`projects.items.${project.slug}.description`)}</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -131,18 +127,16 @@ const ProjectDetail = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15, ease }}
           >
-            <h2 className="font-mono text-xs tracking-[0.3em] uppercase text-primary mb-6">Client Expectations</h2>
-            <p className="text-muted-foreground leading-relaxed font-light">{project.clientExpectation}</p>
+            <h2 className="font-mono text-xs tracking-[0.3em] uppercase text-primary mb-6">{t("projectDetail.clientExpectations")}</h2>
+            <p className="text-muted-foreground leading-relaxed font-light">{t(`projects.items.${project.slug}.clientExpectation`)}</p>
           </motion.div>
         </div>
       </section>
 
-      {/* Screenshots */}
       {project.screenshots.length > 0 && (
-        <ProjectScreenshots screenshots={project.screenshots} title={project.title} />
+        <ProjectScreenshots screenshots={project.screenshots} title={t(`projects.items.${project.slug}.title`)} />
       )}
 
-      {/* Brandbook */}
       <WaveDivider fillColor="hsl(175 12% 90%)" />
       <section className="relative py-24 px-6 overflow-hidden" style={{
         background: "linear-gradient(180deg, hsl(175 12% 90%), hsl(var(--background)))",
@@ -156,18 +150,17 @@ const ProjectDetail = () => {
             transition={{ duration: 0.6, ease }}
             className="text-3xl md:text-4xl font-light tracking-tight mb-16"
           >
-            Brand <span className="text-primary">Book</span>
+            {t("projectDetail.brandBook")} <span className="text-primary">{t("projectDetail.brandBookHighlight")}</span>
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {/* Colors */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease }}
             >
-              <h3 className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">Color Palette</h3>
+              <h3 className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">{t("projectDetail.colorPalette")}</h3>
               <div className="space-y-3">
                 {project.brandColors.map((color) => (
                   <div key={color.name} className="flex items-center gap-4">
@@ -181,19 +174,18 @@ const ProjectDetail = () => {
               </div>
             </motion.div>
 
-            {/* Typography */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1, ease }}
             >
-              <h3 className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">Typography</h3>
+              <h3 className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">{t("projectDetail.typography")}</h3>
               <div className="space-y-4">
                 {project.fonts.map((font, i) => (
                   <div key={font} className="border border-border/50 p-5 rounded-sm">
                     <p className="text-muted-foreground font-mono text-[10px] uppercase tracking-wider mb-2">
-                      {i === 0 ? "Display" : "Body"}
+                      {i === 0 ? t("projectDetail.display") : t("projectDetail.body")}
                     </p>
                     <p className="text-2xl font-light">{font}</p>
                   </div>
@@ -201,16 +193,15 @@ const ProjectDetail = () => {
               </div>
             </motion.div>
 
-            {/* Key Elements */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2, ease }}
             >
-              <h3 className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">Key Elements</h3>
+              <h3 className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">{t("projectDetail.keyElements")}</h3>
               <div className="space-y-3">
-                {project.keyElements.map((el) => (
+                {keyElements.map((el) => (
                   <div key={el} className="flex items-center gap-3 py-2 border-b border-border/30 last:border-0">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                     <p className="text-sm font-light">{el}</p>
@@ -222,7 +213,6 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* Work Done */}
       <section className="py-24 px-6 relative overflow-hidden">
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.h2
@@ -232,11 +222,11 @@ const ProjectDetail = () => {
             transition={{ duration: 0.6, ease }}
             className="text-3xl md:text-4xl font-light tracking-tight mb-16"
           >
-            What We <span className="text-primary">Delivered</span>
+            {t("projectDetail.whatWeDelivered")} <span className="text-primary">{t("projectDetail.deliveredHighlight")}</span>
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {project.workDone.map((item, i) => (
+            {workDone.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -253,10 +243,9 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* Technologies */}
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto">
-          <p className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">Technologies Used</p>
+          <p className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">{t("projectDetail.technologiesUsed")}</p>
           <div className="flex flex-wrap gap-3">
             {project.technologies.map((tech) => (
               <span
@@ -270,7 +259,6 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* CTA */}
       <WaveDivider fillColor="hsl(210 22% 12%)" />
       <section className="relative py-24 px-6 text-center overflow-hidden" style={{
         background: "linear-gradient(180deg, hsl(210 22% 12%), hsl(175 20% 13%))",
@@ -283,12 +271,12 @@ const ProjectDetail = () => {
           transition={{ duration: 0.7, ease }}
           className="relative z-10"
         >
-          <p className="text-white/50 font-light mb-6">Interested in a similar project?</p>
+          <p className="text-white/50 font-light mb-6">{t("projectDetail.interestedCta")}</p>
           <Link
             to="/contact"
             className="inline-flex items-center gap-3 font-mono text-sm tracking-wider uppercase px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 rounded-sm"
           >
-            Start a conversation <ArrowUpRight size={16} />
+            {t("projectDetail.startConversation")} <ArrowUpRight size={16} />
           </Link>
         </motion.div>
       </section>
