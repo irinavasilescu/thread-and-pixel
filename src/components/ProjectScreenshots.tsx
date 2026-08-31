@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-
-const ease = [0.22, 1, 0.36, 1] as const;
+import { useTranslation } from "react-i18next";
 
 interface ProjectScreenshotsProps {
   screenshots: string[];
@@ -8,64 +7,58 @@ interface ProjectScreenshotsProps {
 }
 
 const ProjectScreenshots = ({ screenshots, title }: ProjectScreenshotsProps) => {
+  const { t } = useTranslation();
   if (!screenshots.length) return null;
 
   const heroShot = screenshots[0];
   const remaining = screenshots.slice(1);
 
   return (
-    <section className="py-24 px-6 relative z-[2]">
-      <div className="max-w-6xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease }}
-          className="text-3xl md:text-4xl font-light tracking-tight mb-16"
-        >
-          Project <span className="text-primary">Showcase</span>
-        </motion.h2>
+    <section className="border-b border-border py-24 md:py-32 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="pb-12 md:pb-16">
+          <p className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary mb-5">
+            {t("projectDetail.showcaseLabel")}
+          </p>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-[-0.04em] text-foreground">
+            {t("projectDetail.showcaseTitle")}
+          </h2>
+        </div>
 
-        {/* Hero screenshot — full width, clean */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease }}
-          className="mb-8"
+          transition={{ duration: 0.5 }}
+          className="border border-border bg-card overflow-hidden"
         >
-          <div className="relative group overflow-hidden rounded-lg border border-border/50 shadow-xl">
-            <img
-              src={heroShot}
-              alt={`${title} — main view`}
-              className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </div>
+          <img
+            src={heroShot}
+            alt={`${title} — main view`}
+            className="w-full h-auto object-cover"
+            loading="lazy"
+          />
         </motion.div>
 
-        {/* Remaining screenshots — clean grid */}
         {remaining.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="mt-[-1px] grid grid-cols-1 md:grid-cols-3 border-l border-border">
             {remaining.map((src, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease }}
-                className="relative group overflow-hidden rounded-lg border border-border/50 shadow-lg hover:shadow-xl transition-shadow duration-500"
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                className="border-r border-b border-t border-border bg-card"
               >
                 <img
                   src={src}
                   alt={`${title} — detail ${i + 1}`}
-                  className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  className="w-full aspect-[4/3] object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-3 left-3 font-mono text-[10px] tracking-widest uppercase text-muted-foreground bg-background/80 backdrop-blur-sm px-3 py-1 rounded-sm">
-                  Screen {String(i + 2).padStart(2, "0")}
+                <div className="border-t border-border px-5 py-3 font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
+                  {t("projectDetail.screen")} {String(i + 2).padStart(2, "0")}
                 </div>
               </motion.div>
             ))}
