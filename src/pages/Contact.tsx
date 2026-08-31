@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowUpRight, Mail, MapPin, Clock } from "lucide-react";
-import { useTranslation } from "react-i18next";
 import emailjs from "@emailjs/browser";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -10,17 +9,16 @@ import FloatingPixels from "@/components/FloatingPixels";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+const contactInfo = [
+  { icon: Mail, label: "Email", value: "contact@threadandpixel.eu", href: "mailto:contact@threadandpixel.eu" },
+  { icon: MapPin, label: "Location", value: "Remote-first, Worldwide", href: null },
+  { icon: Clock, label: "Response Time", value: "Within 24 hours", href: null },
+];
+
 const Contact = () => {
-  const { t } = useTranslation();
   const [formState, setFormState] = useState({ name: "", email: "", company: "", service: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
-
-  const contactInfo = [
-    { icon: Mail, label: t("contact.info.email.label"), value: t("contact.info.email.value"), href: `mailto:${t("contact.info.email.value")}` },
-    { icon: MapPin, label: t("contact.info.location.label"), value: t("contact.info.location.value"), href: null },
-    { icon: Clock, label: t("contact.info.response.label"), value: t("contact.info.response.value"), href: null },
-  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,14 +45,13 @@ const Contact = () => {
     }
   };
 
-  const serviceKeys = ["website-creation", "seo", "e-commerce", "consulting", "web-design", "support-maintenance"];
-
   return (
     <div className="min-h-screen bg-background relative">
       <FloatingPixels variant="dark" />
       <CustomCursor />
       <Navbar />
 
+      {/* Hero */}
       <section className="pt-32 pb-16 px-6">
         <div className="max-w-5xl mx-auto">
           <motion.p
@@ -63,7 +60,7 @@ const Contact = () => {
             transition={{ duration: 0.5 }}
             className="font-mono text-xs tracking-[0.3em] uppercase text-primary mb-4"
           >
-            {t("contact.label")}
+            Get in touch
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -71,9 +68,9 @@ const Contact = () => {
             transition={{ duration: 0.7, delay: 0.1, ease }}
             className="text-5xl md:text-7xl font-light tracking-tight mb-6"
           >
-            {t("contact.title1")}
+            Let's build
             <br />
-            {t("contact.title2")} <span className="text-primary">{t("contact.titleHighlight")}</span>
+            something <span className="text-primary">great</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -81,15 +78,17 @@ const Contact = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg text-muted-foreground font-light max-w-2xl"
           >
-            {t("contact.subtitle")}
+            Tell us about your project, your timeline, and your ambitions. We'll get back to you with ideas.
           </motion.p>
         </div>
       </section>
 
       <div className="glow-line" />
 
+      {/* Contact Content */}
       <section className="py-24 px-6">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-16">
+          {/* Form */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -105,15 +104,15 @@ const Contact = () => {
                 <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
                   <ArrowUpRight className="text-primary" size={24} />
                 </div>
-                <h3 className="text-2xl font-light mb-3">{t("contact.success.title")}</h3>
-                <p className="text-muted-foreground font-light">{t("contact.success.description")}</p>
+                <h3 className="text-2xl font-light mb-3">Message sent</h3>
+                <p className="text-muted-foreground font-light">We'll be in touch within 24 hours.</p>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="font-mono text-xs tracking-wider uppercase text-muted-foreground mb-2 block">
-                      {t("contact.form.name")} *
+                      Name *
                     </label>
                     <input
                       type="text"
@@ -121,12 +120,12 @@ const Contact = () => {
                       value={formState.name}
                       onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                       className="w-full bg-transparent border-b border-border py-3 text-foreground font-light focus:outline-none focus:border-primary transition-colors duration-300 placeholder:text-muted-foreground/50"
-                      placeholder={t("contact.form.namePlaceholder")}
+                      placeholder="Your name"
                     />
                   </div>
                   <div>
                     <label className="font-mono text-xs tracking-wider uppercase text-muted-foreground mb-2 block">
-                      {t("contact.form.email")} *
+                      Email *
                     </label>
                     <input
                       type="email"
@@ -134,7 +133,7 @@ const Contact = () => {
                       value={formState.email}
                       onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                       className="w-full bg-transparent border-b border-border py-3 text-foreground font-light focus:outline-none focus:border-primary transition-colors duration-300 placeholder:text-muted-foreground/50"
-                      placeholder={t("contact.form.emailPlaceholder")}
+                      placeholder="your@email.com"
                     />
                   </div>
                 </div>
@@ -142,36 +141,39 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="font-mono text-xs tracking-wider uppercase text-muted-foreground mb-2 block">
-                      {t("contact.form.company")}
+                      Company
                     </label>
                     <input
                       type="text"
                       value={formState.company}
                       onChange={(e) => setFormState({ ...formState, company: e.target.value })}
                       className="w-full bg-transparent border-b border-border py-3 text-foreground font-light focus:outline-none focus:border-primary transition-colors duration-300 placeholder:text-muted-foreground/50"
-                      placeholder={t("contact.form.companyPlaceholder")}
+                      placeholder="Company name"
                     />
                   </div>
                   <div>
                     <label className="font-mono text-xs tracking-wider uppercase text-muted-foreground mb-2 block">
-                      {t("contact.form.service")}
+                      Service Interested In
                     </label>
                     <select
                       value={formState.service}
                       onChange={(e) => setFormState({ ...formState, service: e.target.value })}
                       className="w-full bg-transparent border-b border-border py-3 text-foreground font-light focus:outline-none focus:border-primary transition-colors duration-300 cursor-pointer"
                     >
-                      <option value="">{t("contact.form.servicePlaceholder")}</option>
-                      {serviceKeys.map((slug) => (
-                        <option key={slug} value={slug}>{t(`services.items.${slug}.title`)}</option>
-                      ))}
+                      <option value="">Select a service</option>
+                      <option value="website-creation">Website Creation</option>
+                      <option value="seo">SEO</option>
+                      <option value="e-commerce">E-Commerce</option>
+                      <option value="consulting">Consulting</option>
+                      <option value="web-design">Web Design</option>
+                      <option value="support-maintenance">Support & Maintenance</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
                   <label className="font-mono text-xs tracking-wider uppercase text-muted-foreground mb-2 block">
-                    {t("contact.form.message")} *
+                    Message *
                   </label>
                   <textarea
                     required
@@ -179,7 +181,7 @@ const Contact = () => {
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                     className="w-full bg-transparent border-b border-border py-3 text-foreground font-light focus:outline-none focus:border-primary transition-colors duration-300 resize-none placeholder:text-muted-foreground/50"
-                    placeholder={t("contact.form.messagePlaceholder")}
+                    placeholder="Tell us about your project..."
                   />
                 </div>
 
@@ -190,12 +192,14 @@ const Contact = () => {
                   whileTap={{ scale: sending ? 1 : 0.98 }}
                   className="inline-flex items-center gap-3 font-mono text-sm tracking-wider uppercase px-10 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 rounded-sm mt-4 disabled:opacity-60"
                 >
-                  {sending ? t("contact.form.sending") : t("contact.form.send")} <ArrowUpRight size={16} />
+                  {sending ? "Sending..." : "Send message"} <ArrowUpRight size={16} />
                 </motion.button>
+
               </form>
             )}
           </motion.div>
 
+          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -221,6 +225,7 @@ const Contact = () => {
                 )}
               </motion.div>
             ))}
+
           </motion.div>
         </div>
       </section>

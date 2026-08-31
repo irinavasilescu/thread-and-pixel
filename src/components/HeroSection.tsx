@@ -1,6 +1,5 @@
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useEffect, useRef, useState, Fragment } from "react";
-import { useTranslation } from "react-i18next";
 import WaveDivider from "./WaveDivider";
 
 const GlitchText = ({ children, delay = 0 }: { children: string; delay?: number }) => {
@@ -51,45 +50,7 @@ const MorphBlob = ({ className, color, duration, size }: { className: string; co
   />
 );
 
-const InteractiveText = ({ text }: { text: string }) => (
-  <>
-    {text.split("").map((char, i) => (
-      <motion.span
-        key={i}
-        className="inline-block"
-        whileHover={{ y: -6, rotate: Math.random() > 0.5 ? 5 : -5, scale: 1.1 }}
-        transition={{ type: "spring", stiffness: 600, damping: 25 }}
-        style={{ cursor: "default" }}
-      >
-        {char === " " ? "\u00A0" : char}
-      </motion.span>
-    ))}
-  </>
-);
-
-const InteractiveWords = ({ text }: { text: string }) => (
-  <>
-    {text.split(" ").map((word, wi) => (
-      <span key={wi} className="inline-block whitespace-nowrap">
-        {wi > 0 && <span>{"\u00A0"}</span>}
-        {word.split("").map((char, ci) => (
-          <motion.span
-            key={ci}
-            className="inline-block"
-            whileHover={{ y: -6, rotate: Math.random() > 0.5 ? 5 : -5, scale: 1.1 }}
-            transition={{ type: "spring", stiffness: 600, damping: 25 }}
-            style={{ cursor: "default" }}
-          >
-            {char}
-          </motion.span>
-        ))}
-      </span>
-    ))}
-  </>
-);
-
 const HeroSection = () => {
-  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -117,11 +78,15 @@ const HeroSection = () => {
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero text-hero-foreground"
     >
+      {/* Grid */}
       <div className="absolute inset-0 grid-bg-dark" />
+
+      {/* Morphing aurora blobs */}
       <MorphBlob className="top-[10%] left-[15%]" color="hsl(175 80% 50% / 0.15)" duration={12} size={600} />
       <MorphBlob className="bottom-[5%] right-[10%]" color="hsl(210 80% 55% / 0.1)" duration={15} size={500} />
       <MorphBlob className="top-[40%] right-[30%]" color="hsl(280 60% 55% / 0.06)" duration={18} size={400} />
 
+      {/* Floating lines / scan effect */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{ background: "linear-gradient(180deg, transparent 0%, hsl(175 80% 55% / 0.03) 50%, transparent 100%)", height: "200%" }}
@@ -129,10 +94,12 @@ const HeroSection = () => {
         transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
       />
 
+      {/* Content with parallax tilt */}
       <motion.div
         className="relative z-10 max-w-5xl mx-auto px-6 text-center"
         style={{ perspective: 1200, rotateX, rotateY }}
       >
+        {/* Tag */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -145,18 +112,31 @@ const HeroSection = () => {
             className="w-2 h-2 rounded-full bg-primary"
           />
           <span className="font-mono text-xs tracking-[0.2em] uppercase text-primary">
-            <GlitchText delay={300}>{t("hero.tag")}</GlitchText>
+            <GlitchText delay={300}>Digital Craft Studio</GlitchText>
           </span>
         </motion.div>
 
-        <motion.h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.95] mb-8">
+        {/* Main heading with staggered reveal */}
+        <motion.h1
+          className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.95] mb-8"
+        >
           <motion.span
             initial={{ opacity: 0, y: 40, filter: "blur(12px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.5 }}
             className="block"
           >
-            <InteractiveText text={t("hero.line1")} />
+            {"We weave".split("").map((char, i) => (
+              <motion.span
+                key={i}
+                className="inline-block"
+                whileHover={{ y: -6, rotate: Math.random() > 0.5 ? 5 : -5, scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 600, damping: 25 }}
+                style={{ cursor: "default" }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
           </motion.span>
           <motion.span
             initial={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
@@ -164,7 +144,22 @@ const HeroSection = () => {
             transition={{ duration: 0.3, delay: 0.8 }}
             className="text-gradient-hero font-medium inline-flex flex-wrap justify-center my-2"
           >
-            <InteractiveWords text={t("hero.line2")} />
+            {"digital experiences".split(" ").map((word, wi) => (
+              <span key={wi} className="inline-block whitespace-nowrap">
+                {wi > 0 && <span>{"\u00A0"}</span>}
+                {word.split("").map((char, ci) => (
+                  <motion.span
+                    key={ci}
+                    className="inline-block"
+                    whileHover={{ y: -6, rotate: Math.random() > 0.5 ? 5 : -5, scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 600, damping: 25 }}
+                    style={{ cursor: "default" }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
+            ))}
           </motion.span>
           <motion.span
             initial={{ opacity: 0, y: -40, filter: "blur(12px)" }}
@@ -172,7 +167,17 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 1.1 }}
             className="block"
           >
-            <InteractiveText text={t("hero.line3")} />
+            {"pixel by pixel".split("").map((char, i) => (
+              <motion.span
+                key={i}
+                className="inline-block"
+                whileHover={{ y: -6, rotate: Math.random() > 0.5 ? 5 : -5, scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 600, damping: 25 }}
+                style={{ cursor: "default" }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
           </motion.span>
         </motion.h1>
 
@@ -183,9 +188,11 @@ const HeroSection = () => {
           className="text-lg md:text-xl max-w-2xl mx-auto mb-14 font-light"
           style={{ color: "hsl(220 10% 65%)" }}
         >
-          {t("hero.subtitle")}
+          Crafting premium websites, e-commerce platforms, and digital strategies
+          that elevate brands into the future.
         </motion.p>
 
+        {/* Buttons with magnetic hover */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -204,7 +211,7 @@ const HeroSection = () => {
               animate={{ x: ["-100%", "200%"] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
             />
-            <span className="relative">{t("hero.cta1")}</span>
+            <span className="relative">Explore Services</span>
           </motion.a>
           <motion.a
             href="#about"
@@ -212,11 +219,12 @@ const HeroSection = () => {
             whileTap={{ scale: 0.97 }}
             className="font-mono text-xs tracking-wider uppercase px-8 py-3.5 border border-hero-foreground/20 text-hero-foreground hover:text-primary transition-colors duration-300 rounded-sm"
           >
-            {t("hero.cta2")}
+            Learn More
           </motion.a>
         </motion.div>
       </motion.div>
 
+      {/* Animated wave transition to next section */}
       <div className="absolute bottom-0 left-0 right-0 z-20">
         <WaveDivider fillColor="hsl(var(--background))" />
       </div>
