@@ -23,15 +23,15 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
         <motion.img
           src={wordmark.url}
           alt="Thread & Pixel"
-          className="h-6 w-auto"
+          className="h-10 w-auto"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         />
 
-        <div className="w-32 h-[2px] bg-border overflow-hidden">
+        <div className="w-48 h-[3px] bg-border overflow-hidden">
           <motion.div
-            className="h-full bg-primary origin-left"
+            className="h-full bg-[#1D4FD8] origin-left"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 1.6, ease: "easeInOut" }}
