@@ -6,7 +6,6 @@ import croseteleIrinei1 from "@/assets/crosetele-irinei-1.png";
 import croseteleIrinei2 from "@/assets/crosetele-irinei-2.png";
 import croseteleIrinei3 from "@/assets/crosetele-irinei-3.png";
 import croseteleIrinei4 from "@/assets/crosetele-irinei-4.png";
-import tableTap1 from "@/assets/table-tap-1.png";
 import tableTapMain from "@/assets/table-tap-1.png.asset.json";
 import tableTap2 from "@/assets/table-tap-2.png.asset.json";
 import tableTap3 from "@/assets/table-tap-3.png.asset.json";
@@ -132,12 +131,9 @@ export const projects: Project[] = [
       "Real-time transparency",
       "Congestion relief"
     ],
-    screenshots: [
-      tableTap1,
-      ...[tableTap2.url, tableTap3.url, tableTap4.url].map(
-        (u) => `https://threadandpixel.lovable.app${u}`
-      ),
-    ],
+    screenshots: [tableTapMain.url, tableTap2.url, tableTap3.url, tableTap4.url].map(
+      (u) => `https://threadandpixel.lovable.app${u}`
+    ),
     technologies: ["React", "Tailwind", "Node.js", "PostgreSQL"],
     previewImage: `https://threadandpixel.lovable.app${tableTapMain.url}`,
   },
