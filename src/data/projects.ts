@@ -67,7 +67,7 @@ export const projects: Project[] = [
       (u) => `https://threadandpixel.lovable.app${u}`
     ),
     technologies: ["Wordpress", "TranslatePress", "Javascript", "HTML", "CSS"],
-    previewImage: primeFinish1.url,
+    previewImage: `https://threadandpixel.lovable.app${primeFinish1.url}`,
   },
   {
     slug: "crosetele-irinei",
