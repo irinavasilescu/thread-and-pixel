@@ -1,10 +1,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
-import FloatingPixels from "./FloatingPixels";
+import AmbientAccents from "./AmbientAccents";
 
 const stepKeys = ["01", "02", "03", "04"] as const;
-const accents = ["175 70% 40%", "280 60% 55%", "45 90% 55%", "210 80% 55%"];
 
 const ProcessSection = () => {
   const { t } = useTranslation();
@@ -12,59 +11,47 @@ const ProcessSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="process" className="relative py-32 px-6 overflow-hidden" ref={ref}>
-      <FloatingPixels variant="dark" />
-      <div className="absolute inset-0" style={{
-        background: "linear-gradient(180deg, hsl(var(--background)), hsl(175 15% 96%), hsl(var(--background)))",
-      }} />
-      <div className="absolute inset-0 grid-bg opacity-40" />
+    <section id="process" ref={ref} className="relative border-t border-border py-28 md:py-36 px-6 overflow-hidden">
+      <AmbientAccents variant="right" />
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <motion.div className="mb-20">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="font-mono text-xs tracking-[0.3em] uppercase text-primary mb-4"
-          >
+      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start"
+        >
+          <p className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary mb-5">
             {t("process.label")}
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-light tracking-tight"
-          >
+          </p>
+          <h2 className="text-3xl md:text-5xl font-medium tracking-[-0.03em] text-foreground">
             {t("process.title")}
-          </motion.h2>
+          </h2>
+          <p className="mt-5 max-w-sm text-muted-foreground leading-relaxed">
+            {t("process.intro")}
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="lg:col-span-8">
           {stepKeys.map((key, i) => (
             <motion.div
               key={key}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 22 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="relative group rounded-xl p-8 transition-all duration-500 hover:scale-[1.02] overflow-hidden"
-              style={{
-                background: "hsl(0 0% 100% / 0.6)",
-                border: `1px solid hsl(${accents[i]} / 0.15)`,
-                backdropFilter: "blur(8px)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = `hsl(${accents[i]} / 0.4)`;
-                e.currentTarget.style.boxShadow = `0 8px 32px hsl(${accents[i]} / 0.12)`;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = `hsl(${accents[i]} / 0.15)`;
-                e.currentTarget.style.boxShadow = "none";
-              }}
+              transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="group grid grid-cols-[auto_1fr] gap-6 md:gap-10 border-b border-border py-8 first:border-t"
             >
-              <div className="w-3 h-3 rounded-full mb-6" style={{ background: `hsl(${accents[i]})` }} />
-              <span className="font-mono text-xs tracking-wider text-muted-foreground mb-4 block">{key}</span>
-              <h3 className="text-xl font-medium mb-3 tracking-tight">{t(`process.steps.${key}.title`)}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed font-light">{t(`process.steps.${key}.desc`)}</p>
+              <span className="font-mono text-sm text-muted-foreground transition-colors duration-300 group-hover:text-primary">
+                {key}
+              </span>
+              <div>
+                <h3 className="text-xl md:text-2xl font-medium tracking-tight text-foreground">
+                  {t(`process.steps.${key}.title`)}
+                </h3>
+                <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">
+                  {t(`process.steps.${key}.desc`)}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>

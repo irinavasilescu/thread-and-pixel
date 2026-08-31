@@ -8,34 +8,25 @@ import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
-import WaveDivider from "@/components/WaveDivider";
 import MarqueeBanner from "@/components/MarqueeBanner";
 import ScrollProgressDots from "@/components/ScrollProgressDots";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="theme-slate grain-overlay min-h-screen bg-background text-foreground">
       <CustomCursor />
       <ScrollProgressDots />
       <Navbar />
-      <HeroSection />
-      <MarqueeBanner className="border-y border-border/50" />
-      <ServicesSection />
-      {/* Services (light) → Projects (dark) */}
-      <WaveDivider fillColor="hsl(210 20% 13%)" />
-      <ProjectsSection />
-      {/* Projects (dark) → Process (light) */}
-      <WaveDivider fillColor="hsl(var(--background))" flip />
-      <ProcessSection />
-      {/* Process (light) → About (dark) */}
-      <WaveDivider fillColor="hsl(210 25% 9%)" />
-      <AboutSection />
-      {/* About (dark) → FAQ (light) */}
-      <WaveDivider fillColor="hsl(var(--background))" flip />
-      <FAQSection />
-      {/* FAQ (light) → Contact (dark) */}
-      <WaveDivider fillColor="hsl(210 25% 10%)" />
-      <ContactSection />
+      <main>
+        <HeroSection />
+        <MarqueeBanner className="border-y border-border" />
+        <ServicesSection />
+        <ProjectsSection />
+        <ProcessSection />
+        <AboutSection />
+        <FAQSection />
+        <ContactSection />
+      </main>
       <Footer />
     </div>
   );

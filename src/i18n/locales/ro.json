@@ -7,13 +7,25 @@
     "getInTouch": "Contactează-ne"
   },
   "hero": {
-    "tag": "Studio Digital Creativ",
-    "line1": "Construim",
-    "line2": "experiențe digitale",
-    "line3": "pixel cu pixel",
-    "subtitle": "Creăm website-uri premium, platforme e-commerce și strategii digitale care proiectează brandurile în viitor.",
-    "cta1": "Explorează Serviciile",
-    "cta2": "Află Mai Multe"
+    "tag": "Studio de design și dezvoltare web",
+    "headline": "Proiectăm și construim site-uri rapide, personalizate, pentru branduri digitale în creștere.",
+    "subtitle": "Lucrăm alături de fondatori și echipe de marketing pentru a transforma poziționarea într-un site care se încarcă sub o secundă, se clasează în căutări și transformă vizitatorii în clienți.",
+    "cta1": "Începe un proiect",
+    "cta2": "Vezi proiectele",
+    "proof": {
+      "speed": {
+        "value": "<1s",
+        "label": "Timp de încărcare"
+      },
+      "launch": {
+        "value": "4–6 săpt.",
+        "label": "Lansare medie"
+      },
+      "custom": {
+        "value": "100%",
+        "label": "Construit la comandă"
+      }
+    }
   },
   "marquee": {
     "items": [
@@ -255,7 +267,10 @@
           "Recenzii trimestriale de performanță"
         ]
       }
-    }
+    },
+    "intro": "De la un site complet personalizat până la optimizare continuă — alege colaborarea potrivită pentru etapa în care se află brandul tău.",
+    "featuredLabel": "Serviciu principal",
+    "explore": "Vezi serviciul"
   },
   "projects": {
     "label": "Lucrări selectate",
@@ -390,7 +405,8 @@
         "title": "Lansare & Evoluție",
         "desc": "Lansare cu încredere și suport continuu pentru a te menține în fruntea curbei."
       }
-    }
+    },
+    "intro": "O colaborare în patru pași, cu livrabile clare la fiecare etapă — fără cutii negre și fără costuri surpriză."
   },
   "faq": {
     "label": "Întrebări Frecvente",
