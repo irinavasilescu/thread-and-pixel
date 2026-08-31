@@ -4,7 +4,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
-import wordmark from "@/assets/thread-and-pixel-wordmark.png.asset.json";
+import wordmark from "@/assets/thread-and-pixel-wordmark.png";
 
 
 const serviceKeys = [
@@ -58,7 +58,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center" aria-label="Thread & Pixel">
-          <img src={wordmark.url} alt="Thread & Pixel" className="h-4 w-auto" />
+          <img src={wordmark} alt="Thread & Pixel" className="h-4 w-auto" />
         </Link>
 
 

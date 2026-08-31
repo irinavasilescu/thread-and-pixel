@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import wordmark from "@/assets/thread-and-pixel-wordmark.png.asset.json";
+import wordmark from "@/assets/thread-and-pixel-wordmark.png";
 
 const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [phase, setPhase] = useState<"reveal" | "hold" | "exit">("reveal");
@@ -21,7 +21,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
     >
       <div className="flex flex-col items-center gap-8 px-6">
         <motion.img
-          src={wordmark.url}
+          src={wordmark}
           alt="Thread & Pixel"
           className="h-10 w-auto"
           initial={{ opacity: 0, y: 12 }}
