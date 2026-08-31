@@ -63,7 +63,7 @@ const AboutSection = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="lg:col-span-8"
           >
-            <ul className="grid grid-cols-1 sm:grid-cols-2 border-t border-border">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-14 border-t border-border">
               {projects.map((p) => (
                 <li
                   key={p.slug}
