@@ -63,9 +63,9 @@ export const projects: Project[] = [
       "Structured hierarchy",
       "Utility-driven design",
     ],
-    screenshots: [primeFinish1, primeFinish2, primeFinish3, primeFinish4],
+    screenshots: [primeFinish1.url, primeFinish2, primeFinish3, primeFinish4],
     technologies: ["Wordpress", "TranslatePress", "Javascript", "HTML", "CSS"],
-    previewImage: primeFinish1,
+    previewImage: primeFinish1.url,
   },
   {
     slug: "crosetele-irinei",
