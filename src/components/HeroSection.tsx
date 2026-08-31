@@ -8,46 +8,67 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative border-b border-border pt-28 pb-16 md:pt-32 md:pb-20 px-6"
+      className="relative border-b border-border px-6 pt-20 md:pt-24"
     >
-      <div className="max-w-7xl mx-auto">
-        <motion.p
+      <div className="max-w-7xl mx-auto border-x border-border min-h-[80vh] flex flex-col justify-between p-8 md:p-12 lg:p-16">
+        {/* Top row: studio index + tagline */}
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary border-b border-border pb-5 mb-8"
+          className="flex flex-col md:flex-row justify-between items-start gap-4 border-b border-border pb-8"
         >
-          {t("hero.tag")}
-        </motion.p>
+          <div className="text-foreground font-bold tracking-tighter text-xl">
+            {t("hero.studioLabel")}
+          </div>
+          <div className="max-w-xs">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-foreground leading-relaxed">
+              {t("hero.tag")}
+            </p>
+          </div>
+        </motion.div>
 
-        <motion.h1
+        {/* Main headline */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-5xl text-[2.75rem] leading-[0.98] sm:text-6xl lg:text-7xl xl:text-[5.25rem] font-bold tracking-[-0.045em] text-foreground"
+          className="flex-1 flex flex-col justify-center py-16 md:py-20"
         >
-          {t("hero.headline")}
-        </motion.h1>
+          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-black leading-[0.85] tracking-tighter text-foreground uppercase">
+            <span className="block">{t("hero.headline.line1")}</span>
+            <span className="block">{t("hero.headline.line2")}</span>
+            <span className="block">{t("hero.headline.line3")}</span>
+          </h1>
+        </motion.div>
 
+        {/* Bottom row: CTAs + description */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="mt-10 flex flex-wrap items-center gap-4"
+          className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-8 border-t border-border"
         >
-          <a
-            href="#contact"
-            className="group inline-flex items-center gap-2 bg-foreground px-8 py-4 text-sm font-medium tracking-wide text-background transition-colors duration-200 hover:bg-primary"
-          >
-            {t("hero.cta1")}
-            <ArrowUpRight size={16} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 border border-foreground px-8 py-4 text-sm font-medium tracking-wide text-foreground transition-colors duration-200 hover:bg-foreground hover:text-background"
-          >
-            {t("hero.cta2")}
-          </a>
+          <div className="md:col-span-6 flex flex-wrap items-center gap-4">
+            <a
+              href="#contact"
+              className="group inline-flex items-center gap-2 bg-foreground px-8 py-4 text-xs font-bold uppercase tracking-widest text-background transition-colors duration-200 hover:bg-primary"
+            >
+              {t("hero.cta1")}
+              <ArrowUpRight size={16} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2 border border-border px-8 py-4 text-xs font-bold uppercase tracking-widest text-foreground transition-colors duration-200 hover:border-foreground"
+            >
+              {t("hero.cta2")}
+            </a>
+          </div>
+          <div className="md:col-span-6 flex items-end md:justify-end">
+            <p className="text-[11px] text-foreground/50 max-w-[280px] leading-relaxed">
+              {t("hero.description")}
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>
