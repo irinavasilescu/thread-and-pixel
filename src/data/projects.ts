@@ -57,9 +57,16 @@ export const projects: Project[] = [
     ],
     fonts: ["Poppins"],
     keyElements: ["Geometric precision", "High-contrast industrial tones", "Structured hierarchy", "Utility-driven design"],
-    screenshots: [primeFinish1, primeFinish2, primeFinish3, primeFinish4],
+    screenshots: [
+      primeFinishShowcase.url,
+      primeFinishHero.url,
+      primeFinishAbout.url,
+      primeFinishWhy.url,
+      primeFinishHow.url,
+      primeFinishContact.url,
+    ],
     technologies: ["Wordpress", "TranslatePress"],
-    previewImage: primeFinish1,
+    previewImage: primeFinishShowcase.url,
   },
   {
     slug: "crosetele-irinei",
