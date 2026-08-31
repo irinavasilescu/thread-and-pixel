@@ -1,16 +1,24 @@
-import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { projects } from "@/data/projects";
 
 const ProjectsSection = () => {
   const { t } = useTranslation();
+  const [[index, dir], setState] = useState<[number, number]>([0, 0]);
+
+  const total = projects.length;
+  const project = projects[index];
+
+  const go = (delta: number) =>
+    setState(([i]) => [(i + delta + total) % total, delta]);
 
   return (
     <section id="projects" className="border-b border-border py-24 md:py-32 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-wrap items-end justify-between gap-8 pb-12 md:pb-16">
+        <div className="flex flex-wrap items-end justify-between gap-8 pb-10 md:pb-14">
           <div>
             <p className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary mb-5">
               {t("projects.label")}
@@ -28,81 +36,115 @@ const ProjectsSection = () => {
           </Link>
         </div>
 
-        <div className="border-t border-border">
-          {projects.map((p, i) => {
-            const flipped = i % 2 === 1;
-            return (
-              <motion.article
-                key={p.slug}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                className="border-b border-border"
-              >
-                <Link
-                  to={`/projects/${p.slug}`}
-                  className="group grid grid-cols-1 lg:grid-cols-12 items-stretch"
-                >
-                  {/* Image */}
-                  <div
-                    className={`lg:col-span-7 relative overflow-hidden bg-card border-border ${
-                      flipped ? "lg:order-2 lg:border-l" : "lg:border-r"
-                    }`}
-                  >
-                    <img
-                      src={p.previewImage}
-                      alt={`${p.title} website preview`}
-                      loading="lazy"
-                      className="w-full h-full min-h-[260px] md:min-h-[420px] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                    />
-                    <span className="absolute top-0 left-0 font-mono text-[10px] tracking-[0.24em] uppercase bg-background text-foreground border-r border-b border-border px-4 py-2">
-                      {String(i + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
-                    </span>
-                  </div>
+        {/* Carousel */}
+        <div className="border border-border overflow-hidden">
+          <AnimatePresence mode="wait" custom={dir}>
+            <motion.div
+              key={project.slug}
+              custom={dir}
+              initial={{ opacity: 0, x: dir >= 0 ? 60 : -60 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: dir >= 0 ? -60 : 60 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.12}
+              onDragEnd={(_, info) => {
+                if (info.offset.x < -60) go(1);
+                else if (info.offset.x > 60) go(-1);
+              }}
+              className="grid grid-cols-1 lg:grid-cols-12 items-stretch touch-pan-y"
+            >
+              {/* Image */}
+              <div className="lg:col-span-7 relative overflow-hidden bg-card lg:border-r border-b lg:border-b-0 border-border">
+                <img
+                  src={project.previewImage}
+                  alt={`${project.title} website preview`}
+                  loading="lazy"
+                  draggable={false}
+                  className="w-full h-full min-h-[240px] md:min-h-[420px] object-cover select-none"
+                />
+                <span className="absolute top-0 left-0 font-mono text-[10px] tracking-[0.24em] uppercase bg-background text-foreground border-r border-b border-border px-4 py-2">
+                  {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                </span>
+              </div>
 
-                  {/* Meta */}
-                  <div
-                    className={`lg:col-span-5 flex flex-col justify-between p-7 md:p-10 transition-colors duration-300 group-hover:bg-foreground group-hover:text-background ${
-                      flipped ? "lg:order-1" : ""
-                    }`}
-                  >
-                    <div>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.22em] opacity-70">
-                        {t(`projects.items.${p.slug}.category`)} — {p.year}
-                      </p>
-                      <h3 className="mt-5 text-3xl md:text-4xl xl:text-5xl font-bold tracking-[-0.04em] leading-[0.95]">
-                        {p.title}
-                      </h3>
-                      <p className="mt-5 text-sm md:text-base leading-relaxed opacity-80 max-w-md">
-                        {t(`projects.items.${p.slug}.tagline`)}
-                      </p>
-                    </div>
+              {/* Meta */}
+              <div className="lg:col-span-5 flex flex-col justify-between p-7 md:p-10">
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] opacity-70">
+                    {t(`projects.items.${project.slug}.category`)} — {project.year}
+                  </p>
+                  <h3 className="mt-5 text-3xl md:text-4xl xl:text-5xl font-bold tracking-[-0.04em] leading-[0.95] text-foreground">
+                    {project.title}
+                  </h3>
+                  <p className="mt-5 text-sm md:text-base leading-relaxed text-muted-foreground max-w-md">
+                    {t(`projects.items.${project.slug}.tagline`)}
+                  </p>
+                </div>
 
-                    <div className="mt-8">
-                      <div className="flex flex-wrap gap-x-5 gap-y-2 pb-6">
-                        {p.technologies.slice(0, 5).map((tech) => (
-                          <span
-                            key={tech}
-                            className="font-mono text-[10px] uppercase tracking-[0.18em] opacity-70"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                      <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] border-t border-current/20 pt-5 w-full">
-                        {t("projects.viewProject")}
-                        <ArrowUpRight
-                          size={16}
-                          className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                        />
+                <div className="mt-8">
+                  <div className="flex flex-wrap gap-x-5 gap-y-2 pb-6">
+                    {project.technologies.slice(0, 5).map((tech) => (
+                      <span
+                        key={tech}
+                        className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground"
+                      >
+                        {tech}
                       </span>
-                    </div>
+                    ))}
                   </div>
-                </Link>
-              </motion.article>
-            );
-          })}
+                  <Link
+                    to={`/projects/${project.slug}`}
+                    className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] border-t border-border pt-5 w-full text-foreground hover:text-primary transition-colors"
+                  >
+                    {t("projects.viewProject")}
+                    <ArrowUpRight
+                      size={16}
+                      className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                    />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Controls */}
+          <div className="grid grid-cols-2 border-t border-border">
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              aria-label="Previous project"
+              className="flex items-center justify-center gap-3 py-5 border-r border-border font-mono text-[11px] uppercase tracking-[0.2em] text-foreground hover:bg-foreground hover:text-background transition-colors"
+            >
+              <ArrowLeft size={15} />
+              Prev
+            </button>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              aria-label="Next project"
+              className="flex items-center justify-center gap-3 py-5 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground hover:bg-foreground hover:text-background transition-colors"
+            >
+              Next
+              <ArrowRight size={15} />
+            </button>
+          </div>
+        </div>
+
+        {/* Progress ticks */}
+        <div className="mt-6 flex items-center gap-3">
+          {projects.map((p, i) => (
+            <button
+              key={p.slug}
+              type="button"
+              aria-label={`Go to ${p.title}`}
+              onClick={() => setState([i, i > index ? 1 : -1])}
+              className={`h-[3px] flex-1 transition-colors ${
+                i === index ? "bg-primary" : "bg-border hover:bg-foreground/40"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>
