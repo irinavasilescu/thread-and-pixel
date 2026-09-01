@@ -398,7 +398,7 @@
     "intro": "A tight, four-step engagement with clear deliverables at every stage — no black boxes, no surprise invoices."
   },
   "faq": {
-    // "label": "Common Questions",
+    "label": "",
     "title": "FAQ",
     "items": [
       {
