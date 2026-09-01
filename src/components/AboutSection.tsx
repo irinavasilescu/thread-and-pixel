@@ -8,8 +8,10 @@ const capabilities = [
   "Vue",
   "TypeScript",
   "JavaScript",
+  "GraphQL",
   "HTML",
   "CSS",
+  "Tailwind",
   "Figma",
   "Shopify",
   "WordPress",
@@ -20,6 +22,8 @@ const capabilities = [
   "Go",
   "MongoDB",
   "MySQL",
+  "Docker",
+  "",
 ];
 
 const AboutSection = () => {
