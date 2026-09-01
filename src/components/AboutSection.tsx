@@ -23,7 +23,6 @@ const capabilities = [
   "MongoDB",
   "MySQL",
   "Docker",
-  "",
 ];
 
 const AboutSection = () => {
