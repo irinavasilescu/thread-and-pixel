@@ -87,9 +87,6 @@ const AboutSection = () => {
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
             <div className="lg:col-span-4">
-              <p className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary mb-5">
-                {t("about.techTitle")}
-              </p>
               <h3 className="text-2xl md:text-4xl font-bold tracking-[-0.03em] text-foreground">
                 {t("about.techHeadline")}
               </h3>
