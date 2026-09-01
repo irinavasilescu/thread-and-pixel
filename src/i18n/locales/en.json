@@ -326,26 +326,6 @@
           "Hardware-free check-in (BYOD - Bring Your Own Device)"
         ],
         "keyElements": ["Virtual orchestration", "Frictionless check-in", "Real-time transparency", "Congestion relief"]
-      },
-      "pulse-fintech": {
-        "category": "Consulting & Development",
-        "title": "Pulse Fintech",
-        "tagline": "Transforming complex finance into an intuitive digital product.",
-        "description": "Pulse Fintech approached us to reimagine their consumer-facing investment platform. Through strategic consulting and iterative development, we simplified a complex financial product into an approachable, trust-building experience.",
-        "clientExpectation": "They needed to make finance feel accessible to younger demographics while maintaining the credibility expected by institutional investors. Speed and security were non-negotiable.",
-        "workDone": [
-          "Product strategy and user research",
-          "Information architecture redesign",
-          "Interactive data visualization dashboards",
-          "Security audit and compliance implementation",
-          "Ongoing support and feature development"
-        ],
-        "keyElements": [
-          "Data-rich dashboards",
-          "Trust-building UI patterns",
-          "Micro-animations on interactions",
-          "Accessibility-first design"
-        ]
       }
     },
     "meta": {
@@ -355,7 +335,7 @@
     }
   },
   "about": {
-    // "label": "About us",
+    "label": "",
     "title1": "Thread & Pixel",
     "titleHighlight": "team",
     "description": "We are a digital studio fascinated by the intersection of design and technology. Every project is a tapestry: strategy, design and code woven into seamless digital experiences.",
