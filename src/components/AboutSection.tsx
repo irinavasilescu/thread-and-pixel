@@ -43,7 +43,6 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7"
           >
-            <p className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary mb-6">{t("about.label")}</p>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] text-foreground leading-[0.95]">
               {t("about.title1")} <span className="text-primary">{t("about.titleHighlight")}</span>
             </h2>
