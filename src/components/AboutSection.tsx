@@ -52,9 +52,9 @@ const AboutSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-5 lg:pt-14"
+            className="lg:col-span-5 lg:pt-2 max-w-2xl"
           >
-            <p className="text-lg md:text-xl leading-relaxed text-foreground">{t("about.description")}</p>
+            <p className="text-base md:text-lg leading-relaxed text-foreground">{t("about.description")}</p>
           </motion.div>
         </div>
 
