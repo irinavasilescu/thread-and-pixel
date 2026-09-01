@@ -17,10 +17,7 @@ const ProjectScreenshots = ({ screenshots, title }: ProjectScreenshotsProps) => 
     <section className="border-b border-border py-24 md:py-32 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="pb-12 md:pb-16">
-          <p className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary mb-5">
-            {t("projectDetail.showcaseLabel")}
-          </p>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-[-0.04em] text-foreground">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] text-foreground leading-[0.95]">
             {t("projectDetail.showcaseTitle")}
           </h2>
         </div>
