@@ -48,7 +48,7 @@
     ]
   },
   "services": {
-    // "label": "What we do",
+    "label": "",
     "title": "Services",
     "items": {
       "website-creation": {
@@ -264,7 +264,7 @@
     "explore": "Explore service"
   },
   "projects": {
-    // "label": "Selected work",
+    "label": "",
     "title": "Projects",
     "scrollHint": "Scroll to explore",
     "viewProject": "View project",
