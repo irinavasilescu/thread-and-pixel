@@ -28,10 +28,7 @@ const ServicesSection = () => {
             transition={{ duration: 0.5 }}
             className="lg:col-span-5"
           >
-            <p className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary mb-5">
-              {t("services.label")}
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-[-0.04em] text-foreground">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] text-foreground leading-[0.95]">
               {t("services.title")}
             </h2>
           </motion.div>

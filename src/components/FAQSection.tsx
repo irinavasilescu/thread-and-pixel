@@ -58,10 +58,7 @@ const FAQSection = () => {
           transition={{ duration: 0.6 }}
           className="lg:col-span-4"
         >
-          <p className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary mb-5">
-            {t("faq.label")}
-          </p>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-[-0.04em] text-foreground">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] text-foreground leading-[0.95]">
             {t("faq.title")}
           </h2>
         </motion.div>

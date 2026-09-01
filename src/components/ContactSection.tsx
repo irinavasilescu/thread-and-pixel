@@ -21,10 +21,7 @@ const ContactSection = () => {
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-8">
-              <p className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary mb-5">
-                {t("contactSection.label")}
-              </p>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-[-0.04em] text-card-foreground max-w-2xl">
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] text-card-foreground max-w-2xl leading-[0.95]">
                 {t("contactSection.title1")} {t("contactSection.title2")} {t("contactSection.titleHighlight")}?
               </h2>
               <p className="mt-6 max-w-xl leading-relaxed text-foreground">

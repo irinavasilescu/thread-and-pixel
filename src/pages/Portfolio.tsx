@@ -121,10 +121,7 @@ const Portfolio = () => {
       <section className="bg-foreground text-background py-24 md:py-32 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-8">
-            <p className="font-mono text-[11px] tracking-[0.32em] uppercase text-primary mb-5">
-              {t("portfolio.label")}
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-[-0.04em]">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.95]">
               {t("portfolio.ctaTitle")}
             </h2>
           </div>
