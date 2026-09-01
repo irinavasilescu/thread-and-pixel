@@ -48,7 +48,7 @@
     ]
   },
   "services": {
-    "label": "What we do",
+    // "label": "What we do",
     "title": "Services",
     "items": {
       "website-creation": {
@@ -264,7 +264,7 @@
     "explore": "Explore service"
   },
   "projects": {
-    "label": "Selected work",
+    // "label": "Selected work",
     "title": "Projects",
     "scrollHint": "Scroll to explore",
     "viewProject": "View project",
@@ -355,7 +355,7 @@
     }
   },
   "about": {
-    "label": "About us",
+    // "label": "About us",
     "title1": "Thread & Pixel",
     "titleHighlight": "team",
     "description": "We are a digital studio fascinated by the intersection of design and technology. Every project is a tapestry: strategy, design and code woven into seamless digital experiences.",
@@ -373,7 +373,7 @@
         "label": "Years of Craft"
       }
     },
-    "techTitle": "Capabilities",
+    // "techTitle": "Capabilities",
     "techHeadline": "Tools & technologies we master",
     "metrics": [
       {
@@ -395,7 +395,7 @@
     ]
   },
   "process": {
-    "label": "How we work",
+    // "label": "How we work",
     "title": "Process",
     "steps": {
       "01": {
@@ -418,7 +418,7 @@
     "intro": "A tight, four-step engagement with clear deliverables at every stage — no black boxes, no surprise invoices."
   },
   "faq": {
-    "label": "Common Questions",
+    // "label": "Common Questions",
     "title": "FAQ",
     "items": [
       {
