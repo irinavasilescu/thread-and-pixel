@@ -375,7 +375,7 @@
     ]
   },
   "process": {
-    // "label": "How we work",
+    "label": "",
     "title": "Process",
     "steps": {
       "01": {
