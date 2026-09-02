@@ -103,9 +103,9 @@ export const projects: Project[] = [
       "Mobile-optimized adoption experience",
       "Eco-friendly performance",
     ],
-    screenshots: [croseteleIrinei1, croseteleIrinei2, croseteleIrinei3, croseteleIrinei4],
+    screenshots: [croseteleIrinei1.url, croseteleIrinei2, croseteleIrinei3, croseteleIrinei4],
     technologies: ["Shopify", "Javascript", "HTML", "CSS"],
-    previewImage: croseteleIrinei1,
+    previewImage: croseteleIrinei1.url,
   },
   {
     slug: "table-tap",
