@@ -28,7 +28,6 @@ const ProjectDetail = () => {
   }
 
   const workDone = t(`projects.items.${project.slug}.workDone`, { returnObjects: true }) as string[];
-  const keyElements = t(`projects.items.${project.slug}.keyElements`, { returnObjects: true }) as string[];
 
   return (
     <div className="theme-swiss min-h-screen bg-background text-foreground">

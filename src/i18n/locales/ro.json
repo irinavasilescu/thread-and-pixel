@@ -532,7 +532,6 @@
     "typography": "Tipografie",
     "display": "Afișaj",
     "body": "Corp",
-    "keyElements": "Elemente Cheie",
     "whatWeDelivered": "Ce Am",
     "deliveredHighlight": "Livrat",
     "technologiesUsed": "Tehnologii Utilizate",
@@ -545,7 +544,16 @@
     "uiElements": "Elemente UI",
     "colorUsage": "Utilizarea Culorilor",
     "primaryAction": "Acțiune Principală",
-    "secondaryAction": "Acțiune Secundară"
+    "secondaryAction": "Acțiune Secundară",
+    "designTokens": "Tokenuri de Design",
+    "tokenGrid": "Grilă",
+    "tokenContainer": "Container",
+    "tokenSpacing": "Spațiere",
+    "tokenRadius": "Rotunjire",
+    "tokenScale": "Scară tipografică",
+    "inputPlaceholder": "Câmp de input",
+    "badge": "Etichetă",
+    "linkSample": "Link text"
   },
   "serviceDetail": {
     "allServices": "Toate serviciile",
