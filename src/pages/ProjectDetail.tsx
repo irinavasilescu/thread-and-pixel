@@ -120,7 +120,7 @@ const ProjectDetail = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-border">
+          <div className="grid grid-cols-1 md:grid-cols-2 border-t border-l border-border">
             <div className="border-r border-b border-border p-8 md:p-10">
               <h3 className="font-mono text-[10px] tracking-[0.24em] uppercase text-muted-foreground mb-8">
                 {t("projectDetail.colorPalette")}
@@ -154,30 +154,6 @@ const ProjectDetail = () => {
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Design tokens */}
-            <div className="border-r border-b border-border p-8 md:p-10">
-              <h3 className="font-mono text-[10px] tracking-[0.24em] uppercase text-muted-foreground mb-8">
-                {t("projectDetail.designTokens")}
-              </h3>
-              <ul className="space-y-3">
-                {[
-                  { k: t("projectDetail.tokenGrid"), v: "12 / 24px" },
-                  { k: t("projectDetail.tokenContainer"), v: "1280px" },
-                  { k: t("projectDetail.tokenSpacing"), v: "4 · 8 · 16 · 32 · 64" },
-                  { k: t("projectDetail.tokenRadius"), v: "0 · 4 · 12px" },
-                  { k: t("projectDetail.tokenScale"), v: "1.250 — Major third" },
-                ].map((row) => (
-                  <li
-                    key={row.k}
-                    className="flex items-center justify-between gap-4 border-b border-border pb-3 last:border-b-0 last:pb-0"
-                  >
-                    <span className="text-sm text-foreground">{row.k}</span>
-                    <span className="font-mono text-xs text-muted-foreground">{row.v}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
 
             {/* Type specimen */}
@@ -241,35 +217,6 @@ const ProjectDetail = () => {
                   </span>
                 </div>
               </div>
-            </div>
-
-
-            {/* Color usage */}
-            <div className="border-r border-b border-border p-8 md:p-10">
-              <h3 className="font-mono text-[10px] tracking-[0.24em] uppercase text-muted-foreground mb-8">
-                {t("projectDetail.colorUsage")}
-              </h3>
-              <div className="flex h-10 border border-border overflow-hidden">
-                {project.brandColors.map((color, i) => (
-                  <div
-                    key={color.name}
-                    style={{
-                      backgroundColor: color.hex,
-                      flexGrow: [10, 6, 4, 3][i] ?? 2,
-                    }}
-                  />
-                ))}
-              </div>
-              <ul className="mt-6 space-y-2">
-                {project.brandColors.map((color, i) => (
-                  <li key={color.name} className="flex items-center justify-between text-xs">
-                    <span className="text-foreground">{color.name}</span>
-                    <span className="font-mono text-muted-foreground">
-                      {[40, 28, 18, 14][i] ?? 10}%
-                    </span>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>
