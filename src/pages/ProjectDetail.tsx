@@ -149,20 +149,33 @@ const ProjectDetail = () => {
                     <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary mb-2">
                       {i === 0 ? t("projectDetail.display") : t("projectDetail.body")}
                     </p>
-                    <p className="text-2xl font-bold tracking-[-0.02em]">{font}</p>
+                    <p className="text-2xl tracking-[-0.02em]" style={{ fontFamily: `'${font}', sans-serif` }}>
+                      {font}
+                    </p>
                   </div>
                 ))}
               </div>
             </div>
 
+            {/* Design tokens */}
             <div className="border-r border-b border-border p-8 md:p-10">
               <h3 className="font-mono text-[10px] tracking-[0.24em] uppercase text-muted-foreground mb-8">
-                {t("projectDetail.keyElements")}
+                {t("projectDetail.designTokens")}
               </h3>
               <ul className="space-y-3">
-                {keyElements.map((el) => (
-                  <li key={el} className="border-b border-border pb-3 last:border-b-0 text-sm text-foreground">
-                    {el}
+                {[
+                  { k: t("projectDetail.tokenGrid"), v: "12 / 24px" },
+                  { k: t("projectDetail.tokenContainer"), v: "1280px" },
+                  { k: t("projectDetail.tokenSpacing"), v: "4 · 8 · 16 · 32 · 64" },
+                  { k: t("projectDetail.tokenRadius"), v: "0 · 4 · 12px" },
+                  { k: t("projectDetail.tokenScale"), v: "1.250 — Major third" },
+                ].map((row) => (
+                  <li
+                    key={row.k}
+                    className="flex items-center justify-between gap-4 border-b border-border pb-3 last:border-b-0 last:pb-0"
+                  >
+                    <span className="text-sm text-foreground">{row.k}</span>
+                    <span className="font-mono text-xs text-muted-foreground">{row.v}</span>
                   </li>
                 ))}
               </ul>
@@ -173,16 +186,18 @@ const ProjectDetail = () => {
               <h3 className="font-mono text-[10px] tracking-[0.24em] uppercase text-muted-foreground mb-8">
                 {t("projectDetail.typeSpecimen")}
               </h3>
-              <p className="text-6xl md:text-7xl font-bold tracking-[-0.04em] leading-none mb-4">Aa</p>
-              <p className="text-sm tracking-[0.06em] break-words text-foreground">
-                AaBbCcDdEeFfGgHhIiJjKkLlMm
-              </p>
-              <p className="text-sm tracking-[0.06em] break-words text-foreground">
-                NnOoPpQqRrSsTtUuVvWwXxYyZz
-              </p>
-              <p className="text-sm tracking-[0.06em] text-muted-foreground mt-2">
-                0123456789 !@#$%&amp;*
-              </p>
+              <div style={{ fontFamily: `'${project.fonts[0]}', sans-serif` }}>
+                <p className="text-6xl md:text-7xl leading-none mb-4">Aa</p>
+                <p className="text-sm tracking-[0.04em] break-words text-foreground">
+                  AaBbCcDdEeFfGgHhIiJjKkLlMm
+                </p>
+                <p className="text-sm tracking-[0.04em] break-words text-foreground">
+                  NnOoPpQqRrSsTtUuVvWwXxYyZz
+                </p>
+                <p className="text-sm tracking-[0.04em] text-muted-foreground mt-2">
+                  0123456789 !@#$%&amp;*
+                </p>
+              </div>
             </div>
 
             {/* UI elements */}
@@ -190,7 +205,10 @@ const ProjectDetail = () => {
               <h3 className="font-mono text-[10px] tracking-[0.24em] uppercase text-muted-foreground mb-8">
                 {t("projectDetail.uiElements")}
               </h3>
-              <div className="space-y-4">
+              <div
+                className="space-y-4"
+                style={{ fontFamily: `'${project.fonts[project.fonts.length - 1]}', sans-serif` }}
+              >
                 <button
                   className="w-full px-5 py-3 text-sm font-medium transition-opacity hover:opacity-90"
                   style={{ backgroundColor: project.brandColors[0]?.hex, color: "#FFFFFF" }}
@@ -203,18 +221,29 @@ const ProjectDetail = () => {
                 >
                   {t("projectDetail.secondaryAction")}
                 </button>
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {project.technologies.slice(0, 4).map((tech) => (
-                    <span
-                      key={tech}
-                      className="font-mono text-[10px] tracking-[0.12em] uppercase border border-border px-3 py-1.5 text-muted-foreground"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                <div
+                  className="w-full px-4 py-3 text-sm border text-muted-foreground"
+                  style={{ borderColor: "hsl(var(--border))" }}
+                >
+                  {t("projectDetail.inputPlaceholder")}
+                </div>
+                <div className="flex items-center gap-3 pt-1">
+                  <span
+                    className="text-[11px] px-3 py-1 font-medium"
+                    style={{ backgroundColor: project.brandColors[1]?.hex, color: project.brandColors[3]?.hex ?? "#0A0A0A" }}
+                  >
+                    {t("projectDetail.badge")}
+                  </span>
+                  <span
+                    className="text-sm underline underline-offset-4"
+                    style={{ color: project.brandColors[0]?.hex }}
+                  >
+                    {t("projectDetail.linkSample")}
+                  </span>
                 </div>
               </div>
             </div>
+
 
             {/* Color usage */}
             <div className="border-r border-b border-border p-8 md:p-10">
