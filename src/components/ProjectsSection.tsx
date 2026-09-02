@@ -12,11 +12,13 @@ const ProjectsSection = () => {
   const total = projects.length;
   const project = projects[index];
 
-  const go = (delta: number) =>
-    setState(([i]) => [(i + delta + total) % total, delta]);
+  const go = (delta: number) => setState(([i]) => [(i + delta + total) % total, delta]);
 
   return (
-    <section id="projects" className="border-b border-border min-h-[calc(100vh-64px)] md:min-h-0 md:h-auto flex flex-col pt-16 pb-10 md:py-24 px-6">
+    <section
+      id="projects"
+      className="border-b border-border min-h-[calc(100vh-64px)] md:min-h-0 md:h-auto flex flex-col pt-16 pb-10 md:py-24 px-6"
+    >
       <div className="max-w-7xl mx-auto w-full h-full md:h-auto flex-1 md:flex-none flex flex-col justify-center md:justify-start">
         <div className="flex flex-wrap items-end justify-between gap-6 pb-6 md:pb-10">
           <div>
@@ -53,7 +55,10 @@ const ProjectsSection = () => {
               className="group relative touch-pan-y max-w-3xl mx-auto w-full pt-[90px] md:pt-[190px]"
             >
               {/* Showcase image — half inside the folder, slides out on hover */}
-              <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[86%] h-[220px] md:h-[360px] z-0 transition-transform duration-500 ease-out group-hover:-translate-y-[70px] md:group-hover:-translate-y-[150px]">
+              <div
+                className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[86%] h-[220px] md:h-[360px] z-0 transition-transform duration-500 ease-out group-hover:-translate-y-[70px] md:group-hover:-translate-y-[150px]"
+                style="left: -1px"
+              >
                 <img
                   src={project.previewImage}
                   alt={`${project.title} website preview`}
@@ -114,24 +119,24 @@ const ProjectsSection = () => {
 
         {/* Controls */}
         <div className="flex items-center justify-center gap-4 mt-6 md:mt-10">
-            <button
-              type="button"
-              onClick={() => go(-1)}
-              aria-label="Previous project"
-              className="flex items-center justify-center gap-3 px-6 md:px-8 py-3 border border-border font-mono text-[11px] uppercase tracking-[0.2em] text-foreground hover:bg-foreground hover:text-background transition-colors"
-            >
-              <ArrowLeft size={15} />
-              Prev
-            </button>
-            <button
-              type="button"
-              onClick={() => go(1)}
-              aria-label="Next project"
-              className="flex items-center justify-center gap-3 px-6 md:px-8 py-3 border border-border font-mono text-[11px] uppercase tracking-[0.2em] text-foreground hover:bg-foreground hover:text-background transition-colors"
-            >
-              Next
-              <ArrowRight size={15} />
-            </button>
+          <button
+            type="button"
+            onClick={() => go(-1)}
+            aria-label="Previous project"
+            className="flex items-center justify-center gap-3 px-6 md:px-8 py-3 border border-border font-mono text-[11px] uppercase tracking-[0.2em] text-foreground hover:bg-foreground hover:text-background transition-colors"
+          >
+            <ArrowLeft size={15} />
+            Prev
+          </button>
+          <button
+            type="button"
+            onClick={() => go(1)}
+            aria-label="Next project"
+            className="flex items-center justify-center gap-3 px-6 md:px-8 py-3 border border-border font-mono text-[11px] uppercase tracking-[0.2em] text-foreground hover:bg-foreground hover:text-background transition-colors"
+          >
+            Next
+            <ArrowRight size={15} />
+          </button>
         </div>
       </div>
     </section>
