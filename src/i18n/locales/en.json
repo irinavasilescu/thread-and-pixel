@@ -353,7 +353,7 @@
         "label": "Years of Craft"
       }
     },
-    
+
     "techHeadline": "Tools & technologies we master",
     "metrics": [
       {
@@ -505,7 +505,7 @@
   "serviceDetail": {
     "allServices": "All services",
     "whatsIncluded": "What's",
-    "includedHighlight": "included",
+    "includedHighlight": "What's included",
     "ourProcess": "Our Process",
     "deliverables": "Deliverables",
     "readyToStart": "Ready to get started?",
