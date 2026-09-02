@@ -52,7 +52,7 @@ const ProjectsSection = () => {
             className="group relative touch-pan-y max-w-3xl mx-auto pt-[150px] md:pt-[190px]"
           >
             {/* Showcase image — half inside the folder, slides out on hover */}
-            <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[86%] h-[300px] md:h-[380px] z-0 transition-transform duration-500 ease-out translate-y-[150px] md:translate-y-[190px] group-hover:translate-y-[30px] md:group-hover:translate-y-[40px]">
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[86%] h-[300px] md:h-[360px] z-0 transition-transform duration-500 ease-out group-hover:-translate-y-[120px] md:group-hover:-translate-y-[150px]">
               <img
                 src={project.previewImage}
                 alt={`${project.title} website preview`}
