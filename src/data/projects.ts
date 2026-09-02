@@ -104,7 +104,7 @@ export const projects: Project[] = [
       "Mobile-optimized adoption experience",
       "Eco-friendly performance",
     ],
-    screenshots: [croseteleIrinei1.url, croseteleIrinei2, croseteleIrinei3, croseteleIrinei4],
+    screenshots: [croseteleIrinei1.url, croseteleIrinei2.url, croseteleIrinei3.url, croseteleIrinei4.url, croseteleIrinei5.url],
     technologies: ["Shopify", "Javascript", "HTML", "CSS"],
     previewImage: croseteleIrinei1.url,
   },
