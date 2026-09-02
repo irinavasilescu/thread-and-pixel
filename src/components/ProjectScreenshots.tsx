@@ -35,6 +35,9 @@ const ProjectScreenshots = ({ screenshots, title }: ProjectScreenshotsProps) => 
             className="w-full h-auto object-cover"
             loading="lazy"
           />
+          <div className="border-t border-border px-5 py-3 font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
+            {t("projectDetail.screen")} 01
+          </div>
         </motion.div>
 
         {remaining.length > 0 && (
