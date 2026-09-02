@@ -14,7 +14,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[9999] bg-background flex items-center justify-center"
+      className="fixed inset-0 z-[9999] bg-background flex items-center justify-center overflow-hidden w-full"
       initial={{ opacity: 1 }}
       animate={{ opacity: phase === "exit" ? 0 : 1 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -23,7 +23,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
         <motion.img
           src={wordmark}
           alt="Thread & Pixel"
-          className="h-10 w-auto"
+          className="h-10 w-auto max-w-[80vw] object-contain"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
