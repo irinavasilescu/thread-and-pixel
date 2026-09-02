@@ -16,7 +16,7 @@ const ProjectsSection = () => {
     setState(([i]) => [(i + delta + total) % total, delta]);
 
   return (
-    <section id="projects" className="border-b border-border h-[calc(100vh-64px)] md:h-auto flex flex-col py-10 md:py-24 px-6">
+    <section id="projects" className="border-b border-border min-h-[calc(100vh-64px)] md:min-h-0 md:h-auto flex flex-col pt-16 pb-10 md:py-24 px-6">
       <div className="max-w-7xl mx-auto w-full h-full md:h-auto flex-1 md:flex-none flex flex-col justify-center md:justify-start">
         <div className="flex flex-wrap items-end justify-between gap-6 pb-6 md:pb-10">
           <div>
