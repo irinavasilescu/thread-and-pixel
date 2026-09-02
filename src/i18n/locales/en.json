@@ -511,7 +511,6 @@
     "typography": "Typography",
     "display": "Display",
     "body": "Body",
-    "keyElements": "Key Elements",
     "whatWeDelivered": "What We",
     "deliveredHighlight": "Delivered",
     "technologiesUsed": "Technologies Used",
@@ -524,7 +523,16 @@
     "uiElements": "UI Elements",
     "colorUsage": "Color Usage",
     "primaryAction": "Primary Action",
-    "secondaryAction": "Secondary Action"
+    "secondaryAction": "Secondary Action",
+    "designTokens": "Design Tokens",
+    "tokenGrid": "Grid",
+    "tokenContainer": "Container",
+    "tokenSpacing": "Spacing",
+    "tokenRadius": "Radius",
+    "tokenScale": "Type scale",
+    "inputPlaceholder": "Input field",
+    "badge": "Badge",
+    "linkSample": "Text link"
   },
   "serviceDetail": {
     "allServices": "All services",
