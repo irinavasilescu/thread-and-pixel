@@ -50,10 +50,10 @@ const ProjectsSection = () => {
                 if (info.offset.x < -60) go(1);
                 else if (info.offset.x > 60) go(-1);
               }}
-              className="group relative touch-pan-y max-w-3xl mx-auto w-full pt-[110px] md:pt-[190px]"
+              className="group relative touch-pan-y max-w-3xl mx-auto w-full pt-[90px] md:pt-[190px]"
             >
               {/* Showcase image — half inside the folder, slides out on hover */}
-              <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[86%] h-[260px] md:h-[360px] z-0 transition-transform duration-500 ease-out group-hover:-translate-y-[90px] md:group-hover:-translate-y-[150px]">
+              <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[86%] h-[220px] md:h-[360px] z-0 transition-transform duration-500 ease-out group-hover:-translate-y-[70px] md:group-hover:-translate-y-[150px]">
                 <img
                   src={project.previewImage}
                   alt={`${project.title} website preview`}
@@ -64,7 +64,7 @@ const ProjectsSection = () => {
               </div>
 
               {/* Folder front */}
-              <div className="relative z-10 border border-border bg-background h-[150px] md:h-[210px]">
+              <div className="relative z-10 border border-border bg-background h-[130px] md:h-[210px]">
                 {/* Folder tab */}
                 <div className="absolute -top-6 left-0 h-6 w-44 border border-b-0 border-border bg-background flex items-center px-4">
                   <span className="font-mono text-[9px] tracking-[0.24em] uppercase text-muted-foreground">
