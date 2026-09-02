@@ -3,9 +3,10 @@ import primeFinish2 from "@/assets/prime-finish-2.png.asset.json";
 import primeFinish3 from "@/assets/prime-finish-3.png.asset.json";
 import primeFinish4 from "@/assets/prime-finish-4.png.asset.json";
 import croseteleIrinei1 from "@/assets/crosetele-irinei-1.png.asset.json";
-import croseteleIrinei2 from "@/assets/crosetele-irinei-2.png";
-import croseteleIrinei3 from "@/assets/crosetele-irinei-3.png";
-import croseteleIrinei4 from "@/assets/crosetele-irinei-4.png";
+import croseteleIrinei2 from "@/assets/crosetele-irinei-2.png.asset.json";
+import croseteleIrinei3 from "@/assets/crosetele-irinei-3.png.asset.json";
+import croseteleIrinei4 from "@/assets/crosetele-irinei-4.png.asset.json";
+import croseteleIrinei5 from "@/assets/crosetele-irinei-5.png.asset.json";
 import tableTapMain from "@/assets/table-tap-1.png.asset.json";
 import tableTap2 from "@/assets/table-tap-2.png.asset.json";
 import tableTap3 from "@/assets/table-tap-3.png.asset.json";
@@ -103,7 +104,7 @@ export const projects: Project[] = [
       "Mobile-optimized adoption experience",
       "Eco-friendly performance",
     ],
-    screenshots: [croseteleIrinei1.url, croseteleIrinei2, croseteleIrinei3, croseteleIrinei4],
+    screenshots: [croseteleIrinei1.url, croseteleIrinei2.url, croseteleIrinei3.url, croseteleIrinei4.url, croseteleIrinei5.url],
     technologies: ["Shopify", "Javascript", "HTML", "CSS"],
     previewImage: croseteleIrinei1.url,
   },
