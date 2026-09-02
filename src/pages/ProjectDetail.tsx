@@ -167,6 +167,82 @@ const ProjectDetail = () => {
                 ))}
               </ul>
             </div>
+
+            {/* Type specimen */}
+            <div className="border-r border-b border-border p-8 md:p-10">
+              <h3 className="font-mono text-[10px] tracking-[0.24em] uppercase text-muted-foreground mb-8">
+                {t("projectDetail.typeSpecimen")}
+              </h3>
+              <p className="text-6xl md:text-7xl font-bold tracking-[-0.04em] leading-none mb-4">Aa</p>
+              <p className="text-sm tracking-[0.06em] break-words text-foreground">
+                AaBbCcDdEeFfGgHhIiJjKkLlMm
+              </p>
+              <p className="text-sm tracking-[0.06em] break-words text-foreground">
+                NnOoPpQqRrSsTtUuVvWwXxYyZz
+              </p>
+              <p className="text-sm tracking-[0.06em] text-muted-foreground mt-2">
+                0123456789 !@#$%&amp;*
+              </p>
+            </div>
+
+            {/* UI elements */}
+            <div className="border-r border-b border-border p-8 md:p-10">
+              <h3 className="font-mono text-[10px] tracking-[0.24em] uppercase text-muted-foreground mb-8">
+                {t("projectDetail.uiElements")}
+              </h3>
+              <div className="space-y-4">
+                <button
+                  className="w-full px-5 py-3 text-sm font-medium transition-opacity hover:opacity-90"
+                  style={{ backgroundColor: project.brandColors[0]?.hex, color: "#FFFFFF" }}
+                >
+                  {t("projectDetail.primaryAction")}
+                </button>
+                <button
+                  className="w-full px-5 py-3 text-sm font-medium border transition-colors"
+                  style={{ borderColor: project.brandColors[0]?.hex, color: project.brandColors[0]?.hex }}
+                >
+                  {t("projectDetail.secondaryAction")}
+                </button>
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {project.technologies.slice(0, 4).map((tech) => (
+                    <span
+                      key={tech}
+                      className="font-mono text-[10px] tracking-[0.12em] uppercase border border-border px-3 py-1.5 text-muted-foreground"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Color usage */}
+            <div className="border-r border-b border-border p-8 md:p-10">
+              <h3 className="font-mono text-[10px] tracking-[0.24em] uppercase text-muted-foreground mb-8">
+                {t("projectDetail.colorUsage")}
+              </h3>
+              <div className="flex h-10 border border-border overflow-hidden">
+                {project.brandColors.map((color, i) => (
+                  <div
+                    key={color.name}
+                    style={{
+                      backgroundColor: color.hex,
+                      flexGrow: [10, 6, 4, 3][i] ?? 2,
+                    }}
+                  />
+                ))}
+              </div>
+              <ul className="mt-6 space-y-2">
+                {project.brandColors.map((color, i) => (
+                  <li key={color.name} className="flex items-center justify-between text-xs">
+                    <span className="text-foreground">{color.name}</span>
+                    <span className="font-mono text-muted-foreground">
+                      {[40, 28, 18, 14][i] ?? 10}%
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
