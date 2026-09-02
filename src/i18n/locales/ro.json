@@ -192,7 +192,12 @@
           "Prezentare & Aliniere",
           "Suport Implementare"
         ],
-        "deliverables": ["Document de strategie", "Raport audit tehnic", "Roadmap prioritizat", "Materiale workshop"]
+        "deliverables": [
+          "Document de strategie",
+          "Raport audit tehnic",
+          "Roadmap prioritizat",
+          "Materiale workshop"
+        ]
       },
       "web-design": {
         "title": "Web Design",
@@ -535,7 +540,12 @@
     "startConversation": "Începe o conversație",
     "showcaseLabel": "Galerie",
     "showcaseTitle": "Galerie Proiect",
-    "screen": "Ecran"
+    "screen": "Ecran",
+    "typeSpecimen": "Specimen Tipografic",
+    "uiElements": "Elemente UI",
+    "colorUsage": "Utilizarea Culorilor",
+    "primaryAction": "Acțiune Principală",
+    "secondaryAction": "Acțiune Secundară"
   },
   "serviceDetail": {
     "allServices": "Toate serviciile",

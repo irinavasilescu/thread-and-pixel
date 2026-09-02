@@ -81,7 +81,12 @@
           "Development & Testing",
           "Launch & Handoff"
         ],
-        "deliverables": ["Fully responsive website", "Admin dashboard", "Documentation", "30-day post-launch support"]
+        "deliverables": [
+          "Fully responsive website",
+          "Admin dashboard",
+          "Documentation",
+          "30-day post-launch support"
+        ]
       },
       "seo": {
         "title": "SEO",
@@ -187,7 +192,12 @@
           "Presentation & Alignment",
           "Implementation Support"
         ],
-        "deliverables": ["Strategy document", "Technical audit report", "Prioritized roadmap", "Workshop materials"]
+        "deliverables": [
+          "Strategy document",
+          "Technical audit report",
+          "Prioritized roadmap",
+          "Workshop materials"
+        ]
       },
       "web-design": {
         "title": "Web Design",
@@ -219,7 +229,12 @@
           "Prototype & Testing",
           "Asset Delivery"
         ],
-        "deliverables": ["Brand guidelines", "UI kit / design system", "Interactive prototypes", "Asset library"]
+        "deliverables": [
+          "Brand guidelines",
+          "UI kit / design system",
+          "Interactive prototypes",
+          "Asset library"
+        ]
       },
       "support-maintenance": {
         "title": "Support & Maintenance",
@@ -325,7 +340,12 @@
           "Live management dashboard for queue orchestration",
           "Hardware-free check-in (BYOD - Bring Your Own Device)"
         ],
-        "keyElements": ["Virtual orchestration", "Frictionless check-in", "Real-time transparency", "Congestion relief"]
+        "keyElements": [
+          "Virtual orchestration",
+          "Frictionless check-in",
+          "Real-time transparency",
+          "Congestion relief"
+        ]
       }
     },
     "meta": {
@@ -353,7 +373,6 @@
         "label": "Years of Craft"
       }
     },
-
     "techHeadline": "Tools & technologies we master",
     "metrics": [
       {
@@ -500,7 +519,12 @@
     "startConversation": "Start a conversation",
     "showcaseLabel": "Showcase",
     "showcaseTitle": "Project Showcase",
-    "screen": "Screen"
+    "screen": "Screen",
+    "typeSpecimen": "Type Specimen",
+    "uiElements": "UI Elements",
+    "colorUsage": "Color Usage",
+    "primaryAction": "Primary Action",
+    "secondaryAction": "Secondary Action"
   },
   "serviceDetail": {
     "allServices": "All services",
