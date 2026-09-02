@@ -16,11 +16,11 @@ const ProjectsSection = () => {
     setState(([i]) => [(i + delta + total) % total, delta]);
 
   return (
-    <section id="projects" className="border-b border-border min-h-screen md:min-h-0 flex flex-col py-16 md:py-24 px-6">
-      <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-between">
-        <div className="flex flex-wrap items-end justify-between gap-6 pb-8 md:pb-10">
+    <section id="projects" className="border-b border-border h-screen md:h-auto flex flex-col py-10 md:py-24 px-6">
+      <div className="max-w-7xl mx-auto w-full h-full md:h-auto flex-1 md:flex-none flex flex-col justify-center md:justify-start">
+        <div className="flex flex-wrap items-end justify-between gap-6 pb-6 md:pb-10">
           <div>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] text-foreground leading-[0.95]">
+            <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] text-foreground leading-[0.95]">
               {t("projects.title")}
             </h2>
           </div>
@@ -34,7 +34,7 @@ const ProjectsSection = () => {
         </div>
 
         {/* Folder carousel */}
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 md:flex-none flex items-center justify-center md:block">
           <AnimatePresence mode="wait" custom={dir}>
             <motion.div
               key={project.slug}
