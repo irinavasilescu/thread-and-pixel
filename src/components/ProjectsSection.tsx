@@ -68,7 +68,10 @@ const ProjectsSection = () => {
               {/* Folder front */}
               <div className="relative z-10 border border-border bg-background h-[130px] md:h-[210px]">
                 {/* Folder tab */}
-                <div className="absolute -top-6 left-0 h-6 w-44 border border-b-0 border-border bg-background flex items-center px-4">
+                <div
+                  className="absolute -top-6 left-0 h-6 w-44 border border-b-0 border-border bg-background flex items-center px-4"
+                  style={{ left: "-1px" }}
+                >
                   <span className="font-mono text-[9px] tracking-[0.24em] uppercase text-muted-foreground">
                     {t("projects.title")} — {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
                   </span>
