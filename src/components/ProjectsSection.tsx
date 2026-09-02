@@ -33,55 +33,58 @@ const ProjectsSection = () => {
           </Link>
         </div>
 
-        {/* Carousel */}
-        <div className="border border-border overflow-hidden">
-          <AnimatePresence mode="wait" custom={dir}>
-            <motion.div
-              key={project.slug}
-              custom={dir}
-              initial={{ opacity: 0, x: dir >= 0 ? 60 : -60 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: dir >= 0 ? -60 : 60 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.12}
-              onDragEnd={(_, info) => {
-                if (info.offset.x < -60) go(1);
-                else if (info.offset.x > 60) go(-1);
-              }}
-              className="grid grid-cols-1 lg:grid-cols-12 items-stretch touch-pan-y lg:h-[52vh] lg:min-h-[380px] lg:max-h-[540px]"
-            >
-              {/* Image */}
-              <div className="lg:col-span-7 relative overflow-hidden bg-card lg:border-r border-b lg:border-b-0 border-border">
-                <img
-                  src={project.previewImage}
-                  alt={`${project.title} website preview`}
-                  loading="lazy"
-                  draggable={false}
-                  className="w-full h-full min-h-[200px] sm:min-h-[280px] lg:min-h-0 object-cover select-none"
-                />
-                <span className="absolute top-0 left-0 font-mono text-[10px] tracking-[0.24em] uppercase bg-background text-foreground border-r border-b border-border px-4 py-2">
-                  {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+        {/* Folder carousel */}
+        <AnimatePresence mode="wait" custom={dir}>
+          <motion.div
+            key={project.slug}
+            custom={dir}
+            initial={{ opacity: 0, x: dir >= 0 ? 60 : -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: dir >= 0 ? -60 : 60 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.12}
+            onDragEnd={(_, info) => {
+              if (info.offset.x < -60) go(1);
+              else if (info.offset.x > 60) go(-1);
+            }}
+            className="group relative touch-pan-y max-w-3xl mx-auto pt-[150px] md:pt-[190px]"
+          >
+            {/* Showcase image — half inside the folder, slides out on hover */}
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[86%] h-[300px] md:h-[360px] z-0 transition-transform duration-500 ease-out group-hover:-translate-y-[120px] md:group-hover:-translate-y-[150px]">
+              <img
+                src={project.previewImage}
+                alt={`${project.title} website preview`}
+                loading="lazy"
+                draggable={false}
+                className="w-full h-full object-cover object-top border border-border bg-card select-none"
+              />
+            </div>
+
+            {/* Folder front */}
+            <div className="relative z-10 border border-border bg-background h-[170px] md:h-[210px]">
+              {/* Folder tab */}
+              <div className="absolute -top-6 left-0 h-6 w-44 border border-b-0 border-border bg-background flex items-center px-4">
+                <span className="font-mono text-[9px] tracking-[0.24em] uppercase text-muted-foreground">
+                  {t("projects.title")} — {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
                 </span>
               </div>
 
-              {/* Meta */}
-              <div className="lg:col-span-5 flex flex-col justify-between p-6 md:p-8 xl:p-10 overflow-hidden">
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] opacity-70">
-                    {t(`projects.items.${project.slug}.category`)} — {project.year}
-                  </p>
-                  <h3 className="mt-4 text-2xl md:text-3xl xl:text-4xl font-bold tracking-[-0.04em] leading-[0.95] text-foreground">
+              {/* Folder face content */}
+              <div className="h-full flex flex-col justify-between p-5 md:p-7">
+                <div className="flex items-baseline justify-between gap-4">
+                  <h3 className="text-2xl md:text-3xl font-bold tracking-[-0.04em] leading-[0.95] text-foreground">
                     {project.title}
                   </h3>
-                  <p className="mt-4 text-sm leading-relaxed line-clamp-3 text-muted-foreground max-w-md">
-                    {t(`projects.items.${project.slug}.tagline`)}
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground whitespace-nowrap">
+                    {t(`projects.items.${project.slug}.category`)} — {project.year}
                   </p>
                 </div>
 
-                <div className="mt-6">
-                  <div className="flex flex-wrap gap-x-5 gap-y-2 pb-5">
+                {/* Revealed on hover (always visible on touch screens) */}
+                <div className="opacity-0 translate-y-2 transition-all duration-500 delay-100 group-hover:opacity-100 group-hover:translate-y-0 max-lg:opacity-100 max-lg:translate-y-0">
+                  <div className="hidden md:flex flex-wrap gap-x-5 gap-y-1 pb-3">
                     {project.technologies.slice(0, 5).map((tech) => (
                       <span
                         key={tech}
@@ -93,19 +96,19 @@ const ProjectsSection = () => {
                   </div>
                   <Link
                     to={`/projects/${project.slug}`}
-                    className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] border-t border-border pt-4 w-full text-foreground hover:text-primary transition-colors"
+                    className="group/link inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] border-t border-border pt-3 w-full text-foreground hover:text-primary transition-colors"
                   >
                     {t("projects.viewProject")}
                     <ArrowUpRight
                       size={16}
-                      className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                      className="transition-transform duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1"
                     />
                   </Link>
                 </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
 
         {/* Controls */}
         <div className="flex items-center justify-center gap-4 mt-10">
