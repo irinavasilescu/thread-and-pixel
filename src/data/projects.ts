@@ -2,7 +2,7 @@ import primeFinish1 from "@/assets/prime-finish-1.png.asset.json";
 import primeFinish2 from "@/assets/prime-finish-2.png.asset.json";
 import primeFinish3 from "@/assets/prime-finish-3.png.asset.json";
 import primeFinish4 from "@/assets/prime-finish-4.png.asset.json";
-import croseteleIrinei1 from "@/assets/crosetele-irinei-1.png";
+import croseteleIrinei1 from "@/assets/crosetele-irinei-1.png.asset.json";
 import croseteleIrinei2 from "@/assets/crosetele-irinei-2.png";
 import croseteleIrinei3 from "@/assets/crosetele-irinei-3.png";
 import croseteleIrinei4 from "@/assets/crosetele-irinei-4.png";
