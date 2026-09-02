@@ -57,7 +57,7 @@ const ProjectsSection = () => {
               {/* Showcase image — half inside the folder, slides out on hover */}
               <div
                 className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[86%] h-[220px] md:h-[360px] z-0 transition-transform duration-500 ease-out group-hover:-translate-y-[70px] md:group-hover:-translate-y-[150px]"
-                style="left: -1px"
+                style={{ left: "-1px" }}
               >
                 <img
                   src={project.previewImage}
