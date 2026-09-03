@@ -83,7 +83,7 @@ const ProjectsSection = () => {
                     <h3 className="text-2xl md:text-3xl font-bold tracking-[-0.04em] leading-[0.95] text-foreground">
                       {project.title}
                     </h3>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground whitespace-nowrap">
+                    <p className="hidden md:block font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground whitespace-nowrap">
                       {t(`projects.items.${project.slug}.category`)} — {project.year}
                     </p>
                   </div>
