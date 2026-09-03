@@ -104,9 +104,15 @@ export const projects: Project[] = [
       "Mobile-optimized adoption experience",
       "Eco-friendly performance",
     ],
-    screenshots: [croseteleIrinei1.url, croseteleIrinei2.url, croseteleIrinei3.url, croseteleIrinei4.url, croseteleIrinei5.url],
+    screenshots: [
+      croseteleIrinei1.url,
+      croseteleIrinei2.url,
+      croseteleIrinei3.url,
+      croseteleIrinei4.url,
+      croseteleIrinei5.url,
+    ].map((u) => `https://threadandpixel.lovable.app${u}`),
     technologies: ["Shopify", "Javascript", "HTML", "CSS"],
-    previewImage: croseteleIrinei1.url,
+    previewImage: `https://threadandpixel.lovable.app${croseteleIrinei1.url}`,
   },
   {
     slug: "table-tap",
