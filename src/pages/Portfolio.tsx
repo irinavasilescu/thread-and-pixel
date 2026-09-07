@@ -49,70 +49,64 @@ const Portfolio = () => {
       </section>
 
       {/* Project index list */}
-      <section className="border-b border-border py-20 md:py-28 px-6">
-        <div className="max-w-7xl mx-auto border-t border-l border-border">
+      <section className="border-b border-border px-6 py-24 md:py-36 lg:py-44">
+        <div className="mx-auto flex max-w-6xl flex-col gap-28 md:gap-44 lg:gap-56">
           {projects.map((project, i) => (
-            <motion.div
+            <motion.article
               key={project.slug}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
+              transition={{ duration: 0.55, ease }}
             >
               <Link
                 to={`/projects/${project.slug}`}
-                className="group grid grid-cols-1 lg:grid-cols-12 border-b border-border"
+                className="group block"
               >
-                <div className="lg:col-span-7 border-r border-border overflow-hidden bg-card">
-                  <div className="aspect-[16/10] overflow-hidden">
+                <div className={`grid grid-cols-1 items-center gap-8 md:gap-12 lg:grid-cols-12 lg:gap-16 ${i % 2 === 1 ? "" : ""}`}>
+                  <div className={`overflow-hidden border border-border bg-card lg:col-span-7 ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+                    <div className="aspect-[16/10] overflow-hidden">
                     <img
                       src={project.previewImage}
                       alt={`${t(`projects.items.${project.slug}.title`)} website preview`}
-                      className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
                       loading="lazy"
                     />
+                    </div>
                   </div>
-                </div>
 
-                <div className="lg:col-span-5 border-r border-border p-8 md:p-12 flex flex-col justify-between transition-colors duration-200 group-hover:bg-foreground group-hover:text-background">
-                  <div>
-                    <div className="flex items-center justify-between font-mono text-[11px] tracking-[0.2em] uppercase text-primary group-hover:text-background">
+                  <div className={`flex flex-col lg:col-span-5 ${i % 2 === 1 ? "lg:order-1 lg:items-end lg:text-right" : ""}`}>
+                    <div className="flex w-full items-center justify-between border-b border-border pb-4 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
                       <span>{String(i + 1).padStart(2, "0")}</span>
                       <span>{project.year}</span>
                     </div>
 
-                    <h2 className="mt-6 text-3xl md:text-4xl font-bold uppercase tracking-[-0.03em]">
+                    <h2 className="mt-7 text-3xl font-bold uppercase leading-none md:text-5xl lg:text-6xl">
                       {t(`projects.items.${project.slug}.title`)}
                     </h2>
 
-                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground group-hover:text-background/80">
+                    <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
                       {t(`projects.items.${project.slug}.tagline`)}
                     </p>
 
-                    <div className="mt-8 pt-6 border-t border-border group-hover:border-background/30">
-                      <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-primary group-hover:text-background">
-                        {t("projects.meta.scope")}
-                      </p>
-                      <p className="mt-2 text-sm font-medium">
+                    <div className={`mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground ${i % 2 === 1 ? "lg:justify-end" : ""}`}>
+                      <span className="text-primary">
                         {t(`projects.items.${project.slug}.category`)}
-                      </p>
-                      <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
-                        {project.technologies.slice(0, 4).map((tech) => (
-                          <span key={tech} className="font-mono text-[11px] text-muted-foreground group-hover:text-background/70">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
+                      </span>
+                      <span aria-hidden="true">/</span>
+                      {project.technologies.slice(0, 3).map((tech) => (
+                        <span key={tech}>{tech}</span>
+                      ))}
                     </div>
-                  </div>
 
-                  <span className="mt-10 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em]">
+                    <span className="mt-10 inline-flex w-fit items-center gap-2 border-b border-foreground pb-1 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors group-hover:border-primary group-hover:text-primary">
                     {t("projects.viewProject")}
                     <ArrowUpRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
+                  </div>
                 </div>
               </Link>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </section>
