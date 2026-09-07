@@ -7,7 +7,7 @@ import { projects } from "@/data/projects";
 
 const ProjectsSection = () => {
   const { t } = useTranslation();
-  const [[index, dir], setState] = useState<[number, number]>([0, 0]);
+  const [[index, direction], setState] = useState<[number, number]>([0, 0]);
 
   const total = projects.length;
   const project = projects[index];
@@ -17,15 +17,13 @@ const ProjectsSection = () => {
   return (
     <section
       id="projects"
-      className="border-b border-border min-h-[calc(100vh-64px)] md:min-h-0 md:h-auto flex flex-col pt-16 pb-10 md:py-24 px-6"
+      className="border-b border-border min-h-[calc(100vh-64px)] md:min-h-0 flex flex-col px-6 py-14 md:py-24"
     >
-      <div className="max-w-7xl mx-auto w-full h-full md:h-auto flex-1 md:flex-none flex flex-col justify-center md:justify-start">
-        <div className="flex flex-wrap items-end justify-between gap-6 pb-6 md:pb-10">
-          <div>
-            <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] text-foreground leading-[0.95]">
-              {t("projects.title")}
-            </h2>
-          </div>
+      <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center">
+        <div className="flex flex-wrap items-end justify-between gap-6 pb-8 md:pb-12">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-normal text-foreground leading-[0.95]">
+            {t("projects.title")}
+          </h2>
           <Link
             to="/portfolio"
             className="font-mono text-[11px] uppercase tracking-[0.18em] text-foreground hover:text-primary transition-colors inline-flex items-center gap-2"
@@ -35,108 +33,87 @@ const ProjectsSection = () => {
           </Link>
         </div>
 
-        {/* Folder carousel */}
-        <div className="flex-1 md:flex-none flex items-center justify-center md:block">
-          <AnimatePresence mode="wait" custom={dir}>
+        <div className="border-y border-border">
+          <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={project.slug}
-              custom={dir}
-              initial={{ opacity: 0, x: dir >= 0 ? 60 : -60 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: dir >= 0 ? -60 : 60 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
+              custom={direction}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.12}
+              dragElastic={0.08}
               onDragEnd={(_, info) => {
                 if (info.offset.x < -60) go(1);
                 else if (info.offset.x > 60) go(-1);
               }}
-              className="group relative touch-pan-y max-w-3xl mx-auto w-full pt-[90px] md:pt-[190px]"
+              className="group grid min-h-[430px] touch-pan-y grid-cols-1 md:min-h-0 md:grid-cols-12"
             >
-              {/* Showcase image — half inside the folder, slides out on hover */}
-              <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[86%] h-[220px] md:h-[360px] z-0 transition-transform duration-500 ease-out group-hover:-translate-y-[70px] md:group-hover:-translate-y-[150px]">
+              <Link
+                to={`/projects/${project.slug}`}
+                className="block min-h-0 overflow-hidden bg-card md:col-span-8 md:border-r md:border-border"
+              >
+                <div className="aspect-[16/10] h-full max-h-[58vh] min-h-[220px] overflow-hidden md:aspect-auto md:min-h-[430px]">
                 <img
                   src={project.previewImage}
-                  alt={`${project.title} website preview`}
+                  alt={`${t(`projects.items.${project.slug}.title`)} website preview`}
                   loading="lazy"
                   draggable={false}
-                  className="w-full h-full object-cover object-top border border-border bg-card select-none"
+                    className="h-full w-full select-none object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.015]"
                 />
               </div>
+              </Link>
 
-              {/* Folder front */}
-              <div className="relative z-10 border border-border bg-background h-[130px] md:h-[210px]">
-                {/* Folder tab */}
-                <div
-                  className="absolute -top-6 left-0 h-6 w-44 border border-b-0 border-border bg-background flex items-center px-4"
-                  style={{ left: "-1px" }}
+              <div className="flex flex-col justify-between border-t border-border px-5 py-6 md:col-span-4 md:border-t-0 md:px-8 md:py-8 lg:px-10 lg:py-10">
+                <div>
+                  <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-primary">
+                    <span>{String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}</span>
+                    <span>{project.year}</span>
+                  </div>
+                  <h3 className="mt-5 text-2xl font-bold leading-none tracking-normal text-foreground md:mt-8 md:text-4xl">
+                    {t(`projects.items.${project.slug}.title`)}
+                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:mt-6 md:text-base">
+                    {t(`projects.items.${project.slug}.tagline`)}
+                  </p>
+                </div>
+
+                <Link
+                  to={`/projects/${project.slug}`}
+                  className="mt-8 inline-flex w-full items-center justify-between border-t border-border pt-4 font-mono text-[11px] uppercase tracking-[0.18em] text-foreground transition-colors hover:text-primary"
                 >
-                  <span className="font-mono text-[9px] tracking-[0.24em] uppercase text-muted-foreground">
-                    {t("projects.title")} — {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-                  </span>
-                </div>
-
-                {/* Folder face content */}
-                <div className="h-full flex flex-col justify-between p-5 md:p-7">
-                  <div className="flex items-baseline justify-between gap-4">
-                    <h3 className="text-2xl md:text-3xl font-bold tracking-[-0.04em] leading-[0.95] text-foreground">
-                      {project.title}
-                    </h3>
-                    <p className="hidden md:block font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground whitespace-nowrap">
-                      {t(`projects.items.${project.slug}.category`)} — {project.year}
-                    </p>
-                  </div>
-
-                  {/* Revealed on hover (always visible on touch screens) */}
-                  <div className="opacity-0 translate-y-2 transition-all duration-500 delay-100 group-hover:opacity-100 group-hover:translate-y-0 max-lg:opacity-100 max-lg:translate-y-0">
-                    <div className="hidden md:flex flex-wrap gap-x-5 gap-y-1 pb-3">
-                      {project.technologies.slice(0, 5).map((tech) => (
-                        <span
-                          key={tech}
-                          className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <Link
-                      to={`/projects/${project.slug}`}
-                      className="group/link inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] border-t border-border pt-3 w-full text-foreground hover:text-primary transition-colors"
-                    >
-                      {t("projects.viewProject")}
-                      <ArrowUpRight
-                        size={16}
-                        className="transition-transform duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1"
-                      />
-                    </Link>
-                  </div>
-                </div>
+                  {t("projects.viewProject")}
+                  <ArrowUpRight size={15} />
+                </Link>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Controls */}
-        <div className="flex items-center justify-center gap-4 mt-6 md:mt-10">
+        <div className="mt-7 flex items-center justify-between md:mt-9">
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+            {t(`projects.items.${project.slug}.category`)}
+          </span>
+          <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={() => go(-1)}
             aria-label="Previous project"
-            className="flex items-center justify-center gap-3 px-6 md:px-8 py-3 border border-border font-mono text-[11px] uppercase tracking-[0.2em] text-foreground hover:bg-foreground hover:text-background transition-colors"
+              className="flex h-11 w-11 items-center justify-center border border-border text-foreground transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
           >
             <ArrowLeft size={15} />
-            Prev
           </button>
           <button
             type="button"
             onClick={() => go(1)}
             aria-label="Next project"
-            className="flex items-center justify-center gap-3 px-6 md:px-8 py-3 border border-border font-mono text-[11px] uppercase tracking-[0.2em] text-foreground hover:bg-foreground hover:text-background transition-colors"
+              className="flex h-11 w-11 items-center justify-center border border-border text-foreground transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
           >
-            Next
             <ArrowRight size={15} />
           </button>
+          </div>
         </div>
       </div>
     </section>
